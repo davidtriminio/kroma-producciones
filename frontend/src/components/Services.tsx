@@ -1,40 +1,56 @@
-﻿import {useState} from 'react'
-import {serviceCards, type ServiceId} from "../data/kroma.ts";
+﻿import { useState } from "react";
+import { Clapperboard, Share2, Globe2, PenTool } from "lucide-react";
+import SectionTitle from "./SectionTitle";
+import { serviceCards, type ServiceId } from "../data/kroma.ts";
 import ServiceModal from "./ServiceModal.tsx";
 
+const icons = {
+    audiovisual: Clapperboard,
+    social: Share2,
+    web: Globe2,
+    branding: PenTool,
+};
+
 const Services = () => {
-    const [selected, setSelected] = useState<ServiceId | null>(null)
+    const [selected, setSelected] = useState<ServiceId | null>(null);
 
     return (
-        <section id="servicios" className="py-32">
-            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-4">
-                {serviceCards.map((s) => (
-                    <div key={s.id} className="glass-card flex flex-col p-6">
-                        <div className="grid grid-cols-2 gap-2">
-                            {s.images.slice(0, 2).map((img, i) => (
-                                <img key={i} src={img} className="h-20 w-full rounded-lg object-cover"/>
-                            ))}
-                        </div>
+        <section id="servicios" className="container-max mx-auto px-gutter py-section-gap">
+            <SectionTitle center className="mb-14">
+                Nuestros Servicios
+            </SectionTitle>
 
-                        <div className="mt-4 flex items-center gap-2">
-              <span className={`material-symbols-outlined ${s.accentClass}`}>
-                {s.icon}
-              </span>
-                            <h3 className="font-bold">{s.title}</h3>
-                        </div>
+            <div className="section-reveal grid grid-cols-1 gap-5 md:grid-cols-4">
+                {serviceCards.map((s) => {
+                    const Icon = icons[s.id];
 
-                        <p className="mt-2 flex-1 text-sm text-white/60">
-                            {s.description}
-                        </p>
-
+                    return (
                         <button
+                            key={s.id}
                             onClick={() => setSelected(s.id)}
-                            className="mt-4 rounded-full border py-2 text-xs uppercase"
+                            className="glass-card group flex flex-col p-4 text-left"
                         >
-                            Ver trabajos
+                            <img
+                                src={s.images[0]}
+                                className="mb-4 h-32 w-full rounded-[10px] object-cover brightness-75 transition group-hover:brightness-100"
+                                alt={s.title}
+                            />
+
+                            <div className="mb-3 flex items-center gap-3">
+                                <Icon className={`h-5 w-5 ${s.accentClass}`} strokeWidth={2.2} />
+                                <h3 className="font-headline text-sm font-black uppercase">{s.title}</h3>
+                            </div>
+
+                            <p className="text-xs leading-relaxed text-white/55">
+                                {s.description}
+                            </p>
+
+                            <span className="mt-5 text-[10px] font-black uppercase tracking-[0.18em] text-white/40">
+                Ver trabajos
+              </span>
                         </button>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             <ServiceModal
@@ -43,6 +59,7 @@ const Services = () => {
                 onClose={() => setSelected(null)}
             />
         </section>
-    )
-}
-export default Services
+    );
+};
+
+export default Services;

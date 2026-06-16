@@ -6,7 +6,9 @@ html {
 }
 
 body {
-  background-color: #050506;
+  background:
+          radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.06), transparent 28rem),
+          #050506;
   color: #fff;
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
@@ -22,18 +24,17 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.035);
   backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 28px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  transition: all 0.28s ease;
 }
 
 .glass-card:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .nav-sticky {
@@ -61,21 +62,18 @@ body {
 .section-title {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
+  line-height: 0.85;
   text-transform: uppercase;
   position: relative;
   display: inline-block;
 }
 
 .section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #06b6d4, #ef4444, #2563eb);
-  border-radius: 2px;
+  bottom: -12px;
+  width: 72px;
+  height: 3px;
+  background: linear-gradient(90deg, #06b6d4, #ef4444, #facc15);
 }
 
 .section-title-center::after {
@@ -84,13 +82,12 @@ body {
 }
 
 .pill-button-primary {
-  background: white;
-  color: black;
-  font-weight: 800;
-  padding: 1rem 2.5rem;
-  border-radius: 9999px;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0.72rem 1.65rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
 }
+
+
 
 .pill-button-primary:hover {
   background: #f4f4f5;
@@ -98,12 +95,9 @@ body {
 }
 
 .pill-button-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: white;
-  font-weight: 600;
-  padding: 1rem 2.5rem;
-  border-radius: 9999px;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0.72rem 1.65rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
 }
 
 .pill-button-secondary:hover {
@@ -130,5 +124,5 @@ body {
 }
 
 .container-max {
-  max-width: 1160px;
+  max-width: 1060px;
 }

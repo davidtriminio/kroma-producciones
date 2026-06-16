@@ -18,11 +18,11 @@ export default {
                 "on-background": "#e2e1eb",
             },
             borderRadius: {
-                kp: "28px",
+                kp: "14px",
             },
             spacing: {
                 gutter: "1.75rem",
-                "section-gap": "8rem",
+                "section-gap": "5.5rem",
                 "container-max": "1160px",
             },
             fontFamily: {

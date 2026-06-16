@@ -1,57 +1,49 @@
-﻿import SectionTitle from "./SectionTitle";
+﻿import { BadgeCheck, Lightbulb, Clapperboard } from "lucide-react";
+import SectionTitle from "./SectionTitle";
 
-type Feature = {
-    icon: string;
-    iconClass: string;
-    title: string;
-    text: string;
-};
-
-const features: Feature[] = [
+const features = [
     {
-        icon: "verified",
+        Icon: BadgeCheck,
         iconClass: "text-kp-cyan",
         title: "Calidad visual",
         text: "Estándares de cine aplicados a la comunicación comercial diaria.",
     },
     {
-        icon: "insights",
+        Icon: Lightbulb,
         iconClass: "text-kp-red",
         title: "Creatividad con propósito",
-        text: "Cada color y cada corte tiene un objetivo estratégico claro.",
+        text: "Cada decisión visual responde a un objetivo estratégico claro.",
     },
     {
-        icon: "settings_input_component",
+        Icon: Clapperboard,
         iconClass: "text-kp-green",
         title: "Producción integral",
-        text: "Desde el primer boceto hasta la entrega final del contenido.",
+        text: "Desde el primer concepto hasta la entrega final del contenido.",
     },
 ];
 
 export default function WhoWeAre() {
     return (
         <section className="container-max mx-auto px-gutter py-section-gap" id="quienes-somos">
-            <div className="grid items-start gap-16 md:grid-cols-12 section-reveal">
-                <div className="md:col-span-6">
+            <div className="section-reveal grid items-start gap-14 md:grid-cols-12">
+                <div className="md:col-span-5">
                     <SectionTitle>¿Quiénes Somos?</SectionTitle>
-                    <p className="mb-6 leading-relaxed text-on-surface-variant">
-                        KROMA PRODUCCIONES no es solo una agencia de marketing; somos arquitectos visuales dedicados a
-                        transformar la percepción de las marcas a través de la excelencia técnica y artística.
+                    <p className="mb-5 max-w-md text-sm leading-relaxed text-on-surface-variant">
+                        KROMA PRODUCCIONES transforma marcas a través de contenido visual preciso, moderno y memorable.
                     </p>
-                    <p className="leading-relaxed text-on-surface-variant">
-                        Nuestra misión es fusionar la tecnología de vanguardia con narrativas potentes para que cada proyecto no
-                        solo sea visto, sino recordado.
+                    <p className="max-w-md text-sm leading-relaxed text-on-surface-variant">
+                        Unimos estrategia, diseño y producción para crear piezas con impacto real en plataformas digitales.
                     </p>
                 </div>
 
-                <div className="grid gap-6 md:col-span-6">
-                    {features.map((feature) => (
-                        <div key={feature.title} className="glass-card p-8">
-                            <div className="mb-4 flex items-center gap-6">
-                                <span className={`material-symbols-outlined text-4xl ${feature.iconClass}`}>{feature.icon}</span>
-                                <h3 className="font-headline text-xl font-bold">{feature.title}</h3>
+                <div className="grid gap-4 md:col-span-7">
+                    {features.map(({ Icon, ...feature }) => (
+                        <div key={feature.title} className="glass-card p-5">
+                            <div className="mb-3 flex items-center gap-4">
+                                <Icon className={`h-5 w-5 ${feature.iconClass}`} strokeWidth={2.2} />
+                                <h3 className="font-headline text-sm font-black uppercase">{feature.title}</h3>
                             </div>
-                            <p className="text-sm leading-relaxed text-on-surface-variant">{feature.text}</p>
+                            <p className="text-xs leading-relaxed text-on-surface-variant">{feature.text}</p>
                         </div>
                     ))}
                 </div>

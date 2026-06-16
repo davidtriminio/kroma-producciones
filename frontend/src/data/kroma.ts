@@ -18,10 +18,10 @@ export type ServiceCard = {
 export const serviceCards: ServiceCard[] = [
     {
         id: "audiovisual",
-        title: "Audovisual",
+        title: "Audiovisual",
         description: "Producción visual cinematográfica para marcas.",
         icon: "movie",
-        accentClass: "text-cyan-400",
+        accentClass: "text-kp-cyan",
         images: [
             "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
             "https://images.unsplash.com/photo-1526498460520-4c246339dccb",
@@ -33,7 +33,7 @@ export const serviceCards: ServiceCard[] = [
         title: "Redes Sociales",
         description: "Estrategia y contenido para crecimiento orgánico.",
         icon: "share",
-        accentClass: "text-red-400",
+        accentClass: "text-kp-red",
         images: [
             "https://images.unsplash.com/photo-1557804506-669a67965ba0",
             "https://images.unsplash.com/photo-1611162617213-6d7f2e8c0b7b",
@@ -45,7 +45,7 @@ export const serviceCards: ServiceCard[] = [
         title: "Páginas Web",
         description: "Sitios modernos, rápidos y convertidores.",
         icon: "language",
-        accentClass: "text-yellow-400",
+        accentClass: "text-kp-yellow",
         images: [
             "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
             "https://images.unsplash.com/photo-1551288049-bebda4e38f71",

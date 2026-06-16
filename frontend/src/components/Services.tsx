@@ -1,7 +1,7 @@
-﻿import { useState } from "react";
-import { Clapperboard, Share2, Globe2, PenTool } from "lucide-react";
+﻿import {useState} from "react";
+import {Clapperboard, Share2, Globe2, PenTool} from "lucide-react";
 import SectionTitle from "./SectionTitle";
-import { serviceCards, type ServiceId } from "../data/kroma.ts";
+import {serviceCards, type ServiceId} from "../data/kroma.ts";
 import ServiceModal from "./ServiceModal.tsx";
 
 const icons = {
@@ -37,7 +37,7 @@ const Services = () => {
                             />
 
                             <div className="mb-3 flex items-center gap-3">
-                                <Icon className={`h-5 w-5 ${s.accentClass}`} strokeWidth={2.2} />
+                                <Icon className={`h-5 w-5 ${s.accentClass}`} strokeWidth={2.2}/>
                                 <h3 className="font-headline text-sm font-black uppercase">{s.title}</h3>
                             </div>
 
@@ -45,9 +45,8 @@ const Services = () => {
                                 {s.description}
                             </p>
 
-                            <span className="mt-5 text-[10px] font-black uppercase tracking-[0.18em] text-white/40">
-                Ver trabajos
-              </span>
+                            <span
+                                className="mt-5 inline-flex items-center text-[10px] font-black uppercase tracking-[0.18em] text-white/45 transition group-hover:text-white">Ver trabajos</span>
                         </button>
                     );
                 })}

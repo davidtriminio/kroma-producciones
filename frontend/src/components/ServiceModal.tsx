@@ -21,7 +21,7 @@ const ServiceModal = ({serviceId, open, onClose} : Props) => {
                 onClick={(e) => e.stopPropagation()}
             >
                 <button className="mb-6 text-white/60 hover:text-white" onClick={onClose}>
-                    ✕ cerrar
+                    ✕
                 </button>
 
                 <div className="space-y-10">

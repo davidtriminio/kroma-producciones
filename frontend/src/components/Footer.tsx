@@ -1,4 +1,6 @@
-﻿export default function Footer() {
+﻿import {SiFacebook, SiInstagram, SiWhatsapp} from "@icons-pack/react-simple-icons";
+
+export default function Footer() {
     return (
         <footer className="w-full border-t border-surface-border bg-kp-graphite px-gutter py-20">
             <div className="container-max mx-auto flex flex-col items-center justify-between gap-12 md:flex-row">
@@ -18,13 +20,13 @@
 
                 <div className="flex gap-12">
                     <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="#">
-                        <span className="material-symbols-outlined text-xl">camera</span> Instagram
+                        <SiInstagram className="h-5 w-5" strokeWidth={2.4} color={"#c1558b"}/>Instagram
                     </a>
                     <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="#">
-                        <span className="material-symbols-outlined text-xl">facebook</span> Facebook
+                        <SiFacebook className="h-5 w-5" strokeWidth={2.4} color={"#3b5998"}/> Facebook
                     </a>
                     <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="#">
-                        <span className="material-symbols-outlined text-xl">chat</span> WhatsApp
+                        <SiWhatsapp className="h-5 w-5" strokeWidth={2.4} color={"#25D366"}/> WhatsApp
                     </a>
                 </div>
             </div>

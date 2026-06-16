@@ -27,10 +27,14 @@ export default function Contact() {
 
                                 <div className="flex gap-6">
                                     <a className="text-on-surface-variant transition-colors hover:text-white" href="#">
-                                        <span className="icon-shell text-kp-cyan"><SiInstagram className="h-5 w-5" strokeWidth={2.4} color={"#c1558b"}/></span>
+                                        <span className="icon-shell text-kp-cyan"><SiInstagram className="h-5 w-5"
+                                                                                               strokeWidth={2.4}
+                                                                                               color={"#c1558b"}/></span>
                                     </a>
                                     <a className="text-on-surface-variant transition-colors hover:text-white" href="#">
-                                        <span className="icon-shell text-kp-cyan"><SiFacebook className="h-5 w-5" strokeWidth={2.4} color={"#3b5998"}/></span>
+                                        <span className="icon-shell text-kp-cyan"><SiFacebook className="h-5 w-5"
+                                                                                              strokeWidth={2.4}
+                                                                                              color={"#3b5998"}/></span>
                                     </a>
                                 </div>
                             </div>

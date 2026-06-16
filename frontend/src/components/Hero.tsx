@@ -16,7 +16,7 @@
                     <span className="decoration-kp-cyan underline decoration-4 underline-offset-8">profesional.</span>
                 </h1>
 
-                <p className="mx-auto mb-12 max-w-2xl text-body-lg text-on-surface-variant">
+                <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-on-surface-variant">
                     Diseñamos contenido, identidad y presencia digital con la precisión que el mercado de alto nivel exige.
                     Elevamos tu visión a estándares cinematográficos.
                 </p>

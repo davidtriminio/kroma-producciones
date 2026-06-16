@@ -28,11 +28,11 @@ const Services = () => {
                         <button
                             key={s.id}
                             onClick={() => setSelected(s.id)}
-                            className="glass-card group flex flex-col p-4 text-left"
+                            className="glass-card group flex min-h-[290px] flex-col p-4 text-left"
                         >
                             <img
                                 src={s.images[0]}
-                                className="mb-4 h-32 w-full rounded-[10px] object-cover brightness-75 transition group-hover:brightness-100"
+                                className="mb-4 h-32 w-full rounded-xl object-cover brightness-[0.72] saturate-[0.85] transition duration-500 group-hover:scale-[1.025] group-hover:brightness-100 group-hover:saturate-100"
                                 alt={s.title}
                             />
 

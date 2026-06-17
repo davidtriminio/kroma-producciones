@@ -1,5 +1,6 @@
 ﻿import SectionTitle from "./SectionTitle";
 import {ChevronLeft, ChevronRight} from "lucide-react";
+import {useRef} from "react";
 
 const portfolioItems = [
     {
@@ -33,29 +34,56 @@ const portfolioItems = [
 ];
 
 export default function Portfolio() {
+    const carouselRef = useRef<HTMLDivElement | null>(null);
+
+    const scrollPortfolio = (direction: "left" | "right") => {
+        const carousel = carouselRef.current;
+        if (!carousel) return;
+
+        const card = carousel.querySelector<HTMLElement>("article");
+        const cardWidth = card?.offsetWidth ?? carousel.clientWidth;
+        const gap = 16;
+
+        carousel.scrollBy({
+            left: direction === "right" ? cardWidth + gap : -(cardWidth + gap),
+            behavior: "smooth",
+        });
+    };
     return (
         <section className="container-max mx-auto overflow-hidden px-gutter py-section-gap" id="portfolio">
             <div className="mb-12 flex items-end justify-between gap-6">
                 <SectionTitle className="mb-0">Nuestro Trabajo</SectionTitle>
 
                 <div className="flex gap-2 md:hidden">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/60">
-            <ChevronLeft className="h-4 w-4" />
-          </span>
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/60">
-            <ChevronRight className="h-4 w-4" />
-          </span>
+                    <button
+                        type="button"
+                        aria-label="Ver proyecto anterior"
+                        onClick={() => scrollPortfolio("left")}
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+                    >
+                        <ChevronLeft className="h-4 w-4"/>
+                    </button>
+
+                    <button
+                        type="button"
+                        aria-label="Ver siguiente proyecto"
+                        onClick={() => scrollPortfolio("right")}
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+                    >
+                        <ChevronRight className="h-4 w-4"/>
+                    </button>
                 </div>
             </div>
 
             <div
+                ref={carouselRef}
                 data-reveal
                 className="
-          flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5
-          [-ms-overflow-style:none] [scrollbar-width:none]
-          [&::-webkit-scrollbar]:hidden
-          md:grid md:h-[600px] md:grid-cols-4 md:grid-rows-2 md:overflow-visible md:pb-0
-        "
+    flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-5
+    [-ms-overflow-style:none] [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden
+    md:grid md:h-[600px] md:grid-cols-4 md:grid-rows-2 md:overflow-visible md:pb-0
+  "
             >
                 {portfolioItems.map((item) => (
                     <article
@@ -75,7 +103,7 @@ export default function Portfolio() {
                             loading="lazy"
                         />
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"/>
 
                         <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
               <span className="mb-2 block text-[10px] font-black uppercase tracking-[0.2em] text-kp-cyan">

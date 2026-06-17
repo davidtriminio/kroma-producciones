@@ -38,7 +38,7 @@ export default function Process() {
                 <div data-reveal className="relative grid grid-cols-1 gap-12 md:grid-cols-4">
                     {steps.map((step) => (
                         <div key={step.n} className="relative z-10">
-                            <div className="mb-6 text-7xl font-black text-white/5">{step.n}</div>
+                            <div className="mb-6 text-7xl font-black text-white/90">{step.n}</div>
                             <h4 className={`mb-4 font-headline text-2xl font-black ${step.color}`}>{step.title}</h4>
                             <p className="text-sm leading-relaxed text-on-surface-variant">{step.text}</p>
                         </div>

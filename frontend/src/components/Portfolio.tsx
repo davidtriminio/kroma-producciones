@@ -34,7 +34,7 @@ const portfolioItems = [
 
 export default function Portfolio() {
     return (
-        <section className="container-max mx-auto px-gutter py-section-gap" id="portfolio">
+        <section className="container-max mx-auto overflow-hidden px-gutter py-section-gap" id="portfolio">
             <div className="mb-12 flex items-end justify-between gap-6">
                 <SectionTitle className="mb-0">Nuestro Trabajo</SectionTitle>
 

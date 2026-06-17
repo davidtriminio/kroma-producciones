@@ -286,3 +286,9 @@ body {
     animation: modalDetailIn 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/*Mobile Spacing*/
+@media (max-width: 767px) {
+    .container-max {
+        max-width: 100%;
+    }
+}

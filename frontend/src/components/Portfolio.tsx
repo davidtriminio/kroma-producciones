@@ -71,7 +71,7 @@ export default function Portfolio() {
                         <img
                             className="absolute inset-0 h-full w-full object-cover brightness-[0.72] saturate-[0.85] transition duration-700 group-hover:scale-105 group-hover:brightness-100 group-hover:saturate-100"
                             src={item.image}
-                            alt={`${item.title} - ${item.tag} project by Kroma Producciones`}
+                            alt={`${item.title} - proyecto de ${item.tag} por Kroma Producciones`}
                             loading="lazy"
                         />
 

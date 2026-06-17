@@ -70,7 +70,7 @@ export default function Contact() {
                         </div>
 
                         <button
-                            className="pill-button-primary w-full py-5 text-xs font-black uppercase tracking-[0.3em]"
+                            className="pill-button-primary w-full font-black uppercase tracking-[0.3em]"
                             type="submit">
                             Enviar propuesta
                         </button>

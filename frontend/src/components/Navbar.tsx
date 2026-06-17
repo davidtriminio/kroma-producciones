@@ -25,7 +25,9 @@
                 </a>
             </div>
 
-            <a className="pill-button-primary px-6 py-3 text-[10px] uppercase tracking-widest" href="#contacto">
+            <a
+                className="pill-button-primary uppercase"
+                href="#contacto">
                 Cotizar ahora
             </a>
         </nav>

@@ -106,24 +106,23 @@ body {
     padding: 0.72rem 1.65rem;
     font-size: 0.68rem;
     letter-spacing: 0.12em;
+    border-radius: 20px;
 }
-
 
 .pill-button-primary:hover {
     background: #f4f4f5;
-    transform: translateY(-2px);
+    color: #050506;
 }
 
 .pill-button-secondary {
     padding: 0.72rem 1.65rem;
     font-size: 0.68rem;
     letter-spacing: 0.12em;
+    border-radius: 20px;
 }
 
 .pill-button-secondary:hover {
     background: rgba(255, 255, 255, 0.05);
-    border-color: white;
-    transform: translateY(-2px);
 }
 
 .modal-enter {

@@ -26,7 +26,9 @@ export default function Hero() {
                 </p>
 
                 <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
-                    <a className="pill-button-primary w-full uppercase md:w-auto" href="#contacto">
+                    <a
+                        className="pill-button-primary w-full uppercase md:w-auto"
+                        href="#contacto">
                         Cotizar ahora
                     </a>
                     <a className="pill-button-secondary w-full uppercase md:w-auto" href="#servicios">

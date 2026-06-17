@@ -4,7 +4,7 @@ import {SiFacebook, SiInstagram, SiWhatsapp} from "@icons-pack/react-simple-icon
 export default function Contact() {
     return (
         <section className="container-max mx-auto px-gutter py-section-gap" id="contacto">
-            <div className="section-reveal relative overflow-hidden glass-card p-12 md:p-24">
+            <div data-reveal className="relative overflow-hidden glass-card p-12 md:p-24">
                 <div className="relative z-10 grid gap-20 md:grid-cols-2">
                     <div>
                         <SectionTitle>Impulsa tu Marca</SectionTitle>

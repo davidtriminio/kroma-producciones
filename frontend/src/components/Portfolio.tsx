@@ -36,7 +36,7 @@ export default function Portfolio() {
         <section className="container-max mx-auto px-gutter py-section-gap" id="portfolio">
             <SectionTitle className="mb-16">Nuestro Trabajo</SectionTitle>
 
-            <div className="grid h-[600px] grid-cols-2 grid-rows-2 gap-4 section-reveal md:grid-cols-4">
+            <div data-reveal className="grid h-[600px] grid-cols-2 grid-rows-2 gap-4  md:grid-cols-4">
                 {portfolioItems.map((item) => (
                     <div key={item.title} className={`${item.span} group relative overflow-hidden rounded-kp`}>
                         <img

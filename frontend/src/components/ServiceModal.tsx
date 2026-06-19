@@ -75,7 +75,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                 ) : (
                     <div className="animate-modal-in">
                         <div className="mb-6">
-                            <h3 className="font-headline text-2xl font-black uppercase md:text-4xl">
+                            <h3 className="font-headline text-2xl font-black uppercase md:text-4xl spectrum-heading">
                                 {selectedProject.title}
                             </h3>
                             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">

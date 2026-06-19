@@ -10,12 +10,12 @@ const SectionTitle = ({children, center = false, className = ""} : Props) => {
     return (
         <h2
             className={[
-                "section-title text-4xl md:text-6xl mb-12",
+                "section-title group text-4xl md:text-6xl mb-12",
                 center ? "section-title-center text-center block" : "",
                 className,
             ].join(" ")}
         >
-            {children}
+            <span className="section-title-text">{children}</span>
         </h2>
     )
 }

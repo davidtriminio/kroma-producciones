@@ -120,7 +120,6 @@ body {
     isolation: isolate;
     cursor: default;
     padding-left: 0;
-    transition: padding-left 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .section-title-text {
@@ -129,20 +128,7 @@ body {
 }
 
 .section-title::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -0.05em;
-    bottom: -0.05em;
-    width: 0.5rem;
-    border-radius: 999px;
-    background: var(--kroma-spectrum);
-    opacity: 0;
-    transform: scaleY(0.2);
-    transform-origin: top;
-    transition:
-            opacity 360ms ease,
-            transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+   display: none;
 }
 
 .section-title::after {
@@ -172,15 +158,6 @@ body {
             transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.section-title:hover {
-    padding-left: 1rem;
-}
-
-.section-title:hover::before {
-    opacity: 1;
-    transform: scaleY(1);
-}
-
 .section-title:hover::after {
     opacity: 1;
     transform: scaleX(1);
@@ -188,28 +165,6 @@ body {
 
 .section-title-center {
     padding-left: 0;
-}
-
-.section-title-center::before {
-    left: 50%;
-    top: -1rem;
-    bottom: auto;
-    width: 100%;
-    max-width: 12rem;
-    height: 0.3rem;
-    transform: translateX(-50%) scaleX(0);
-    transform-origin: center;
-    background: linear-gradient(
-            90deg,
-            #0094c8,
-            #cdeef0,
-            #cdb7db,
-            #7c2d80,
-            #ef1455,
-            #ff4b2f,
-            #ffd600,
-            #49c51f
-    );
 }
 
 .section-title-center:hover {

@@ -9,33 +9,46 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
-  useEffect(() => {
-    const navbar = document.getElementById("navbar");
-    const reveals = document.querySelectorAll<HTMLElement>(".section-reveal");
+    useEffect(() => {
+        const navbar = document.getElementById("navbar");
 
-    const onScroll = () => {
-      if (!navbar) return;
-      navbar.classList.toggle("scrolled", window.scrollY > 50);
-    };
+        const onScroll = () => {
+            if (!navbar) return;
+            navbar.classList.toggle("scrolled", window.scrollY > 50);
+        };
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("visible");
-          });
-        },
-        { threshold: 0.1 }
-    );
+        const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
 
-    reveals.forEach((reveal) => observer.observe(reveal));
-    window.addEventListener("scroll", onScroll);
-    onScroll();
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const element = entry.target as HTMLElement;
 
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      observer.disconnect();
-    };
-  }, []);
+                    if (entry.isIntersecting) {
+                        element.classList.add("is-visible");
+                        observer.unobserve(element);
+                    }
+                });
+            },
+            {
+                threshold: 0.18,
+                rootMargin: "0px 0px -8% 0px",
+            }
+        );
+
+        revealItems.forEach((item, index) => {
+            item.style.setProperty("--reveal-delay", `${index * 70}ms`);
+            observer.observe(item);
+        });
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            observer.disconnect();
+        };
+    }, []);
 
   return (
       <div className="dark min-h-screen overflow-x-hidden bg-background text-white">

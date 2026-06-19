@@ -4,7 +4,7 @@ import {SiFacebook, SiInstagram, SiWhatsapp} from "@icons-pack/react-simple-icon
 export default function Contact() {
     return (
         <section className="container-max mx-auto px-gutter py-section-gap" id="contacto">
-            <div className="section-reveal relative overflow-hidden glass-card p-12 md:p-24">
+            <div data-reveal className="relative overflow-hidden glass-card p-12 md:p-24">
                 <div className="relative z-10 grid gap-20 md:grid-cols-2">
                     <div>
                         <SectionTitle>Impulsa tu Marca</SectionTitle>
@@ -41,37 +41,51 @@ export default function Contact() {
                         </div>
                     </div>
 
-                    <form className="space-y-10">
-                        <div>
+                    <form className="space-y-5">
+                        <div className="form-field">
+                            <label className="form-label" htmlFor="fullName">
+                                Nombre completo
+                            </label>
                             <input
-                                className="w-full border-0 border-b border-surface-border bg-transparent px-0 py-6 font-bold text-white placeholder:text-on-surface-variant/30 focus:border-kp-cyan focus:ring-0"
-                                placeholder="NOMBRE COMPLETO"
+                                id="fullName"
+                                className="form-control"
+                                placeholder="Ej. David Hernández"
                                 type="text"
                             />
                         </div>
 
-                        <div>
+                        <div className="form-field">
+                            <label className="form-label" htmlFor="email">
+                                Email corporativo
+                            </label>
                             <input
-                                className="w-full border-0 border-b border-surface-border bg-transparent px-0 py-6 font-bold text-white placeholder:text-on-surface-variant/30 focus:border-kp-cyan focus:ring-0"
-                                placeholder="EMAIL CORPORATIVO"
+                                id="email"
+                                className="form-control"
+                                placeholder="correo@empresa.com"
                                 type="email"
                             />
                         </div>
 
-                        <div>
-                            <select
-                                className="w-full appearance-none border-0 border-b border-surface-border bg-transparent px-0 py-6 text-xs font-bold uppercase tracking-widest text-on-surface-variant/50 focus:border-kp-cyan focus:ring-0">
-                                <option>Tipo de servicio</option>
-                                <option>Producción Audiovisual</option>
-                                <option>Manejo de Redes</option>
-                                <option>Diseño Web</option>
-                                <option>Branding</option>
-                            </select>
+                        <div className="form-field">
+                            <label className="form-label" htmlFor="serviceType">
+                                Tipo de servicio
+                            </label>
+
+                            <div className="form-select-wrap">
+                                <select id="serviceType" className="form-control appearance-none pr-12">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="audiovisual">Producción Audiovisual</option>
+                                    <option value="social">Manejo de Redes</option>
+                                    <option value="web">Diseño Web</option>
+                                    <option value="branding">Branding</option>
+                                </select>
+                            </div>
                         </div>
 
                         <button
-                            className="pill-button-primary w-full py-5 text-xs font-black uppercase tracking-[0.3em]"
-                            type="submit">
+                            className="pill-button-primary mt-3 w-full font-black uppercase tracking-[0.24em] cursor-pointer"
+                            type="submit"
+                        >
                             Enviar propuesta
                         </button>
                     </form>

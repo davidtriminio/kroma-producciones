@@ -20,14 +20,16 @@ const Services = () => {
                 Nuestros Servicios
             </SectionTitle>
 
-            <div className="section-reveal grid grid-cols-1 gap-5 md:grid-cols-4">
-                {serviceCards.map((s) => {
+            <div data-reveal className="grid grid-cols-1 gap-5 md:grid-cols-4">
+                {serviceCards.map((s, index) => {
                     const Icon = icons[s.id];
 
                     return (
                         <button
                             key={s.id}
                             onClick={() => setSelected(s.id)}
+                            data-reveal
+                            style={{ "--reveal-delay": `${index * 90}ms` } as React.CSSProperties}
                             className="glass-card group flex min-h-[290px] flex-col p-4 text-left"
                         >
                             <img

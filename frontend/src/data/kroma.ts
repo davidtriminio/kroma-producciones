@@ -1,8 +1,10 @@
 ﻿export type ServiceId = "audiovisual" | "social" | "web" | "branding"
 
 export type WorkItem = {
+    id: string
     title: string
     desc: string
+    thumbnail: string
     images: string[]
 }
 
@@ -67,8 +69,10 @@ export const serviceCards: ServiceCard[] = [
 export const worksData: Record<ServiceId, WorkItem[]> = {
     audiovisual: [
         {
+            id: "campana-cinematica",
             title: "Campaña Cinemática",
             desc: "Producción en 4K para marca local.",
+            thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
             images: [
                 "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
                 "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
@@ -77,8 +81,10 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
     ],
     social: [
         {
+            id: "campana-viral",
             title: "Campaña Viral",
             desc: "Estrategia de crecimiento digital +300%.",
+            thumbnail: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
             images: [
                 "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0",
                 "https://images.unsplash.com/photo-1557804506-669a67965ba0",
@@ -87,8 +93,10 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
     ],
     web: [
         {
+            id: "ecommerce-premium",
             title: "E-commerce Premium",
             desc: "UI/UX optimizada para conversión.",
+            thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
             images: [
                 "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
                 "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
@@ -97,8 +105,10 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
     ],
     branding: [
         {
+            id: "rebranding",
             title: "Rebranding Tech",
             desc: "Identidad moderna para empresa global.",
+            thumbnail: "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
             images: [
                 "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
                 "https://images.unsplash.com/photo-1542744094-3a31f272c490",

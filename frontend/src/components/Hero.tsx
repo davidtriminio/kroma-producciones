@@ -16,9 +16,7 @@ export default function Hero() {
             <div className="container-max relative z-10 mx-auto animate-fade-up text-center">
                 <h1 className="mx-auto mb-6 max-w-3xl font-headline text-4xl font-black leading-[0.86] tracking-normal md:text-6xl">
                     Producción visual que hace que tu marca se vea{" "}
-                    <span className="underline decoration-kp-cyan decoration-4 underline-offset-8">
-            profesional.
-          </span>
+                    <span className="hero-spectrum-word">profesional.</span>
                 </h1>
 
                 <p className="mx-auto mb-9 max-w-xl text-sm leading-relaxed text-on-surface-variant">
@@ -26,7 +24,9 @@ export default function Hero() {
                 </p>
 
                 <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
-                    <a className="pill-button-primary w-full uppercase md:w-auto" href="#contacto">
+                    <a
+                        className="pill-button-primary w-full uppercase md:w-auto"
+                        href="#contacto">
                         Cotizar ahora
                     </a>
                     <a className="pill-button-secondary w-full uppercase md:w-auto" href="#servicios">

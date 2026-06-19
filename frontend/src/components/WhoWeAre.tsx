@@ -25,7 +25,7 @@ const features = [
 export default function WhoWeAre() {
     return (
         <section className="container-max mx-auto px-gutter py-section-gap" id="quienes-somos">
-            <div className="section-reveal grid items-start gap-14 md:grid-cols-12">
+            <div data-reveal className="grid items-start gap-14 md:grid-cols-12">
                 <div className="md:col-span-5">
                     <SectionTitle>¿Quiénes Somos?</SectionTitle>
                     <p className="mb-5 max-w-md text-sm leading-relaxed text-on-surface-variant">

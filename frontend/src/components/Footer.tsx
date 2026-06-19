@@ -11,10 +11,10 @@ export default function Footer() {
                             className="h-10 w-auto"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfk7388uAWvtpkxT2I0xIYyGd5sgZEpsYxPgBNiZ71mooaVMhkeNNVpEldnpaEp9MWdrI350HyzNQi--7ozmHJSGW9ATywBeRRkG9nhHyU_-owcYXAices-9xeT5WVz1PGLGYgAOB_91B2xbDzvQ7AC3oDgBQ5qZp3Qbjg3jLFfMKOBcH_mFUhGw0viiVpRxKU5lzFAjDgV3bgC19_gbgdju2oBUl0HAuYjwQyhiyvfufoqt_lkQ-6nhNclSEEdQJ7Se8QTpSMGqS2"
                         />
-                        <span className="font-headline text-3xl font-black tracking-tighter text-white">KROMA</span>
+                        <span className="font-headline text-3xl font-black tracking-tighter text-white">KROMA PRODUCCIONES</span>
                     </div>
                     <p className="text-center text-[10px] font-bold tracking-[0.2em] text-on-surface-variant md:text-left">
-                        © 2024 KROMA PRODUCCIONES.
+                        © 2026 KROMA PRODUCCIONES.
                     </p>
                 </div>
 

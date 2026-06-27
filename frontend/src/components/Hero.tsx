@@ -7,8 +7,8 @@ export default function Hero() {
             <div className="pointer-events-none absolute inset-0 z-0 opacity-25">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/90 to-background" />
                 <img
-                    className="h-full w-full scale-110 object-cover blur-[2px] grayscale brightness-40"
-                    src="YOUR_BACKGROUND_IMAGE"
+                    className="h-full w-full scale-105 object-cover grayscale brightness-40"
+                    src="./bg.svg"
                     alt="Producción visual Kroma"
                 />
             </div>

@@ -522,3 +522,44 @@ body {
     background: #111216;
     color: white;
 }
+
+/*Loader Styles*/
+.app-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+            radial-gradient(circle at 50% 40%, rgba(6, 182, 212, 0.12), transparent 22rem),
+            #050506;
+    animation: loaderFadeOut 420ms ease 680ms both;
+}
+
+.app-loader-logo {
+    width: min(42vw, 180px);
+    height: auto;
+    animation: chromaPulse 1.2s ease-in-out infinite;
+    filter: drop-shadow(0 0 28px rgba(6, 182, 212, 0.22));
+}
+
+@keyframes chromaPulse {
+    0%, 100% {
+        opacity: 0.58;
+        transform: scale(0.96);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes loaderFadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}

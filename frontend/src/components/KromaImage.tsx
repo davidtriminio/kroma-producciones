@@ -5,7 +5,8 @@ type Props = {
     alt: string,
     className?: string,
     loading?: "lazy" | "eager",
-    fetchPriority?: "high" | "low" | "auto"
+    fetchPriority?: "high" | "low" | "auto",
+    onLoad?: () => void
 }
 
 export default function KromaImage({
@@ -13,7 +14,8 @@ export default function KromaImage({
                                        alt,
                                        className = "",
                                        loading = 'lazy',
-                                       fetchPriority = "auto"
+                                       fetchPriority = "auto",
+                                       onLoad
                                    }: Props) {
     const [loaded, setLoaded] = useState(false)
     return (
@@ -30,7 +32,10 @@ export default function KromaImage({
                 loading={loading}
                 decoding="async"
                 fetchPriority={fetchPriority}
-                onLoad={() => setLoaded(true)}
+                onLoad={() => {
+                    setLoaded(true)
+                    onLoad?.()
+                }}
                 className={`${className} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
             />
         </div>

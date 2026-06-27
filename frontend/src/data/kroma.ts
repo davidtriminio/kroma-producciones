@@ -25,7 +25,7 @@ export const serviceCards: ServiceCard[] = [
         icon: "movie",
         accentClass: "text-kp-cyan",
         images: [
-            "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+            "./services/audiovisual.webp",
             "https://images.unsplash.com/photo-1526498460520-4c246339dccb",
             "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
         ]
@@ -69,13 +69,17 @@ export const serviceCards: ServiceCard[] = [
 export const worksData: Record<ServiceId, WorkItem[]> = {
     audiovisual: [
         {
-            id: "campana-cinematica",
-            title: "Campaña Cinemática",
-            desc: "Producción en 4K para marca local.",
-            thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
+            id: "dia-padre-pebbles",
+            title: "Día del padre",
+            desc: "Producción en 4K para celebrar día del padre en escuela Pebbles and Stones.",
+            thumbnail: "./services/audiovisual.webp",
             images: [
-                "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
-                "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+                "./services/dia-padre-pebbles/img1.webp",
+                "./services/dia-padre-pebbles/img2.webp",
+                "./services/dia-padre-pebbles/img3.webp",
+                "./services/dia-padre-pebbles/img4.webp",
+                "./services/dia-padre-pebbles/img5.webp",
+                "./services/dia-padre-pebbles/img6.webp",
             ]
         }
     ],

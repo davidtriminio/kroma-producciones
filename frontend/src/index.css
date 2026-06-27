@@ -563,3 +563,32 @@ body {
         pointer-events: none;
     }
 }
+
+/*image loader styles*/
+.kroma-image-wrap {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.kroma-image-loader {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+            radial-gradient(circle at center, rgba(6, 182, 212, 0.08), transparent 12rem),
+            rgba(5, 5, 6, 0.72);
+}
+
+.kroma-image-loader img {
+    width: 54px;
+    height: auto;
+    opacity: 0.72;
+    animation: chromaPulse 1.2s ease-in-out infinite;
+}

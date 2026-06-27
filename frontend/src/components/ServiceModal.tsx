@@ -1,5 +1,5 @@
 ﻿import {type ServiceId, type WorkItem, worksData} from "../data/kroma.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ArrowLeft, X} from "lucide-react";
 import KromaImage from "./KromaImage.tsx";
 
@@ -12,9 +12,20 @@ type Props = {
 
 const ServiceModal = ({serviceId, open, onClose}: Props) => {
     const [selectedProject, setSelectedProject] = useState<WorkItem | null>(null)
+    const [loadedProjectImages, setLoadedProjectImages] = useState(0)
+
+    useEffect(() => {
+        setLoadedProjectImages(0);
+    }, [selectedProject]);
+
     if (!open || !serviceId) return null
 
     const works = worksData[serviceId]
+
+    const totalProjectImages = selectedProject?.images.length ?? 0;
+    const projectImagesLoaded = selectedProject
+        ? loadedProjectImages >= totalProjectImages
+        : true;
 
     const closeModal = () => {
         setSelectedProject(null)
@@ -77,7 +88,13 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                             ))}
                         </div>
                     ) : (
-                        <div className="animate-modal-in pb-2">
+                        <div className="animate-modal-in relative pb-2">
+                            {!projectImagesLoaded && (
+                                <div className="project-detail-loader">
+                                    <img src="/chroma.svg" alt="" aria-hidden="true" />
+                                    <span>Cargando proyecto</span>
+                                </div>
+                            )}
                             <div className="mb-8">
                                 <h3 className="font-headline text-2xl font-black uppercase md:text-4xl spectrum-heading">
                                     {selectedProject.title}
@@ -94,6 +111,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                             src={img}
                                             alt={`${selectedProject.title} ${index + 1}`}
                                             className="h-full w-full rounded-xl object-cover"
+                                            onLoad={() => setLoadedProjectImages((count) => count + 1)}
                                         />
                                     </div>
                                 ))}

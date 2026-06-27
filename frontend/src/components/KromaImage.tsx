@@ -33,6 +33,7 @@ export default function KromaImage({
                 decoding="async"
                 fetchPriority={fetchPriority}
                 onLoad={() => {
+                    if (loaded) return
                     setLoaded(true)
                     onLoad?.()
                 }}

@@ -1,6 +1,7 @@
 ﻿import SectionTitle from "./SectionTitle";
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import {useRef} from "react";
+import KromaImage from "./KromaImage.tsx";
 
 const portfolioItems = [
     {
@@ -96,11 +97,10 @@ export default function Portfolio() {
               md:h-auto md:min-w-0
             `}
                     >
-                        <img
-                            className="absolute inset-0 h-full w-full object-cover brightness-[0.72] saturate-[0.85] transition duration-700 group-hover:scale-105 group-hover:brightness-100 group-hover:saturate-100"
+                        <KromaImage
                             src={item.image}
                             alt={`${item.title} - proyecto de ${item.tag} por Kroma Producciones`}
-                            loading="lazy"
+                            className="absolute inset-0 h-full w-full object-cover brightness-[0.72] saturate-[0.85] transition duration-700 group-hover:scale-105 group-hover:brightness-100 group-hover:saturate-100"
                         />
 
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"/>

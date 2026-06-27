@@ -3,6 +3,7 @@ import {Clapperboard, Share2, Globe2, PenTool} from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import {serviceCards, type ServiceId} from "../data/kroma.ts";
 import ServiceModal from "./ServiceModal.tsx";
+import KromaImage from "./KromaImage.tsx";
 
 const icons = {
     audiovisual: Clapperboard,
@@ -32,11 +33,13 @@ const Services = () => {
                             style={{ "--reveal-delay": `${index * 90}ms` } as React.CSSProperties}
                             className="glass-card group flex min-h-[290px] flex-col p-4 text-left"
                         >
-                            <img
-                                src={s.images[0]}
-                                className="mb-4 h-32 w-full rounded-xl object-cover brightness-[0.72] saturate-[0.85] transition duration-500 group-hover:scale-[1.025] group-hover:brightness-100 group-hover:saturate-100"
-                                alt={s.title}
-                            />
+                            <div className="mb-4 h-32 rounded-xl">
+                                <KromaImage
+                                    src={s.images[0]}
+                                    alt={s.title}
+                                    className="h-full w-full rounded-xl object-cover brightness-[0.72] saturate-[0.85] transition duration-500 group-hover:scale-[1.025] group-hover:brightness-100 group-hover:saturate-100"
+                                />
+                            </div>
 
                             <div className="mb-3 flex items-center gap-3">
                                 <Icon className={`h-5 w-5 ${s.accentClass}`} strokeWidth={2.2}/>

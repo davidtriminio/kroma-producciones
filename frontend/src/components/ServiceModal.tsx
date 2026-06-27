@@ -1,6 +1,7 @@
 ﻿import {type ServiceId, type WorkItem, worksData} from "../data/kroma.ts";
 import {useState} from "react";
 import {ArrowLeft, X} from "lucide-react";
+import KromaImage from "./KromaImage.tsx";
 
 type Props = {
     serviceId: ServiceId | null
@@ -56,11 +57,13 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                     style={{ "--reveal-delay": `${index * 80}ms` } as React.CSSProperties}
                                     onClick={() => setSelectedProject(work)}
                                 >
-                                    <img
-                                        src={work.thumbnail}
-                                        alt={work.title}
-                                        className="h-52 w-full rounded-xl object-cover brightness-[0.72] transition duration-500 group-hover:scale-[1.025] group-hover:brightness-100"
-                                    />
+                                    <div className="h-52 rounded-xl">
+                                        <KromaImage
+                                            src={work.thumbnail}
+                                            alt={work.title}
+                                            className="h-full w-full rounded-xl object-cover brightness-[0.72] transition duration-500 group-hover:scale-[1.025] group-hover:brightness-100"
+                                        />
+                                    </div>
 
                                     <div className="mt-4">
                                         <h4 className="font-headline text-sm font-black uppercase">
@@ -86,12 +89,13 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
 
                             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                 {selectedProject.images.map((img, index) => (
-                                    <img
-                                        key={img}
-                                        src={img}
-                                        alt={`${selectedProject.title} ${index + 1}`}
-                                        className="h-56 w-full rounded-xl object-cover md:h-72"
-                                    />
+                                    <div key={img} className="h-56 rounded-xl md:h-72">
+                                        <KromaImage
+                                            src={img}
+                                            alt={`${selectedProject.title} ${index + 1}`}
+                                            className="h-full w-full rounded-xl object-cover"
+                                        />
+                                    </div>
                                 ))}
                             </div>
                         </div>

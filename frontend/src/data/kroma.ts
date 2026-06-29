@@ -1,11 +1,24 @@
 ﻿export type ServiceId = "audiovisual" | "social" | "web" | "branding"
 
-export type WorkItem = {
-    id: string
+export type ProjectMedia =
+    | {
+    type: "image"
+    src: string
+    alt: string
+}
+    | {
+    type: "video"
+    src: string
+    poster: string
     title: string
-    desc: string
-    thumbnail: string
-    images: string[]
+}
+
+export type WorkItem = {
+    id: string;
+    title: string;
+    desc: string;
+    thumbnail: string;
+    media: ProjectMedia[]
 }
 
 export type ServiceCard = {
@@ -25,7 +38,7 @@ export const serviceCards: ServiceCard[] = [
         icon: "movie",
         accentClass: "text-kp-cyan",
         images: [
-            "./services/audiovisual.webp",
+            "/services/audiovisual.webp",
             "https://images.unsplash.com/photo-1526498460520-4c246339dccb",
             "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
         ]
@@ -72,14 +85,33 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
             id: "dia-padre-pebbles",
             title: "Día del padre",
             desc: "Producción en 4K para celebrar día del padre en escuela Pebbles and Stones.",
-            thumbnail: "./services/audiovisual.webp",
-            images: [
-                "./services/dia-padre-pebbles/img1.webp",
-                "./services/dia-padre-pebbles/img2.webp",
-                "./services/dia-padre-pebbles/img3.webp",
-                "./services/dia-padre-pebbles/img4.webp",
-                "./services/dia-padre-pebbles/img5.webp",
-                "./services/dia-padre-pebbles/img6.webp",
+            thumbnail: "/services/audiovisual.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img1.webp",
+                    alt: "Día del padre Pebbles imagen 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img2.webp",
+                    alt: "Día del padre Pebbles imagen 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img3.webp",
+                    alt: "Día del padre Pebbles imagen 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img4.webp",
+                    alt: "Día del padre Pebbles imagen 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img5.webp",
+                    alt: "Día del padre Pebbles imagen 5",
+                },
             ]
         }
     ],
@@ -89,10 +121,17 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
             title: "Campaña Viral",
             desc: "Estrategia de crecimiento digital +300%.",
             thumbnail: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-            images: [
-                "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0",
-                "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-            ],
+            media: [
+                {
+                    type: "image",
+                    src: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0",
+                    alt: "Día del padre Pebbles imagen 1",
+                }, {
+                    type: "image",
+                    src: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+                    alt: "Día del padre Pebbles imagen 1",
+                },
+            ]
         }
     ],
     web: [
@@ -101,9 +140,16 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
             title: "E-commerce Premium",
             desc: "UI/UX optimizada para conversión.",
             thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-            images: [
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-                "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+            media: [
+                {
+                    type: "image",
+                    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+                    alt: "Día del padre Pebbles imagen 1",
+                }, {
+                    type: "image",
+                    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+                    alt: "Día del padre Pebbles imagen 1",
+                },
             ]
         }
     ],
@@ -113,10 +159,18 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
             title: "Rebranding Tech",
             desc: "Identidad moderna para empresa global.",
             thumbnail: "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
-            images: [
-                "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
-                "https://images.unsplash.com/photo-1542744094-3a31f272c490",
-            ],
+            media: [
+                {
+                    type: "image",
+                    src: "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
+                    alt: "Día del padre Pebbles imagen 1",
+                },
+                {
+                    type: "image",
+                    src: "https://images.unsplash.com/photo-1542744094-3a31f272c490",
+                    alt: "Día del padre Pebbles imagen 1",
+                }
+            ]
         }
     ]
 }

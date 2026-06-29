@@ -2,6 +2,7 @@
 import {useEffect, useState} from "react";
 import {ArrowLeft, X} from "lucide-react";
 import KromaImage from "./KromaImage.tsx";
+import KromaMedia from "./KromaMedia.tsx";
 
 type Props = {
     serviceId: ServiceId | null
@@ -22,10 +23,10 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
 
     const works = worksData[serviceId]
 
-    const totalProjectImages = selectedProject?.images.length ?? 0;
-    const projectImagesLoaded = selectedProject
-        ? loadedProjectImages >= totalProjectImages
-        : true;
+    const totalProjectMedia = selectedProject?.media.length ?? 0;
+    const projectMediaLoaded = selectedProject
+        ? loadedProjectImages >= totalProjectMedia
+        : true
 
     const closeModal = () => {
         setSelectedProject(null)
@@ -89,7 +90,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                         </div>
                     ) : (
                         <div className="animate-modal-in relative pb-2">
-                            {!projectImagesLoaded && (
+                            {!projectMediaLoaded && (
                                 <div className="project-detail-loader">
                                     <img src="/chroma.svg" alt="" aria-hidden="true" />
                                     <span>Cargando proyecto</span>
@@ -105,11 +106,13 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                             </div>
 
                             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                                {selectedProject.images.map((img, index) => (
-                                    <div key={img} className="h-56 rounded-xl md:h-72">
-                                        <KromaImage
-                                            src={img}
-                                            alt={`${selectedProject.title} ${index + 1}`}
+                                {selectedProject.media.map((media, index) => (
+                                    <div
+                                        key={`${media.type}-${index}`}
+                                        className="h-56 rounded-xl md:h-72"
+                                    >
+                                        <KromaMedia
+                                            media={media}
                                             className="h-full w-full rounded-xl object-cover"
                                             onLoad={() => setLoadedProjectImages((count) => count + 1)}
                                         />

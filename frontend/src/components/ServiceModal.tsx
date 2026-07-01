@@ -44,7 +44,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
             >
                 <div className="sticky top-0 z-20 flex items-center justify-between border-b border-white/10 bg-[#111216]/95 p-5 backdrop-blur-xl md:p-8">
                     {selectedProject ? (
-                        <button className="modal-icon-button" onClick={() => setSelectedProject(null)}>
+                        <button className="modal-icon-button cursor-pointer" onClick={() => setSelectedProject(null)}>
                             <ArrowLeft className="h-4 w-4"/>
                             Volver
                         </button>
@@ -54,7 +54,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                         </h3>
                     )}
 
-                    <button className="modal-close-button" onClick={closeModal}>
+                    <button className="modal-close-button cursor-pointer" onClick={closeModal}>
                         <X className="h-5 w-5"/>
                     </button>
                 </div>

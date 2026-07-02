@@ -1,4 +1,5 @@
-﻿export type ServiceId = "audiovisual" | "social" | "web" | "branding"
+﻿// export type ServiceId = "audiovisual" | "social" | "web" | "branding"
+export type ServiceId = "audiovisual" | "social" | "branding"
 
 export type ProjectMedia =
     | {
@@ -55,17 +56,17 @@ export const serviceCards: ServiceCard[] = [
             "https://images.unsplash.com/photo-1556761175-4b46a572b786",
         ]
     },
-    {
-        id: "web",
-        title: "Páginas Web",
-        description: "Sitios modernos, rápidos y convertidores.",
-        icon: "language",
-        accentClass: "text-kp-yellow",
-        images: [
-            "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-        ]
-    },
+    // {
+    //     id: "web",
+    //     title: "Páginas Web",
+    //     description: "Sitios modernos, rápidos y convertidores.",
+    //     icon: "language",
+    //     accentClass: "text-kp-yellow",
+    //     images: [
+    //         "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    //         "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    //     ]
+    // },
     {
         id: "branding",
         title: "Branding",
@@ -113,46 +114,71 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
                     alt: "Día del padre Pebbles imagen 5",
                 },
             ]
+        },
+        {
+            id: "tomas-drones",
+            title: "Tomas de Drones",
+            desc: "Producción en 4K con tomas de drones.",
+            thumbnail: "/services/tomas-drones/poster-drones.webp",
+            media: [
+                {
+                    type: "video",
+                    src: "/services/tomas-drones/Come.mp4",
+                    poster: "/services/tomas-drones/poster-drones.webp",
+                    title: "Tomas Drones Para Pebbles and Stones"
+                },
+                {
+                    type: "video",
+                    src: "/services/tomas-drones/Galeria-Miraflor.mp4",
+                    poster: "/services/tomas-drones/poster-drones.webp",
+                    title: "Tomas Drones para Galeria Miraflor"
+                },
+            ]
         }
     ],
     social: [
         {
-            id: "campana-viral",
-            title: "Campaña Viral",
-            desc: "Estrategia de crecimiento digital +300%.",
+            id: "campanias",
+            title: "Campañas para Distintas empresas",
+            desc: "Artes gráficos para campañas publicitarias de distintos colaboradores.",
             thumbnail: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
             media: [
                 {
                     type: "image",
-                    src: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0",
-                    alt: "Día del padre Pebbles imagen 1",
+                    src: "/services/artes/img1.webp",
+                    alt: "Arte Programa Juniors Pebbles and Stones",
                 }, {
                     type: "image",
-                    src: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-                    alt: "Día del padre Pebbles imagen 1",
+                    src: "/services/artes/img2.webp",
+                    alt: "Arte Campaña Publicitaria Mirador Bella Vista",
                 },
-            ]
-        }
-    ],
-    web: [
-        {
-            id: "ecommerce-premium",
-            title: "E-commerce Premium",
-            desc: "UI/UX optimizada para conversión.",
-            thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-            media: [
                 {
                     type: "image",
-                    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-                    alt: "Día del padre Pebbles imagen 1",
-                }, {
-                    type: "image",
-                    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-                    alt: "Día del padre Pebbles imagen 1",
-                },
+                    src: "/services/artes/img3.webp",
+                    alt: "Arte Campaña Día de la madre Smartec",
+                }
             ]
         }
     ],
+    // web: [
+    //     {
+    //         id: "ecommerce-premium",
+    //         title: "E-commerce Premium",
+    //         desc: "UI/UX optimizada para conversión.",
+    //         thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    //         media: [
+    //             {
+    //                 type: "image",
+    //                 src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    //                 alt: "Día del padre Pebbles imagen 1",
+    //             }, {
+    //                 type: "image",
+    //                 src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    //                 alt: "Día del padre Pebbles imagen 1",
+    //             },
+    //         ]
+    //     }
+    // ],
     branding: [
         {
             id: "rebranding",

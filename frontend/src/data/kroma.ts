@@ -40,8 +40,6 @@ export const serviceCards: ServiceCard[] = [
         accentClass: "text-kp-cyan",
         images: [
             "/services/audiovisual.webp",
-            "https://images.unsplash.com/photo-1526498460520-4c246339dccb",
-            "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
         ]
     },
     {
@@ -51,9 +49,7 @@ export const serviceCards: ServiceCard[] = [
         icon: "share",
         accentClass: "text-kp-red",
         images: [
-            "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-            "https://images.unsplash.com/photo-1611162617213-6d7f2e8c0b7b",
-            "https://images.unsplash.com/photo-1556761175-4b46a572b786",
+            "/services/social-media.webp"
         ]
     },
     // {
@@ -74,8 +70,7 @@ export const serviceCards: ServiceCard[] = [
         icon: "architecture",
         accentClass: "text-white",
         images: [
-            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-            "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
+            "/services/branding.webp",
         ]
     }
 ]
@@ -133,15 +128,63 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
                     poster: "/services/tomas-drones/poster-drones.webp",
                     title: "Tomas Drones para Galeria Miraflor"
                 },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img1.webp",
+                    alt: "Día del padre Pebbles imagen 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img2.webp",
+                    alt: "Día del padre Pebbles imagen 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img3.webp",
+                    alt: "Día del padre Pebbles imagen 3",
+                }
+            ]
+        },
+        {
+            id: "fotografias-productos",
+            title: "Fotografías de Productos",
+            desc: "Producción en alta calidad para distintas empresas y productos.",
+            thumbnail: "/services/audiovisual/fotos-productos/img1.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img1.webp",
+                    alt: "Fotografía de producto 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img2.webp",
+                    alt: "Fotografía de producto 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img3.webp",
+                    alt: "Fotografía de producto 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img4.webp",
+                    alt: "Fotografía de producto 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img5.webp",
+                    alt: "Fotografía de producto 5",
+                },
             ]
         }
     ],
     social: [
         {
             id: "campanias",
-            title: "Campañas para Distintas empresas",
+            title: "Campañas en redes sociales para Distintas empresas",
             desc: "Artes gráficos para campañas publicitarias de distintos colaboradores.",
-            thumbnail: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+            thumbnail: "/services/artes/img1.webp",
             media: [
                 {
                     type: "image",
@@ -157,6 +200,23 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
                     src: "/services/artes/img3.webp",
                     alt: "Arte Campaña Día de la madre Smartec",
                 }
+            ]
+        },
+        {
+            id: "dia-madres",
+            title: "Día de la madre",
+            desc: "Campaña en redes sociales para Día de la madre.",
+            thumbnail: "/services/social-media/dia-madres/img1.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/social-media/dia-madres/img1.webp",
+                    alt: "Foto para Día de la madre",
+                }, {
+                    type: "image",
+                    src: "/services/social-media/dia-madres/img2.webp",
+                    alt: "Arte cajas para Día de la madre",
+                },
             ]
         }
     ],
@@ -181,21 +241,16 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
     // ],
     branding: [
         {
-            id: "rebranding",
-            title: "Rebranding Tech",
-            desc: "Identidad moderna para empresa global.",
-            thumbnail: "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
+            id: "rebranding-mama-linda",
+            title: "Branding Mama Linda",
+            desc: "Identidad moderna para restaurante local.",
+            thumbnail: "/services/branding/mama-linda/img1.webp",
             media: [
                 {
                     type: "image",
-                    src: "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
+                    src: "/services/branding/mama-linda/img1.webp",
                     alt: "Día del padre Pebbles imagen 1",
                 },
-                {
-                    type: "image",
-                    src: "https://images.unsplash.com/photo-1542744094-3a31f272c490",
-                    alt: "Día del padre Pebbles imagen 1",
-                }
             ]
         }
     ]

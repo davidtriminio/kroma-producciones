@@ -20,6 +20,7 @@ body {
     pointer-events: none;
     z-index: 9999;
     opacity: 0.05;
+    background-repeat: no-repeat;
     background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdq81gsmxMUkl0_uPaUdAoF7nM2-MJJmYG6hSjxhWrPqX99WKU6CvOKdqsYHf0_12xe-jyT0SQHiwvM73inB-q9dCSnccpohmsThLaiyBYIBikZXNHvYXwbZhDyGm7wnc7R-6AlGFBjsaNw-XNC7wKA1RqDEUxTismFDDecDoMOgIrKTD1jLsBZCYsw9b8FdpZdao7tB_drLIQePQrlixiEoWe89t5yCqcZL46s7gFNer3X9hxSzeqn_mhk2ZXlolAGbgHg-EXE4-j");
 }
 
@@ -72,7 +73,7 @@ body {
 [data-reveal] {
     opacity: 0;
     transform: translateY(26px) scale(0.985);
-    filter: blur(8px);
+    filter: blur(3px);
     transition:
             opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
             transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -343,12 +344,37 @@ body {
 .modal-panel {
     position: relative;
     overflow: hidden;
+    min-height: 0;
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background:
             radial-gradient(circle at 20% 0%, rgba(6, 182, 212, 0.12), transparent 18rem),
             linear-gradient(180deg, rgba(17, 18, 22, 0.96), rgba(5, 5, 6, 0.96));
     box-shadow: 0 35px 90px rgba(0, 0, 0, 0.55);
+}
+
+.modal-scroll-area {
+    min-height: 0;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.24) transparent;
+}
+
+.modal-scroll-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-scroll-area::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.modal-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.34);
 }
 
 .modal-icon-button,
@@ -496,4 +522,136 @@ body {
 .form-control option {
     background: #111216;
     color: white;
+}
+
+/*Loader Styles*/
+.app-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+            radial-gradient(circle at 50% 40%, rgba(6, 182, 212, 0.12), transparent 22rem),
+            #050506;
+    animation: loaderFadeOut 420ms ease 680ms both;
+}
+
+.app-loader-logo {
+    width: min(42vw, 180px);
+    height: auto;
+    animation: chromaPulse 1.2s ease-in-out infinite;
+    filter: drop-shadow(0 0 28px rgba(6, 182, 212, 0.22));
+}
+
+@keyframes chromaPulse {
+    0%, 100% {
+        opacity: 0.58;
+        transform: scale(0.96);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes loaderFadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+/*image loader styles*/
+.kroma-image-wrap {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.kroma-image-loader {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+            radial-gradient(circle at center, rgba(6, 182, 212, 0.08), transparent 12rem),
+            rgba(5, 5, 6, 0.72);
+}
+
+.kroma-image-loader img {
+    width: 54px;
+    height: 54px;
+    opacity: 0.78;
+    animation:
+            chromaSpin 1.1s linear infinite,
+            chromaPulse 1.4s ease-in-out infinite;
+    filter: drop-shadow(0 0 22px rgba(6, 182, 212, 0.2));
+}
+
+@keyframes chromaSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*Project detail loader styles*/
+.project-detail-loader {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    display: flex;
+    min-height: 18rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    border-radius: 16px;
+    background:
+            radial-gradient(circle at center, rgba(6, 182, 212, 0.1), transparent 18rem),
+            rgba(5, 5, 6, 0.86);
+    backdrop-filter: blur(10px);
+    animation: modalDetailIn 260ms ease both;
+}
+
+.project-detail-loader img {
+    width: 64px;
+    height: 64px;
+    animation:
+            chromaSpin 1.1s linear infinite,
+            chromaPulse 1.4s ease-in-out infinite;
+}
+
+.project-detail-loader span {
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.58);
+}
+
+/*video styles*/
+
+.kroma-video-wrap {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.kroma-video-wrap video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background: #050506;
 }

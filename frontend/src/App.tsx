@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import WhoWeAre from "./components/WhoWeAre";
@@ -9,6 +9,31 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        const minLoadTime = window.setTimeout(() => {
+            setIsLoading(false);
+        }, 700);
+
+        const onLoad = () => {
+            window.setTimeout(() => {
+                setIsLoading(false);
+            }, 300);
+        };
+
+        if (document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+
+        return () => {
+            window.clearTimeout(minLoadTime);
+            window.removeEventListener("load", onLoad);
+        };
+    }, []);
+
     useEffect(() => {
         const navbar = document.getElementById("navbar");
 
@@ -52,6 +77,11 @@ export default function App() {
 
   return (
       <div className="dark min-h-screen overflow-x-hidden bg-background text-white">
+          {isLoading && (
+              <div className="app-loader">
+                  <img src="/chroma.svg" alt="Kroma cargando" className="app-loader-logo" />
+              </div>
+          )}
         <div className="grain-overlay" />
         <Navbar />
         <main>

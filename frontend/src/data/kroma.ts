@@ -1,11 +1,25 @@
-﻿export type ServiceId = "audiovisual" | "social" | "web" | "branding"
+﻿// export type ServiceId = "audiovisual" | "social" | "web" | "branding"
+export type ServiceId = "audiovisual" | "social" | "branding"
+
+export type ProjectMedia =
+    | {
+    type: "image"
+    src: string
+    alt: string
+}
+    | {
+    type: "video"
+    src: string
+    poster: string
+    title: string
+}
 
 export type WorkItem = {
-    id: string
-    title: string
-    desc: string
-    thumbnail: string
-    images: string[]
+    id: string;
+    title: string;
+    desc: string;
+    thumbnail: string;
+    media: ProjectMedia[]
 }
 
 export type ServiceCard = {
@@ -25,9 +39,7 @@ export const serviceCards: ServiceCard[] = [
         icon: "movie",
         accentClass: "text-kp-cyan",
         images: [
-            "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-            "https://images.unsplash.com/photo-1526498460520-4c246339dccb",
-            "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+            "/services/audiovisual.webp",
         ]
     },
     {
@@ -37,22 +49,20 @@ export const serviceCards: ServiceCard[] = [
         icon: "share",
         accentClass: "text-kp-red",
         images: [
-            "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-            "https://images.unsplash.com/photo-1611162617213-6d7f2e8c0b7b",
-            "https://images.unsplash.com/photo-1556761175-4b46a572b786",
+            "/services/social-media.webp"
         ]
     },
-    {
-        id: "web",
-        title: "Páginas Web",
-        description: "Sitios modernos, rápidos y convertidores.",
-        icon: "language",
-        accentClass: "text-kp-yellow",
-        images: [
-            "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-        ]
-    },
+    // {
+    //     id: "web",
+    //     title: "Páginas Web",
+    //     description: "Sitios modernos, rápidos y convertidores.",
+    //     icon: "language",
+    //     accentClass: "text-kp-yellow",
+    //     images: [
+    //         "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    //         "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    //     ]
+    // },
     {
         id: "branding",
         title: "Branding",
@@ -60,8 +70,7 @@ export const serviceCards: ServiceCard[] = [
         icon: "architecture",
         accentClass: "text-white",
         images: [
-            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-            "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
+            "/services/branding.webp",
         ]
     }
 ]
@@ -69,50 +78,180 @@ export const serviceCards: ServiceCard[] = [
 export const worksData: Record<ServiceId, WorkItem[]> = {
     audiovisual: [
         {
-            id: "campana-cinematica",
-            title: "Campaña Cinemática",
-            desc: "Producción en 4K para marca local.",
-            thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
-            images: [
-                "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
-                "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+            id: "dia-padre-pebbles",
+            title: "Día del padre",
+            desc: "Producción en 4K para celebrar día del padre en escuela Pebbles and Stones.",
+            thumbnail: "/services/audiovisual.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img1.webp",
+                    alt: "Día del padre Pebbles imagen 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img2.webp",
+                    alt: "Día del padre Pebbles imagen 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img3.webp",
+                    alt: "Día del padre Pebbles imagen 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img4.webp",
+                    alt: "Día del padre Pebbles imagen 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/dia-padre-pebbles/img5.webp",
+                    alt: "Día del padre Pebbles imagen 5",
+                },
+            ]
+        },
+        {
+            id: "tomas-drones",
+            title: "Tomas de Drones",
+            desc: "Producción en 4K con tomas de drones.",
+            thumbnail: "/services/tomas-drones/poster-drones.webp",
+            media: [
+                {
+                    type: "video",
+                    src: "/services/tomas-drones/Come.mp4",
+                    poster: "/services/tomas-drones/poster-drones.webp",
+                    title: "Tomas Drones Para Pebbles and Stones"
+                },
+                {
+                    type: "video",
+                    src: "/services/tomas-drones/Galeria-Miraflor.mp4",
+                    poster: "/services/tomas-drones/poster-drones.webp",
+                    title: "Tomas Drones para Galeria Miraflor"
+                },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img1.webp",
+                    alt: "Día del padre Pebbles imagen 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img2.webp",
+                    alt: "Día del padre Pebbles imagen 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img3.webp",
+                    alt: "Día del padre Pebbles imagen 3",
+                }
+            ]
+        },
+        {
+            id: "fotografias-productos",
+            title: "Fotografías de Productos",
+            desc: "Producción en alta calidad para distintas empresas y productos.",
+            thumbnail: "/services/audiovisual/fotos-productos/img1.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img1.webp",
+                    alt: "Fotografía de producto 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img2.webp",
+                    alt: "Fotografía de producto 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img3.webp",
+                    alt: "Fotografía de producto 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img4.webp",
+                    alt: "Fotografía de producto 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/audiovisual/fotos-productos/img5.webp",
+                    alt: "Fotografía de producto 5",
+                },
             ]
         }
     ],
     social: [
         {
-            id: "campana-viral",
-            title: "Campaña Viral",
-            desc: "Estrategia de crecimiento digital +300%.",
-            thumbnail: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-            images: [
-                "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0",
-                "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-            ],
-        }
-    ],
-    web: [
+            id: "campanias",
+            title: "Campañas en redes sociales para Distintas empresas",
+            desc: "Artes gráficos para campañas publicitarias de distintos colaboradores.",
+            thumbnail: "/services/artes/img1.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/artes/img1.webp",
+                    alt: "Arte Programa Juniors Pebbles and Stones",
+                }, {
+                    type: "image",
+                    src: "/services/artes/img2.webp",
+                    alt: "Arte Campaña Publicitaria Mirador Bella Vista",
+                },
+                {
+                    type: "image",
+                    src: "/services/artes/img3.webp",
+                    alt: "Arte Campaña Día de la madre Smartec",
+                }
+            ]
+        },
         {
-            id: "ecommerce-premium",
-            title: "E-commerce Premium",
-            desc: "UI/UX optimizada para conversión.",
-            thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-            images: [
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-                "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+            id: "dia-madres",
+            title: "Día de la madre",
+            desc: "Campaña en redes sociales para Día de la madre.",
+            thumbnail: "/services/social-media/dia-madres/img1.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/social-media/dia-madres/img1.webp",
+                    alt: "Foto para Día de la madre",
+                }, {
+                    type: "image",
+                    src: "/services/social-media/dia-madres/img2.webp",
+                    alt: "Arte cajas para Día de la madre",
+                },
             ]
         }
     ],
+    // web: [
+    //     {
+    //         id: "ecommerce-premium",
+    //         title: "E-commerce Premium",
+    //         desc: "UI/UX optimizada para conversión.",
+    //         thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    //         media: [
+    //             {
+    //                 type: "image",
+    //                 src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    //                 alt: "Día del padre Pebbles imagen 1",
+    //             }, {
+    //                 type: "image",
+    //                 src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    //                 alt: "Día del padre Pebbles imagen 1",
+    //             },
+    //         ]
+    //     }
+    // ],
     branding: [
         {
-            id: "rebranding",
-            title: "Rebranding Tech",
-            desc: "Identidad moderna para empresa global.",
-            thumbnail: "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
-            images: [
-                "https://images.unsplash.com/photo-1529336953121-a0ce7f1a59d1",
-                "https://images.unsplash.com/photo-1542744094-3a31f272c490",
-            ],
+            id: "rebranding-mama-linda",
+            title: "Branding Mama Linda",
+            desc: "Identidad moderna para restaurante local.",
+            thumbnail: "/services/branding/mama-linda/img1.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/branding/mama-linda/img1.webp",
+                    alt: "Día del padre Pebbles imagen 1",
+                },
+            ]
         }
     ]
 }

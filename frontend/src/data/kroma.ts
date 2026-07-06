@@ -182,7 +182,7 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
     social: [
         {
             id: "campanias",
-            title: "Campañas en redes sociales para Distintas empresas",
+            title: "Artes Gráficos",
             desc: "Artes gráficos para campañas publicitarias de distintos colaboradores.",
             thumbnail: "/services/artes/img1.webp",
             media: [
@@ -204,7 +204,7 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
         },
         {
             id: "dia-madres",
-            title: "Día de la madre",
+            title: "Campaña Día de la madre",
             desc: "Campaña en redes sociales para Día de la madre.",
             thumbnail: "/services/social-media/dia-madres/img1.webp",
             media: [

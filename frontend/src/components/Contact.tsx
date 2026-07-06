@@ -1,5 +1,5 @@
 ﻿import SectionTitle from "./SectionTitle";
-import {SiFacebook, SiInstagram, SiWhatsapp} from "@icons-pack/react-simple-icons";
+import {SiWhatsapp} from "@icons-pack/react-simple-icons";
 import emailjs from "@emailjs/browser"
 import {type FormEvent, useState} from "react";
 

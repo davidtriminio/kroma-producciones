@@ -78,9 +78,9 @@ export const serviceCards: ServiceCard[] = [
 export const worksData: Record<ServiceId, WorkItem[]> = {
     audiovisual: [
         {
-            id: "dia-padre-pebbles",
-            title: "Día del padre",
-            desc: "Producción en 4K para celebrar día del padre en escuela Pebbles and Stones.",
+            id: "foto-video",
+            title: "Fotografía y video",
+            desc: "Producción en 4K y foto de alta calidad, para nuestros clientes.",
             thumbnail: "/services/audiovisual.webp",
             media: [
                 {

@@ -655,3 +655,19 @@ body {
     object-fit: cover;
     background: #050506;
 }
+
+/*Form status styles*/
+.form-status {
+    margin-top: 0.85rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.form-status-success {
+    color: #22c55e;
+}
+
+.form-status-error {
+    color: #ef4444;
+}

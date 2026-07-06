@@ -1,7 +1,45 @@
 ﻿import SectionTitle from "./SectionTitle";
 import {SiFacebook, SiInstagram, SiWhatsapp} from "@icons-pack/react-simple-icons";
+import {type FormEvent, useState} from "react";
 
 export default function Contact() {
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        const payload = {
+            from_name: String(formData.get("fullName") || ""),
+            from_email: String(formData.get("email") || ""),
+            service_type: String(formData.get("serviceType") || ""),
+        };
+
+        if (!payload.from_name || !payload.from_email || !payload.service_type) {
+            setStatus("error");
+            return;
+        }
+
+        try {
+            setStatus("loading");
+
+            await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                payload,
+                {
+                    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+                }
+            );
+
+            form.reset();
+            setStatus("success");
+        } catch {
+            setStatus("error");
+        }
+    };
     return (
         <section className="container-max mx-auto px-gutter py-section-gap" id="contacto">
             <div data-reveal className="relative overflow-hidden glass-card p-12 md:p-24">
@@ -13,20 +51,20 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-10">
-                            <a className="group flex items-center gap-6" href="https://wa.me/yournumber">
+                            <a className="group flex items-center gap-6" href="https://wa.me/50488434254">
                 <span className="icon-shell text-kp-cyan">
   <SiWhatsapp className="h-5 w-5" strokeWidth={2.4} color={"#25D366"}/>
 </span>
                                 <div>
                                     <p className="mb-1 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">WhatsApp</p>
-                                    <p className="font-headline text-xl font-bold">+57 300 000 0000</p>
+                                    <p className="font-headline text-xl font-bold">+504 8843 4254</p>
                                 </div>
                             </a>
 
                             <div className="flex items-center gap-6">
 
                                 <div className="flex gap-6">
-                                    <a className="text-on-surface-variant transition-colors hover:text-white" href="#">
+                                    <a className="text-on-surface-variant transition-colors hover:text-white" href="https://www.instagram.com/kroma_producciones">
                                         <span className="icon-shell text-kp-cyan"><SiInstagram className="h-5 w-5"
                                                                                                strokeWidth={2.4}
                                                                                                color={"#c1558b"}/></span>
@@ -41,16 +79,18 @@ export default function Contact() {
                         </div>
                     </div>
 
-                    <form className="space-y-5">
+                    <form className="space-y-5" onSubmit={handleSubmit}>
                         <div className="form-field">
                             <label className="form-label" htmlFor="fullName">
                                 Nombre completo
                             </label>
                             <input
                                 id="fullName"
+                                name="fullName"
                                 className="form-control"
-                                placeholder="Ej. David Hernández"
+                                placeholder="Ej. John Doe"
                                 type="text"
+                                required
                             />
                         </div>
 
@@ -60,9 +100,11 @@ export default function Contact() {
                             </label>
                             <input
                                 id="email"
+                                name="email"
                                 className="form-control"
                                 placeholder="correo@empresa.com"
                                 type="email"
+                                required
                             />
                         </div>
 
@@ -72,7 +114,12 @@ export default function Contact() {
                             </label>
 
                             <div className="form-select-wrap">
-                                <select id="serviceType" className="form-control appearance-none pr-12">
+                                <select
+                                    id="serviceType"
+                                    name="serviceType"
+                                    className="form-control appearance-none pr-12"
+                                    required
+                                >
                                     <option value="">Selecciona una opción</option>
                                     <option value="audiovisual">Producción Audiovisual</option>
                                     <option value="social">Manejo de Redes</option>
@@ -83,11 +130,24 @@ export default function Contact() {
                         </div>
 
                         <button
-                            className="pill-button-primary mt-3 w-full font-black uppercase tracking-[0.24em] cursor-pointer"
+                            className="pill-button-primary mt-3 w-full cursor-pointer font-black uppercase tracking-[0.24em] disabled:cursor-not-allowed disabled:opacity-60"
                             type="submit"
+                            disabled={status === "loading"}
                         >
-                            Enviar propuesta
+                            {status === "loading" ? "Enviando..." : "Enviar propuesta"}
                         </button>
+
+                        {status === "success" && (
+                            <p className="form-status form-status-success">
+                                Mensaje enviado correctamente. Te contactaremos pronto.
+                            </p>
+                        )}
+
+                        {status === "error" && (
+                            <p className="form-status form-status-error">
+                                No pudimos enviar el mensaje. Revisa los campos o intenta nuevamente.
+                            </p>
+                        )}
                     </form>
                 </div>
 

@@ -40,7 +40,7 @@ export default function Contact() {
         const payload = {
             from_name: String(formData.get("fullName") || "").trim(),
             from_email: String(formData.get("email") || "").trim(),
-            service_type: rawServiceType.trim(),
+            service_type: rawServiceType.trim().toLocaleUpperCase(isSpanish ? "es" : "en"),
             message: String(formData.get("message") || "").trim(),
         };
 
@@ -177,11 +177,10 @@ export default function Contact() {
                                     className="form-control appearance-none pr-12"
                                     required
                                 >
-                                    <option value="">Selecciona una opción</option>
-                                    <option value="audiovisual">Producción Audiovisual</option>
-                                    <option value="social">Manejo de Redes</option>
-                                    <option value="web">Diseño Web</option>
-                                    <option value="branding">Branding</option>
+                                    <option value="PRODUCCIÓN AUDIOVISUAL">Producción Audiovisual</option>
+                                    <option value="MANEJO DE REDES">Manejo de Redes</option>
+                                    <option value="DISEÑO WEB">Diseño Web</option>
+                                    <option value="BRANDING">Branding</option>
                                 </select>
                             </div>
                         </div>

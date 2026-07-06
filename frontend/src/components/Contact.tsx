@@ -5,20 +5,84 @@ import {type FormEvent, useState} from "react";
 
 export default function Contact() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const browserLanguage = navigator.language.toLowerCase();
+    const isSpanish = browserLanguage.startsWith("es");
 
+    const copy = {
+        requiredName: isSpanish ? "Escribe tu nombre completo." : "Enter your full name.",
+        requiredEmail: isSpanish ? "Escribe tu correo electrónico." : "Enter your email address.",
+        invalidEmail: isSpanish ? "Escribe un correo válido." : "Enter a valid email address.",
+        requiredService: isSpanish ? "Selecciona un tipo de servicio." : "Choose a service type.",
+        requiredMessage: isSpanish ? "Escribe un mensaje." : "Enter a message.",
+        success: isSpanish
+            ? "Mensaje enviado correctamente. Te contactaremos pronto."
+            : "Message sent successfully. We will contact you soon.",
+        error: isSpanish
+            ? "No pudimos enviar el mensaje. Intenta nuevamente."
+            : "We could not send the message. Please try again.",
+        loading: isSpanish ? "Enviando..." : "Sending...",
+        submit: isSpanish ? "Enviar propuesta" : "Send proposal",
+    };
+
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    const isValidEmail = (email: string) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const form = event.currentTarget;
         const formData = new FormData(form);
 
+        const rawServiceType = String(formData.get("serviceType") || "");
+
         const payload = {
-            from_name: String(formData.get("fullName") || ""),
-            from_email: String(formData.get("email") || ""),
-            service_type: String(formData.get("serviceType") || ""),
+            from_name: String(formData.get("fullName") || "").trim(),
+            from_email: String(formData.get("email") || "").trim(),
+            service_type: rawServiceType.trim(),
+            message: String(formData.get("message") || "").trim(),
         };
 
-        if (!payload.from_name || !payload.from_email || !payload.service_type) {
+        const nextErrors: Record<string, string> = {};
+
+        if (!payload.from_name) {
+            nextErrors.fullName = copy.requiredName;
+        }
+
+        if (!payload.from_email) {
+            nextErrors.email = copy.requiredEmail;
+        } else if (!isValidEmail(payload.from_email)) {
+            nextErrors.email = copy.invalidEmail;
+        }
+
+        if (!payload.service_type) {
+            nextErrors.serviceType = copy.requiredService;
+        }
+
+        if (!payload.message) {
+            nextErrors.message = copy.requiredMessage;
+        }
+
+        if (Object.keys(nextErrors).length > 0) {
+            setErrors(nextErrors);
+            setStatus("idle");
+            return;
+        }
+
+        setErrors({});
+
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        if (!serviceId || !templateId || !publicKey) {
+            console.error("Missing EmailJS environment variables", {
+                hasServiceId: Boolean(serviceId),
+                hasTemplateId: Boolean(templateId),
+                hasPublicKey: Boolean(publicKey),
+            });
+
             setStatus("error");
             return;
         }
@@ -27,17 +91,19 @@ export default function Contact() {
             setStatus("loading");
 
             await emailjs.send(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID,
-                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                serviceId,
+                templateId,
                 payload,
                 {
-                    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+                    publicKey: publicKey,
                 }
             );
 
             form.reset();
             setStatus("success");
-        } catch {
+            setErrors({});
+        } catch (error) {
+            console.error("EmailJS send failed:", error);
             setStatus("error");
         }
     };
@@ -78,6 +144,9 @@ export default function Contact() {
                                 required
                             />
                         </div>
+                        {errors.fullName && (
+                            <p className="form-error-message">{errors.fullName}</p>
+                        )}
 
                         <div className="form-field">
                             <label className="form-label" htmlFor="email">
@@ -92,6 +161,9 @@ export default function Contact() {
                                 required
                             />
                         </div>
+                        {errors.email && (
+                            <p className="form-error-message">{errors.email}</p>
+                        )}
 
                         <div className="form-field">
                             <label className="form-label" htmlFor="serviceType">
@@ -114,23 +186,40 @@ export default function Contact() {
                             </div>
                         </div>
 
+                        <div className="form-field">
+                            <label className="form-label" htmlFor="message">
+                                Mensaje
+                            </label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                className="form-control form-textarea"
+                                placeholder={isSpanish ? "Cuéntanos sobre tu proyecto" : "Tell us about your project"}
+                                rows={5}
+                            />
+
+                            {errors.message && (
+                                <p className="form-error-message">{errors.message}</p>
+                            )}
+                        </div>
+
                         <button
                             className="pill-button-primary mt-3 w-full cursor-pointer font-black uppercase tracking-[0.24em] disabled:cursor-not-allowed disabled:opacity-60"
                             type="submit"
                             disabled={status === "loading"}
                         >
-                            {status === "loading" ? "Enviando..." : "Enviar propuesta"}
+                            {status === "loading" ? copy.loading : copy.submit}
                         </button>
 
                         {status === "success" && (
                             <p className="form-status form-status-success">
-                                Mensaje enviado correctamente. Te contactaremos pronto.
+                                {copy.success}
                             </p>
                         )}
 
                         {status === "error" && (
                             <p className="form-status form-status-error">
-                                No pudimos enviar el mensaje. Revisa los campos o intenta nuevamente.
+                                {copy.error}
                             </p>
                         )}
                     </form>

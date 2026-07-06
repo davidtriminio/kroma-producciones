@@ -52,7 +52,7 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-10">
-                            <a className="group flex items-center gap-6" href="https://wa.me/50488434254">
+                            <a className="group flex items-center gap-6" href="https://wa.me/50488434254" target="_blank" rel="noopener noreferrer">
                 <span className="icon-shell text-kp-cyan">
   <SiWhatsapp className="h-5 w-5" strokeWidth={2.4} color={"#25D366"}/>
 </span>
@@ -61,22 +61,6 @@ export default function Contact() {
                                     <p className="font-headline text-xl font-bold">+504 8843 4254</p>
                                 </div>
                             </a>
-
-                            <div className="flex items-center gap-6">
-
-                                <div className="flex gap-6">
-                                    <a className="text-on-surface-variant transition-colors hover:text-white" href="https://www.instagram.com/kroma_producciones">
-                                        <span className="icon-shell text-kp-cyan"><SiInstagram className="h-5 w-5"
-                                                                                               strokeWidth={2.4}
-                                                                                               color={"#c1558b"}/></span>
-                                    </a>
-                                    <a className="text-on-surface-variant transition-colors hover:text-white" href="#">
-                                        <span className="icon-shell text-kp-cyan"><SiFacebook className="h-5 w-5"
-                                                                                              strokeWidth={2.4}
-                                                                                              color={"#3b5998"}/></span>
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
 

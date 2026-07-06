@@ -19,13 +19,13 @@ export default function Footer() {
                 </div>
 
                 <div className="flex gap-12">
-                    <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="#">
+                    <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="https://www.instagram.com/kroma_producciones" target="_blank" rel="noopener noreferrer">
                         <SiInstagram className="h-5 w-5" strokeWidth={2.4} color={"#c1558b"}/>Instagram
                     </a>
-                    <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="#">
+                    <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="https://www.facebook.com/profile.php?id=61578765474884" target="_blank" rel="noopener noreferrer">
                         <SiFacebook className="h-5 w-5" strokeWidth={2.4} color={"#3b5998"}/> Facebook
                     </a>
-                    <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="#">
+                    <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-white" href="https://wa.me/50488434254" target="_blank" rel="noopener noreferrer">
                         <SiWhatsapp className="h-5 w-5" strokeWidth={2.4} color={"#25D366"}/> WhatsApp
                     </a>
                 </div>

@@ -14,6 +14,7 @@ type Props = {
 const ServiceModal = ({serviceId, open, onClose}: Props) => {
     const [selectedProject, setSelectedProject] = useState<WorkItem | null>(null)
     const [loadedProjectImages, setLoadedProjectImages] = useState(0)
+    const [fullscreenImage, setFullscreenImage] = useState<{ src: string; alt: string } | null>(null);
 
     useEffect(() => {
         setLoadedProjectImages(0);
@@ -29,9 +30,10 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
         : true
 
     const closeModal = () => {
+        setFullscreenImage(null)
         setSelectedProject(null)
         onClose()
-    }
+    };
 
     return (
         <div
@@ -111,13 +113,50 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                         key={`${media.type}-${index}`}
                                         className="h-56 rounded-xl md:h-72"
                                     >
-                                        <KromaMedia
-                                            media={media}
-                                            className="h-full w-full rounded-xl object-cover"
-                                            onLoad={() => setLoadedProjectImages((count) => count + 1)}
-                                        />
+                                        {media.type === "image" ? (
+                                            <button
+                                                type="button"
+                                                className="h-full w-full cursor-zoom-in overflow-hidden rounded-xl"
+                                                onClick={() => setFullscreenImage({ src: media.src, alt: media.alt })}
+                                            >
+                                                <KromaMedia
+                                                    media={media}
+                                                    className="h-full w-full rounded-xl object-cover"
+                                                    onLoad={() => setLoadedProjectImages((count) => count + 1)}
+                                                />
+                                            </button>
+                                        ) : (
+                                            <KromaMedia
+                                                media={media}
+                                                className="h-full w-full rounded-xl object-cover"
+                                                onLoad={() => setLoadedProjectImages((count) => count + 1)}
+                                            />
+                                        )}
                                     </div>
                                 ))}
+                            </div>
+                        </div>
+                    )}
+                    {fullscreenImage && (
+                        <div
+                            className="fullscreen-media-viewer"
+                            onClick={() => setFullscreenImage(null)}
+                        >
+                            <button
+                                type="button"
+                                className="fullscreen-close-button"
+                                onClick={() => setFullscreenImage(null)}
+                            >
+                                <X className="h-5 w-5" />
+                            </button>
+
+                            <div className="fullscreen-image-stage" onClick={(event) => event.stopPropagation()}>
+                                <img
+                                    src={fullscreenImage.src}
+                                    alt={fullscreenImage.alt}
+                                    className="fullscreen-image"
+                                />
+                                <p>{fullscreenImage.alt}</p>
                             </div>
                         </div>
                     )}

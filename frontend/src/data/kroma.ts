@@ -131,17 +131,17 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
                 {
                     type: "image",
                     src: "/services/tomas-drones/img1.webp",
-                    alt: "Día del padre Pebbles imagen 1",
+                    alt: "Toma de Dron - 1",
                 },
                 {
                     type: "image",
                     src: "/services/tomas-drones/img2.webp",
-                    alt: "Día del padre Pebbles imagen 2",
+                    alt: "Toma de Dron - 2",
                 },
                 {
                     type: "image",
                     src: "/services/tomas-drones/img3.webp",
-                    alt: "Día del padre Pebbles imagen 3",
+                    alt: "Toma de Dron - 3",
                 }
             ]
         },
@@ -217,6 +217,12 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
                     src: "/services/social-media/dia-madres/img2.webp",
                     alt: "Arte cajas para Día de la madre",
                 },
+                {
+                    type: "video",
+                    src: "/services/tomas-drones/Come.mp4",
+                    poster: "https://res.cloudinary.com/kzo9w9gr/video/upload/Box_Madres_1_qryfm4.mp4",
+                    title: "Video promocional Box Día de las madres Smartec"
+                },
             ]
         }
     ],
@@ -249,7 +255,7 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
                 {
                     type: "image",
                     src: "/services/branding/mama-linda/img1.webp",
-                    alt: "Día del padre Pebbles imagen 1",
+                    alt: "Branding para restaurante Mama Linda",
                 },
             ]
         }

@@ -1,5 +1,5 @@
 ﻿import type { ProjectMedia } from "../data/kroma.ts";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import KromaImage from "./KromaImage.tsx";
 
 type Props = {
@@ -11,31 +11,50 @@ type Props = {
 export default function KromaMedia({ media, className = "", onLoad }: Props) {
     const [videoReady, setVideoReady] = useState(false);
     const [videoFailed, setVideoFailed] = useState(false);
+    const settledRef = useRef(false);
+    const timeoutRef = useRef<number | null>(null);
+
+    const clearMediaTimeout = () => {
+        if (timeoutRef.current) {
+            window.clearTimeout(timeoutRef.current);
+            timeoutRef.current = null;
+        }
+    };
 
     const finishVideo = () => {
-        if (videoReady || videoFailed) return;
+        if (settledRef.current) return;
+
+        settledRef.current = true;
+        clearMediaTimeout();
         setVideoReady(true);
+        setVideoFailed(false);
         onLoad?.();
     };
 
     const failVideo = () => {
-        if (videoReady || videoFailed) return;
+        if (settledRef.current) return;
+
+        settledRef.current = true;
+        clearMediaTimeout();
+        setVideoReady(false);
         setVideoFailed(true);
         onLoad?.();
     };
 
     useEffect(() => {
+        settledRef.current = false;
         setVideoReady(false);
         setVideoFailed(false);
+        clearMediaTimeout();
 
         if (media.type !== "video") return;
 
-        const timeout = window.setTimeout(() => {
+        timeoutRef.current = window.setTimeout(() => {
             failVideo();
         }, 9000);
 
-        return () => window.clearTimeout(timeout);
-    }, [media]);
+        return clearMediaTimeout;
+    }, [media.type, media.type === "video" ? media.src : ""]);
 
     if (media.type === "image") {
         return (

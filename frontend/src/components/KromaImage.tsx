@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 
 type Props = {
     src: string;
@@ -19,28 +19,47 @@ export default function KromaImage({
                                    }: Props) {
     const [loaded, setLoaded] = useState(false);
     const [failed, setFailed] = useState(false);
+    const settledRef = useRef(false);
+    const timeoutRef = useRef<number | null>(null);
+
+    const clearMediaTimeout = () => {
+        if (timeoutRef.current) {
+            window.clearTimeout(timeoutRef.current);
+            timeoutRef.current = null;
+        }
+    };
 
     const finishLoad = () => {
-        if (loaded || failed) return;
+        if (settledRef.current) return;
+
+        settledRef.current = true;
+        clearMediaTimeout();
         setLoaded(true);
+        setFailed(false);
         onLoad?.();
     };
 
     const failLoad = () => {
-        if (loaded || failed) return;
+        if (settledRef.current) return;
+
+        settledRef.current = true;
+        clearMediaTimeout();
+        setLoaded(false);
         setFailed(true);
         onLoad?.();
     };
 
     useEffect(() => {
+        settledRef.current = false;
         setLoaded(false);
         setFailed(false);
+        clearMediaTimeout();
 
-        const timeout = window.setTimeout(() => {
+        timeoutRef.current = window.setTimeout(() => {
             failLoad();
         }, 7000);
 
-        return () => window.clearTimeout(timeout);
+        return clearMediaTimeout;
     }, [src]);
 
     return (

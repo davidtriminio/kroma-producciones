@@ -13,11 +13,11 @@ type Props = {
 
 const ServiceModal = ({serviceId, open, onClose}: Props) => {
     const [selectedProject, setSelectedProject] = useState<WorkItem | null>(null)
-    const [loadedProjectImages, setLoadedProjectImages] = useState(0)
+    const [loadedProjectMedia, setLoadedProjectMedia] = useState(0);
     const [fullscreenImage, setFullscreenImage] = useState<{ src: string; alt: string } | null>(null);
 
     useEffect(() => {
-        setLoadedProjectImages(0);
+        setLoadedProjectMedia(0);
     }, [selectedProject]);
 
     if (!open || !serviceId) return null
@@ -26,7 +26,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
 
     const totalProjectMedia = selectedProject?.media.length ?? 0;
     const projectMediaLoaded = selectedProject
-        ? loadedProjectImages >= totalProjectMedia
+        ? loadedProjectMedia >= totalProjectMedia
         : true
 
     const closeModal = () => {
@@ -44,9 +44,16 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                 className="modal-panel flex max-h-[calc(100vh-3rem)] w-full max-w-5xl flex-col p-0"
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="sticky top-0 z-20 flex items-center justify-between border-b border-white/10 bg-[#111216]/95 p-5 backdrop-blur-xl md:p-8">
+                <div
+                    className="sticky top-0 z-20 flex items-center justify-between border-b border-white/10 bg-[#111216]/95 p-5 backdrop-blur-xl md:p-8">
                     {selectedProject ? (
-                        <button className="modal-icon-button cursor-pointer" onClick={() => setSelectedProject(null)}>
+                        <button
+                            className="modal-icon-button cursor-pointer"
+                            onClick={() => {
+                                setFullscreenImage(null);
+                                setSelectedProject(null);
+                            }}
+                        >
                             <ArrowLeft className="h-4 w-4"/>
                             Volver
                         </button>
@@ -68,7 +75,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                 <button
                                     key={work.id}
                                     className="project-card group text-left"
-                                    style={{ "--reveal-delay": `${index * 80}ms` } as React.CSSProperties}
+                                    style={{"--reveal-delay": `${index * 80}ms`} as React.CSSProperties}
                                     onClick={() => setSelectedProject(work)}
                                 >
                                     <div className="h-52 rounded-xl">
@@ -94,7 +101,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                         <div className="animate-modal-in relative pb-2">
                             {!projectMediaLoaded && (
                                 <div className="project-detail-loader">
-                                    <img src="/chroma.svg" alt="" aria-hidden="true" />
+                                    <img src="/chroma.svg" alt="" aria-hidden="true"/>
                                     <span>Cargando proyecto</span>
                                 </div>
                             )}
@@ -108,28 +115,28 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                             </div>
 
                             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                                {selectedProject.media.map((media, index) => (
+                                {selectedProject.media.map((media) => (
                                     <div
-                                        key={`${media.type}-${index}`}
+                                        key={`${media.type}-${media.src}`}
                                         className="h-56 rounded-xl md:h-72"
                                     >
                                         {media.type === "image" ? (
                                             <button
                                                 type="button"
                                                 className="h-full w-full cursor-zoom-in overflow-hidden rounded-xl"
-                                                onClick={() => setFullscreenImage({ src: media.src, alt: media.alt })}
+                                                onClick={() => setFullscreenImage({src: media.src, alt: media.alt})}
                                             >
                                                 <KromaMedia
                                                     media={media}
                                                     className="h-full w-full rounded-xl object-cover"
-                                                    onLoad={() => setLoadedProjectImages((count) => count + 1)}
+                                                    onLoad={() => setLoadedProjectMedia((count) => count + 1)}
                                                 />
                                             </button>
                                         ) : (
                                             <KromaMedia
                                                 media={media}
                                                 className="h-full w-full rounded-xl object-cover"
-                                                onLoad={() => setLoadedProjectImages((count) => count + 1)}
+                                                onLoad={() => setLoadedProjectMedia((count) => count + 1)}
                                             />
                                         )}
                                     </div>
@@ -147,7 +154,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                 className="fullscreen-close-button"
                                 onClick={() => setFullscreenImage(null)}
                             >
-                                <X className="h-5 w-5" />
+                                <X className="h-5 w-5"/>
                             </button>
 
                             <div className="fullscreen-image-stage" onClick={(event) => event.stopPropagation()}>

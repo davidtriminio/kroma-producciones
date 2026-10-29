@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {Clapperboard, Share2, Globe2, PenTool} from "lucide-react";
-import SectionTitle from "./SectionTitle";
-import {serviceCards, type ServiceId} from "../data/kroma.ts";
-import ServiceModal from "./ServiceModal.tsx";
-import KromaImage from "./KromaImage.tsx";
+import SectionTitle from "../ui/SectionTitle.tsx";
+import {serviceCards, type ServiceId} from "../../data/index.ts";
+import ServiceModal from "../services/ServiceModal.tsx";
+import KromaImage from "../ui/KromaImage.tsx";
 
 const icons = {
     audiovisual: Clapperboard,

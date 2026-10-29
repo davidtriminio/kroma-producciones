@@ -1,5 +1,5 @@
-import Logo from "./Logo";
-import ThemeToggle from "./ThemeToggle";
+import Logo from "../ui/Logo.tsx";
+import ThemeToggle from "../ui/ThemeToggle.tsx";
 
 export default function Navbar() {
     return (

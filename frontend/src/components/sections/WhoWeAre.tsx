@@ -1,27 +1,12 @@
 import { BadgeCheck, Lightbulb, Clapperboard } from "lucide-react";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../ui/SectionTitle.tsx";
+import {aboutFeatures} from "../../data/about.ts";
 
-const features = [
-    {
-        Icon: BadgeCheck,
-        iconClass: "text-brand",
-        title: "Calidad visual",
-        text: "Estándares de cine aplicados a la comunicación comercial diaria.",
-    },
-    {
-        Icon: Lightbulb,
-        iconClass: "text-highlight-text",
-        title: "Creatividad con propósito",
-        text: "Cada decisión visual responde a un objetivo estratégico claro.",
-    },
-    {
-        Icon: Clapperboard,
-        iconClass: "text-fg",
-        title: "Producción integral",
-        text: "Desde el primer concepto hasta la entrega final del contenido.",
-    },
-];
-
+const icons = {
+    "badge-check": BadgeCheck,
+    lightbulb: Lightbulb,
+    clapperboard: Clapperboard,
+};
 export default function WhoWeAre() {
     return (
         <section className="container-max mx-auto px-gutter py-section-gap" id="quienes-somos">
@@ -37,7 +22,10 @@ export default function WhoWeAre() {
                 </div>
 
                 <div className="grid gap-4 md:col-span-7">
-                    {features.map(({ Icon, ...feature }) => (
+                    {aboutFeatures.map(({icon, ...feature}) => {
+                        const Icon = icons[icon];
+
+                        return (
                         <div key={feature.title} className="glass-card p-5">
                             <div className="mb-3 flex items-center gap-4">
                                 <Icon className={`h-5 w-5 ${feature.iconClass}`} strokeWidth={2.2} />
@@ -45,7 +33,8 @@ export default function WhoWeAre() {
                             </div>
                             <p className="text-xs leading-relaxed text-on-surface-variant">{feature.text}</p>
                         </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

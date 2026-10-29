@@ -1,31 +1,5 @@
-import SectionTitle from "./SectionTitle";
-
-const steps = [
-    {
-        n: "01",
-        title: "Consultoría",
-        text: "Entendemos tus objetivos, audiencia y el mensaje central que deseas transmitir.",
-        color: "text-brand",
-    },
-    {
-        n: "02",
-        title: "Estrategia",
-        text: "Creamos un roadmap detallado y conceptos creativos que se alinean con tu marca.",
-        color: "text-highlight-text",
-    },
-    {
-        n: "03",
-        title: "Producción",
-        text: "Ejecutamos con la más alta tecnología y atención al detalle en cada toma y píxel.",
-        color: "text-brand",
-    },
-    {
-        n: "04",
-        title: "Lanzamiento",
-        text: "Entregamos material optimizado y listo para impactar en tus canales digitales.",
-        color: "text-fg",
-    },
-];
+import SectionTitle from "../ui/SectionTitle.tsx";
+import {processSteps} from "../../data/process.ts";
 
 export default function Process() {
     return (
@@ -36,7 +10,7 @@ export default function Process() {
                 </SectionTitle>
 
                 <div data-reveal className="relative grid grid-cols-1 gap-12 md:grid-cols-4">
-                    {steps.map((step) => (
+                    {processSteps.map((step) => (
                         <div key={step.n} className="relative z-10">
                             <div className="mb-6 text-7xl font-black text-fg/90">{step.n}</div>
                             <h4 className={`mb-4 font-headline text-2xl font-black ${step.color}`}>{step.title}</h4>

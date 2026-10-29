@@ -264,22 +264,27 @@ label,
     font-family: "Sackers Gothic", sans-serif;
 }
 
-p {
+p,
+li {
     font-weight: 500;
     line-height: 1.7;
 }
 
-/* Reading text is one step larger and heavier than the Tailwind defaults for easier reading. */
-p.text-xs {
-    font-size: 0.875rem;
+/* Reading text is larger and heavier than the Tailwind defaults for easier reading. */
+p.text-xs,
+li.text-xs {
+    font-size: 0.9375rem;
+    font-weight: 600;
 }
 
-p.text-sm {
-    font-size: 0.9375rem;
+p.text-sm,
+li.text-sm {
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 p.text-\[11px\] {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
 }
 
 .hero-spectrum-word {

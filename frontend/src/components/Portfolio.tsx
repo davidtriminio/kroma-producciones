@@ -1,4 +1,4 @@
-﻿import SectionTitle from "./SectionTitle";
+import SectionTitle from "./SectionTitle";
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import {useRef} from "react";
 import KromaImage from "./KromaImage.tsx";
@@ -60,7 +60,7 @@ export default function Portfolio() {
                         type="button"
                         aria-label="Ver proyecto anterior"
                         onClick={() => scrollPortfolio("left")}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-fg/15 bg-fg/5 text-fg/70 transition hover:border-fg/30 hover:bg-fg/10 hover:text-fg"
                     >
                         <ChevronLeft className="h-4 w-4"/>
                     </button>
@@ -69,7 +69,7 @@ export default function Portfolio() {
                         type="button"
                         aria-label="Ver siguiente proyecto"
                         onClick={() => scrollPortfolio("right")}
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-fg/15 bg-fg/5 text-fg/70 transition hover:border-fg/30 hover:bg-fg/10 hover:text-fg"
                     >
                         <ChevronRight className="h-4 w-4"/>
                     </button>
@@ -92,7 +92,7 @@ export default function Portfolio() {
                         className={`
               ${item.span}
               group relative h-[390px] min-w-[82%] snap-center overflow-hidden rounded-kp
-              border border-white/10 bg-white/[0.035]
+              border border-fg/10 bg-fg/[0.035]
               sm:min-w-[58%]
               md:h-auto md:min-w-0
             `}
@@ -106,7 +106,7 @@ export default function Portfolio() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"/>
 
                         <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
-              <span className="mb-2 block text-[10px] font-black uppercase tracking-[0.2em] text-kp-cyan">
+              <span className="mb-2 block text-[10px] font-black uppercase tracking-[0.2em] text-brand">
                 {item.tag}
               </span>
                             <h3 className="font-headline text-xl font-black uppercase leading-none md:text-3xl">

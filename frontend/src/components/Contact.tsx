@@ -1,4 +1,4 @@
-﻿import SectionTitle from "./SectionTitle";
+import SectionTitle from "./SectionTitle";
 import {SiWhatsapp} from "@icons-pack/react-simple-icons";
 import emailjs from "@emailjs/browser"
 import {type FormEvent, useState} from "react";
@@ -119,7 +119,7 @@ export default function Contact() {
 
                         <div className="space-y-10">
                             <a className="group flex items-center gap-6" href="https://wa.me/50488434254" target="_blank" rel="noopener noreferrer">
-                <span className="icon-shell text-kp-cyan">
+                <span className="icon-shell text-brand">
   <SiWhatsapp className="h-5 w-5" strokeWidth={2.4} color={"#25D366"}/>
 </span>
                                 <div>
@@ -225,9 +225,9 @@ export default function Contact() {
                 </div>
 
                 <div
-                    className="pointer-events-none absolute -right-40 -bottom-40 h-[600px] w-[600px] rounded-full bg-kp-cyan/5 blur-[120px]"/>
+                    className="pointer-events-none absolute -right-40 -bottom-40 h-[600px] w-[600px] rounded-full bg-brand/5 blur-[120px]"/>
                 <div
-                    className="pointer-events-none absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-kp-red/5 blur-[120px]"/>
+                    className="pointer-events-none absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-brand/10 blur-[120px]"/>
             </div>
         </section>
     );

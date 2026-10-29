@@ -6,16 +6,18 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: "#050506",
-                "kp-blue": "#2563EB",
-                "kp-yellow": "#FACC15",
-                "kp-cyan": "#06B6D4",
+                background: "var(--bg)",
+                fg: "var(--fg)",
+                surface: "var(--surface)",
+                brand: "var(--brand)",
+                purple: "var(--purple)",
+                highlight: "var(--highlight)",
+                "highlight-text": "var(--highlight-text)",
                 "kp-green": "#22C55E",
                 "kp-red": "#EF4444",
-                "kp-graphite": "#111216",
-                "surface-border": "rgba(255,255,255,0.12)",
-                "on-surface-variant": "#c8c5ca",
-                "on-background": "#e2e1eb",
+                "surface-border": "color-mix(in srgb, var(--fg) 12%, transparent)",
+                "on-surface-variant": "var(--muted)",
+                "on-background": "var(--fg)",
             },
             borderRadius: {
                 kp: "14px",

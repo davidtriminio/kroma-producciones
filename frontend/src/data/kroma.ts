@@ -1,4 +1,4 @@
-﻿// export type ServiceId = "audiovisual" | "social" | "web" | "branding"
+// export type ServiceId = "audiovisual" | "social" | "web" | "branding"
 export type ServiceId = "audiovisual" | "social" | "branding"
 
 export type ProjectMedia =
@@ -37,7 +37,7 @@ export const serviceCards: ServiceCard[] = [
         title: "Audiovisual",
         description: "Producción visual cinematográfica para marcas.",
         icon: "movie",
-        accentClass: "text-kp-cyan",
+        accentClass: "text-brand",
         images: [
             "/services/audiovisual.webp",
         ]
@@ -47,7 +47,7 @@ export const serviceCards: ServiceCard[] = [
         title: "Redes Sociales",
         description: "Estrategia y contenido para crecimiento orgánico.",
         icon: "share",
-        accentClass: "text-kp-red",
+        accentClass: "text-highlight-text",
         images: [
             "/services/social-media.webp"
         ]
@@ -57,7 +57,7 @@ export const serviceCards: ServiceCard[] = [
     //     title: "Páginas Web",
     //     description: "Sitios modernos, rápidos y convertidores.",
     //     icon: "language",
-    //     accentClass: "text-kp-yellow",
+    //     accentClass: "text-highlight-text",
     //     images: [
     //         "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     //         "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
@@ -68,7 +68,7 @@ export const serviceCards: ServiceCard[] = [
         title: "Branding",
         description: "Identidad visual completa para marcas.",
         icon: "architecture",
-        accentClass: "text-white",
+        accentClass: "text-fg",
         images: [
             "/services/branding.webp",
         ]

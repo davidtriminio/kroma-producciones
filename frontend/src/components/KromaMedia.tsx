@@ -1,3 +1,4 @@
+import Logo from "./Logo";
 import type { ProjectMedia } from "../data/kroma.ts";
 import { useEffect, useRef, useState } from "react";
 import KromaImage from "./KromaImage.tsx";
@@ -71,7 +72,7 @@ export default function KromaMedia({ media, className = "", onLoad }: Props) {
         <div className="kroma-video-wrap">
             {!videoReady && !videoFailed && (
                 <div className="kroma-image-loader">
-                    <img src="/brand/kroma-white-512.webp" alt="" aria-hidden="true" />
+                    <Logo size="sm" alt="" />
                 </div>
             )}
 

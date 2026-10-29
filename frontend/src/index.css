@@ -35,36 +35,93 @@
 }
 
 
+/* Theme tokens: light by default, dark follows the system unless overridden with data-theme */
+:root {
+    color-scheme: light;
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --fg: #020201;
+    --muted: #5b5266;
+    --purple: #472b5b;
+    --brand: #472b5b;
+    --highlight: #dfc52d;
+    --highlight-text: #8a7410;
+    --on-highlight: #020201;
+    --hero-art-opacity: 0.1;
+    --hero-art-filter: grayscale(1) invert(1);
+    --on-purple: #ffffff;
+    --show-on-dark: none;
+    --show-on-light: inline-block;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #020201;
+        --surface: #0f0a14;
+        --fg: #f6f3f8;
+        --muted: #bdb4c6;
+        --brand: #a98bc4;
+        --highlight-text: #dfc52d;
+        --hero-art-opacity: 0.25;
+        --hero-art-filter: grayscale(1) brightness(0.4);
+        --show-on-dark: inline-block;
+        --show-on-light: none;
+    }
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #020201;
+    --surface: #0f0a14;
+    --fg: #f6f3f8;
+    --muted: #bdb4c6;
+    --brand: #a98bc4;
+    --highlight-text: #dfc52d;
+    --hero-art-opacity: 0.25;
+    --hero-art-filter: grayscale(1) brightness(0.4);
+    --show-on-dark: inline-block;
+    --show-on-light: none;
+}
+
+.hero-art {
+    opacity: var(--hero-art-opacity);
+}
+
+.hero-art img {
+    filter: var(--hero-art-filter);
+}
+
+.logo-on-dark {
+    display: var(--show-on-dark);
+}
+
+.logo-on-light {
+    display: var(--show-on-light);
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.06), transparent 28rem),
-    #050506;
-    color: #fff;
+    background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--purple) 28%, transparent), transparent 30rem),
+    var(--bg);
+    color: var(--fg);
     font-family: "Sackers Gothic", sans-serif;
     overflow-x: hidden;
-}
-
-.grain-overlay {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.05;
-    background-repeat: no-repeat;
-    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdq81gsmxMUkl0_uPaUdAoF7nM2-MJJmYG6hSjxhWrPqX99WKU6CvOKdqsYHf0_12xe-jyT0SQHiwvM73inB-q9dCSnccpohmsThLaiyBYIBikZXNHvYXwbZhDyGm7wnc7R-6AlGFBjsaNw-XNC7wKA1RqDEUxTismFDDecDoMOgIrKTD1jLsBZCYsw9b8FdpZdao7tB_drLIQePQrlixiEoWe89t5yCqcZL46s7gFNer3X9hxSzeqn_mhk2ZXlolAGbgHg-EXE4-j");
+    transition: background-color 240ms ease, color 240ms ease;
 }
 
 .glass-card {
     position: relative;
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--fg) 6%, transparent);
     overflow: hidden;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+    background: linear-gradient(180deg, color-mix(in srgb, var(--fg) 5.5%, transparent), color-mix(in srgb, var(--fg) 2.5%, transparent));
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.105);
+    border: 1px solid color-mix(in srgb, var(--fg) 10.5%, transparent);
     border-radius: 16px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--fg) 6%, transparent);
     transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
     border-color 260ms ease,
     background 260ms ease,
@@ -77,14 +134,14 @@ body {
     inset: 0;
     pointer-events: none;
     opacity: 0;
-    background: radial-gradient(circle at top left, rgba(6, 182, 212, 0.13), transparent 42%);
+    background: radial-gradient(circle at top left, color-mix(in srgb, var(--brand) 13%, transparent), transparent 42%);
     transition: opacity 260ms ease;
 }
 
 .glass-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.22);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.032));
+    border-color: color-mix(in srgb, var(--fg) 22%, transparent);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--fg) 7.5%, transparent), color-mix(in srgb, var(--fg) 3.2%, transparent));
     box-shadow: 0 22px 55px rgba(0, 0, 0, 0.34);
 }
 
@@ -99,7 +156,7 @@ body {
 .nav-sticky.scrolled {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-    background: rgba(5, 5, 6, 0.85);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
     backdrop-filter: blur(20px);
 }
 
@@ -132,17 +189,7 @@ body {
 
 /*Spectrum*/
 .section-title {
-    --kroma-spectrum: linear-gradient(
-            180deg,
-            #0094c8 0%,
-            #cdeef0 13%,
-            #cdb7db 25%,
-            #7c2d80 38%,
-            #ef1455 51%,
-            #ff4b2f 64%,
-            #ffd600 80%,
-            #49c51f 100%
-    );
+    --kroma-spectrum: linear-gradient(90deg, var(--purple), var(--brand), var(--highlight));
 
     font-family: "Sackers Gothic", sans-serif;
     font-weight: 900;
@@ -173,17 +220,7 @@ body {
     width: 100%;
     height: 4px;
     border-radius: 999px;
-    background: linear-gradient(
-            90deg,
-            #0094c8 0%,
-            #cdeef0 13%,
-            #cdb7db 25%,
-            #7c2d80 38%,
-            #ef1455 51%,
-            #ff4b2f 64%,
-            #ffd600 80%,
-            #49c51f 100%
-    );
+    background: linear-gradient(90deg, var(--purple), var(--brand), var(--highlight));
     opacity: 0;
     transform: scaleX(0);
     transform-origin: left;
@@ -234,17 +271,7 @@ body {
     bottom: -0.12em;
     height: 0.08em;
     border-radius: 999px;
-    background: linear-gradient(
-            90deg,
-            #0094c8,
-            #cdeef0,
-            #cdb7db,
-            #7c2d80,
-            #ef1455,
-            #ff4b2f,
-            #ffd600,
-            #49c51f
-    );
+    background: linear-gradient(90deg, var(--purple), var(--brand), var(--highlight));
     transform: scaleX(0.72);
     transform-origin: left;
     transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -267,7 +294,7 @@ body {
     width: 100%;
     height: 3px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #0094c8, #ef1455, #ffd600, #49c51f);
+    background: linear-gradient(90deg, var(--purple), var(--brand), var(--highlight));
     transform: scaleX(0.35);
     transform-origin: left;
     transition: transform 420ms ease;
@@ -280,14 +307,20 @@ body {
 .pill-button-primary {
     padding: 0.72rem 1.65rem;
     font-size: 0.68rem;
+    font-weight: 700;
     letter-spacing: 0.12em;
-    border: 1px solid #fff;
+    border: 1px solid color-mix(in srgb, var(--brand) 70%, transparent);
     border-radius: 20px;
+    background: var(--purple);
+    color: var(--on-purple);
+    text-align: center;
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .pill-button-primary:hover {
-    background: #f4f4f5;
-    color: #050506;
+    transform: translateY(-2px);
+    border-color: var(--highlight);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--purple) 55%, transparent);
 }
 
 .pill-button-secondary {
@@ -295,10 +328,14 @@ body {
     font-size: 0.68rem;
     letter-spacing: 0.12em;
     border-radius: 20px;
+    border: 1px solid var(--highlight);
+    text-align: center;
+    transition: background 220ms ease, transform 220ms ease;
 }
 
 .pill-button-secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--highlight) 16%, transparent);
 }
 
 .modal-enter {
@@ -319,8 +356,8 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.055);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: color-mix(in srgb, var(--fg) 5.5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
 }
 
 @keyframes modalIn {
@@ -379,10 +416,10 @@ body {
     overflow: hidden;
     min-height: 0;
     border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
     background:
-            radial-gradient(circle at 20% 0%, rgba(6, 182, 212, 0.12), transparent 18rem),
-            linear-gradient(180deg, rgba(17, 18, 22, 0.96), rgba(5, 5, 6, 0.96));
+            radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 18rem),
+            linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent), color-mix(in srgb, var(--bg) 96%, transparent));
     box-shadow: 0 35px 90px rgba(0, 0, 0, 0.55);
 }
 
@@ -390,7 +427,7 @@ body {
     min-height: 0;
     overscroll-behavior: contain;
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.24) transparent;
+    scrollbar-color: color-mix(in srgb, var(--fg) 24%, transparent) transparent;
 }
 
 .modal-scroll-area::-webkit-scrollbar {
@@ -403,11 +440,11 @@ body {
 
 .modal-scroll-area::-webkit-scrollbar-thumb {
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.22);
+    background: color-mix(in srgb, var(--fg) 22%, transparent);
 }
 
 .modal-scroll-area::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.34);
+    background: color-mix(in srgb, var(--fg) 34%, transparent);
 }
 
 .modal-icon-button,
@@ -418,9 +455,9 @@ body {
     gap: 0.5rem;
     min-height: 2.4rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    background: rgba(255, 255, 255, 0.045);
-    color: rgba(255, 255, 255, 0.72);
+    border: 1px solid color-mix(in srgb, var(--fg) 13%, transparent);
+    background: color-mix(in srgb, var(--fg) 4.5%, transparent);
+    color: color-mix(in srgb, var(--fg) 72%, transparent);
     padding: 0 0.95rem;
     font-size: 0.68rem;
     font-weight: 900;
@@ -436,23 +473,23 @@ body {
 
 .modal-icon-button:hover,
 .modal-close-button:hover {
-    color: white;
-    border-color: rgba(255, 255, 255, 0.28);
-    background: rgba(255, 255, 255, 0.08);
+    color: var(--fg);
+    border-color: color-mix(in srgb, var(--fg) 28%, transparent);
+    background: color-mix(in srgb, var(--fg) 8%, transparent);
 }
 
 .project-card {
     border-radius: 16px;
     padding: 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid color-mix(in srgb, var(--fg) 9%, transparent);
+    background: color-mix(in srgb, var(--fg) 3.5%, transparent);
     transition: transform 260ms ease, border-color 260ms ease, background 260ms ease;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.06);
+    border-color: color-mix(in srgb, var(--fg) 20%, transparent);
+    background: color-mix(in srgb, var(--fg) 6%, transparent);
 }
 
 @keyframes modalDetailIn {
@@ -490,18 +527,18 @@ body {
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(200, 197, 202, 0.72);
+    color: color-mix(in srgb, var(--muted) 72%, transparent);
 }
 
 .form-control {
     width: 100%;
     min-height: 3.35rem;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.105);
+    border: 1px solid color-mix(in srgb, var(--fg) 10.5%, transparent);
     background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+            linear-gradient(180deg, color-mix(in srgb, var(--fg) 5.5%, transparent), color-mix(in srgb, var(--fg) 2.5%, transparent));
     padding: 0 1rem;
-    color: white;
+    color: var(--fg);
     font-size: 0.82rem;
     font-weight: 800;
     outline: none;
@@ -513,19 +550,19 @@ body {
 }
 
 .form-control::placeholder {
-    color: rgba(200, 197, 202, 0.38);
+    color: color-mix(in srgb, var(--muted) 38%, transparent);
 }
 
 .form-control:hover {
-    border-color: rgba(255, 255, 255, 0.22);
+    border-color: color-mix(in srgb, var(--fg) 22%, transparent);
     background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.032));
+            linear-gradient(180deg, color-mix(in srgb, var(--fg) 7.5%, transparent), color-mix(in srgb, var(--fg) 3.2%, transparent));
 }
 
 .form-control:focus {
-    border-color: rgba(6, 182, 212, 0.72);
+    border-color: color-mix(in srgb, var(--brand) 72%, transparent);
     box-shadow:
-            0 0 0 4px rgba(6, 182, 212, 0.09),
+            0 0 0 4px color-mix(in srgb, var(--brand) 9%, transparent),
             0 16px 38px rgba(0, 0, 0, 0.28);
     transform: translateY(-1px);
 }
@@ -542,19 +579,19 @@ body {
     width: 0.55rem;
     height: 0.55rem;
     pointer-events: none;
-    border-right: 2px solid rgba(255, 255, 255, 0.48);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.48);
+    border-right: 2px solid color-mix(in srgb, var(--fg) 48%, transparent);
+    border-bottom: 2px solid color-mix(in srgb, var(--fg) 48%, transparent);
     transform: translateY(-65%) rotate(45deg);
     transition: border-color 220ms ease;
 }
 
 .form-select-wrap:focus-within::after {
-    border-color: #06b6d4;
+    border-color: var(--brand);
 }
 
 .form-control option {
-    background: #111216;
-    color: white;
+    background: var(--surface);
+    color: var(--fg);
 }
 
 /*Loader Styles*/
@@ -566,8 +603,8 @@ body {
     align-items: center;
     justify-content: center;
     background:
-            radial-gradient(circle at 50% 40%, rgba(6, 182, 212, 0.12), transparent 22rem),
-            #050506;
+            radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--brand) 12%, transparent), transparent 22rem),
+            var(--bg);
     animation: loaderFadeOut 420ms ease 680ms both;
 }
 
@@ -575,7 +612,7 @@ body {
     width: min(42vw, 180px);
     height: auto;
     animation: chromaPulse 1.2s ease-in-out infinite;
-    filter: drop-shadow(0 0 28px rgba(71, 43, 91, 0.55));
+    filter: drop-shadow(0 0 28px color-mix(in srgb, var(--purple) 55%, transparent));
 }
 
 @keyframes chromaPulse {
@@ -605,7 +642,7 @@ body {
     width: 100%;
     overflow: hidden;
     border-radius: inherit;
-    background: rgba(255, 255, 255, 0.035);
+    background: color-mix(in srgb, var(--fg) 3.5%, transparent);
 }
 
 .kroma-image-loader {
@@ -616,8 +653,8 @@ body {
     align-items: center;
     justify-content: center;
     background:
-            radial-gradient(circle at center, rgba(6, 182, 212, 0.08), transparent 12rem),
-            rgba(5, 5, 6, 0.72);
+            radial-gradient(circle at center, color-mix(in srgb, var(--brand) 8%, transparent), transparent 12rem),
+            color-mix(in srgb, var(--bg) 72%, transparent);
 }
 
 .kroma-image-loader img {
@@ -626,7 +663,7 @@ body {
     opacity: 0.78;
     animation:
             chromaPulse 1.4s ease-in-out infinite;
-    filter: drop-shadow(0 0 22px rgba(71, 43, 91, 0.5));
+    filter: drop-shadow(0 0 22px color-mix(in srgb, var(--purple) 50%, transparent));
 }
 
 @keyframes chromaSpin {
@@ -648,8 +685,8 @@ body {
     gap: 0.85rem;
     border-radius: 16px;
     background:
-            radial-gradient(circle at center, rgba(6, 182, 212, 0.1), transparent 18rem),
-            rgba(5, 5, 6, 0.86);
+            radial-gradient(circle at center, color-mix(in srgb, var(--brand) 10%, transparent), transparent 18rem),
+            color-mix(in srgb, var(--bg) 86%, transparent);
     backdrop-filter: blur(10px);
     animation: modalDetailIn 260ms ease both;
 }
@@ -666,7 +703,7 @@ body {
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.58);
+    color: color-mix(in srgb, var(--fg) 58%, transparent);
 }
 
 /*video styles*/
@@ -677,14 +714,14 @@ body {
     width: 100%;
     overflow: hidden;
     border-radius: inherit;
-    background: rgba(255, 255, 255, 0.035);
+    background: color-mix(in srgb, var(--fg) 3.5%, transparent);
 }
 
 .kroma-video-wrap video {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    background: #050506;
+    background: var(--bg);
 }
 
 /*Form status styles*/
@@ -729,10 +766,10 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
     background:
-            radial-gradient(circle at center, rgba(239, 68, 68, 0.08), transparent 14rem),
-            rgba(255, 255, 255, 0.035);
+            radial-gradient(circle at center, color-mix(in srgb, #ef4444 8%, transparent), transparent 14rem),
+            color-mix(in srgb, var(--fg) 3.5%, transparent);
     padding: 1.25rem;
     text-align: center;
 }
@@ -744,7 +781,7 @@ body {
     letter-spacing: 0.16em;
     line-height: 1.5;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.58);
+    color: color-mix(in srgb, var(--fg) 58%, transparent);
 }
 
 /*Fullscreen Media Viewer Styles*/
@@ -771,15 +808,15 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.06);
-    color: white;
+    border: 1px solid color-mix(in srgb, var(--fg) 16%, transparent);
+    background: color-mix(in srgb, var(--fg) 6%, transparent);
+    color: var(--fg);
     transition: all 220ms ease;
 }
 
 .fullscreen-close-button:hover {
-    border-color: rgba(255, 255, 255, 0.34);
-    background: rgba(255, 255, 255, 0.12);
+    border-color: color-mix(in srgb, var(--fg) 34%, transparent);
+    background: color-mix(in srgb, var(--fg) 12%, transparent);
 }
 
 .fullscreen-image-stage {
@@ -807,5 +844,5 @@ body {
     font-weight: 900;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
+    color: color-mix(in srgb, var(--fg) 60%, transparent);
 }

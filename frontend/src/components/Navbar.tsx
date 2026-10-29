@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
     return (
@@ -15,22 +16,25 @@ export default function Navbar() {
             </a>
 
             <div className="hidden items-center gap-8 md:flex">
-                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-white" href="#quienes-somos">
+                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-fg" href="#quienes-somos">
                     ¿Quiénes Somos?
                 </a>
-                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-white" href="#servicios">
+                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-fg" href="#servicios">
                     Servicios
                 </a>
-                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-white" href="#contacto">
+                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-fg" href="#contacto">
                     Contacto
                 </a>
             </div>
 
-            <a
-                className="pill-button-primary uppercase"
-                href="#contacto">
-                Cotizar ahora
-            </a>
+            <div className="flex items-center gap-3">
+                <ThemeToggle />
+                <a
+                    className="pill-button-primary uppercase"
+                    href="#contacto">
+                    Cotizar ahora
+                </a>
+            </div>
         </nav>
     );
 }

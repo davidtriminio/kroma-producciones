@@ -265,12 +265,21 @@ label,
 }
 
 p {
+    font-weight: 500;
     line-height: 1.7;
 }
 
-/* Inter reads smaller than the previous body font at the same size. */
+/* Reading text is one step larger and heavier than the Tailwind defaults for easier reading. */
 p.text-xs {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
+}
+
+p.text-sm {
+    font-size: 0.9375rem;
+}
+
+p.text-\[11px\] {
+    font-size: 0.75rem;
 }
 
 .hero-spectrum-word {
@@ -321,7 +330,7 @@ p.text-xs {
 
 .pill-button-primary {
     padding: 0.72rem 1.65rem;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     border: 1px solid color-mix(in srgb, var(--brand) 70%, transparent);
@@ -340,7 +349,7 @@ p.text-xs {
 
 .pill-button-secondary {
     padding: 0.72rem 1.65rem;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     border-radius: 20px;
     border: 1px solid var(--highlight-text);
@@ -474,7 +483,7 @@ p.text-xs {
     background: color-mix(in srgb, var(--fg) 4.5%, transparent);
     color: color-mix(in srgb, var(--fg) 72%, transparent);
     padding: 0 0.95rem;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 900;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -538,7 +547,7 @@ p.text-xs {
 .form-label {
     margin-bottom: 0.65rem;
     display: block;
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -714,7 +723,7 @@ p.text-xs {
 }
 
 .project-detail-loader span {
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -780,7 +789,7 @@ p.text-xs {
 .form-counter {
     margin-left: auto;
     flex-shrink: 0;
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     font-weight: 800;
     color: var(--muted);
 }
@@ -972,7 +981,7 @@ p.text-xs {
     flex-shrink: 0;
     border-radius: 999px;
     padding: 0.7rem 1.2rem;
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -1002,7 +1011,7 @@ p.text-xs {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     font-weight: 900;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -1066,7 +1075,7 @@ p.text-xs {
 .form-package-chip button {
     flex-shrink: 0;
     cursor: pointer;
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     font-weight: 900;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -1124,7 +1133,7 @@ p.text-xs {
     border: 1px solid color-mix(in srgb, var(--brand) 40%, transparent);
     background: color-mix(in srgb, var(--purple) 14%, transparent);
     padding: 0.3rem 0.7rem;
-    font-size: 0.6rem;
+    font-size: 0.66rem;
     font-weight: 800;
     letter-spacing: 0.06em;
     color: var(--fg);

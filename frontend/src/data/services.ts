@@ -7,14 +7,19 @@ export const serviceCategories: ServiceCategory[] = [
         description: "Estrategia y gestión para que tu marca crezca en redes.",
     },
     {
-        id: "audiovisual",
-        title: "Producción audiovisual",
-        description: "Foto, video y tomas aéreas con calidad profesional.",
+        id: "fotografia",
+        title: "Fotografía profesional",
+        description: "Imágenes que resaltan los detalles de tu marca, tus productos y tus eventos.",
+    },
+    {
+        id: "video",
+        title: "Video",
+        description: "Desde reels para redes hasta producciones para televisión y proyecciones.",
     },
     {
         id: "diseno",
         title: "Diseño y branding",
-        description: "Identidad e imagen coherente, del entorno digital al físico.",
+        description: "Identidad e imagen coherente para que tu marca se reconozca.",
     },
     {
         id: "empresarial",
@@ -24,6 +29,7 @@ export const serviceCategories: ServiceCategory[] = [
 ]
 
 export const services: Service[] = [
+    // Marketing digital
     {
         id: "redes-sociales",
         category: "marketing",
@@ -38,34 +44,62 @@ export const services: Service[] = [
         description: "Analizamos tu negocio y desarrollamos estrategias para fortalecer tu marca y alcanzar tus objetivos comerciales.",
         icon: "target",
     },
+
+    // Fotografía profesional
     {
-        id: "fotografia",
-        category: "audiovisual",
-        title: "Fotografía profesional",
-        description: "Productos, servicios, espacios, retratos y sesiones comerciales que transmiten calidad y confianza.",
+        id: "sesiones-fotograficas",
+        category: "fotografia",
+        title: "Sesiones fotográficas",
+        description: "Sesiones comerciales de tus servicios, espacios y equipo que transmiten calidad y confianza.",
         icon: "camera",
     },
     {
-        id: "video-comercial",
-        category: "audiovisual",
-        title: "Producción de video comercial",
-        description: "Videos publicitarios y reels dinámicos que captan la atención y conectan con tu público.",
-        icon: "video",
+        id: "cobertura-eventos",
+        category: "fotografia",
+        title: "Cobertura de eventos",
+        description: "Registramos tus eventos con fotografía profesional para que los momentos importantes no se pierdan.",
+        icon: "calendar",
     },
     {
-        id: "produccion-audiovisual",
-        category: "audiovisual",
-        title: "Producción audiovisual de alta calidad",
-        description: "Comerciales, campañas, presentaciones corporativas y eventos, desde la planificación hasta la edición final.",
+        id: "fotos-producto",
+        category: "fotografia",
+        title: "Fotos de producto",
+        description: "Fotografías que resaltan la esencia y los detalles de tus productos para catálogos, redes y tienda en línea.",
+        icon: "package",
+    },
+    {
+        id: "sesiones-personales",
+        category: "fotografia",
+        title: "Sesiones personales",
+        description: "Retratos y sesiones personales para emprendedores, equipos y marcas personales.",
+        icon: "user",
+    },
+
+    // Video
+    {
+        id: "video-organico",
+        category: "video",
+        title: "Video orgánico",
+        description: "Reels y videos cortos para redes sociales que captan la atención y conectan con tu público.",
+        icon: "smartphone",
+    },
+    {
+        id: "video-profesional",
+        category: "video",
+        title: "Video profesional",
+        description: "Producciones en formato horizontal para televisión, proyecciones y presentaciones, desde la planificación hasta la edición final.",
         icon: "clapperboard",
+        includes: ["Eventos especiales", "Campañas", "Presentaciones corporativas", "Eventos"],
     },
     {
         id: "dron",
-        category: "audiovisual",
+        category: "video",
         title: "Tomas aéreas con dron",
         description: "Negocios, propiedades e instalaciones mostrados desde una perspectiva diferente.",
         icon: "drone",
     },
+
+    // Diseño y branding
     {
         id: "branding",
         category: "diseno",
@@ -80,13 +114,8 @@ export const services: Service[] = [
         description: "Artes para redes, afiches, flyers, banners, presentaciones y piezas para campañas comerciales.",
         icon: "palette",
     },
-    {
-        id: "rotulacion",
-        category: "diseno",
-        title: "Rotulación y material publicitario",
-        description: "Rótulos, lonas, viniles y banners para llevar tu marca al entorno físico.",
-        icon: "signpost",
-    },
+
+    // Soluciones empresariales
     {
         id: "paginas-web",
         category: "empresarial",

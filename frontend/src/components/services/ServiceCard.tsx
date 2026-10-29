@@ -20,7 +20,17 @@ export default function ServiceCard({service, hasWorks, onViewWorks, onQuote}: P
 
             <h3 className="font-headline text-sm font-black uppercase leading-snug">{service.title}</h3>
 
-            <p className="mt-3 flex-1 text-xs leading-relaxed text-fg/60">{service.description}</p>
+            <p className="mt-3 text-xs leading-relaxed text-fg/60">{service.description}</p>
+
+            {service.includes && (
+                <ul className="mt-4 flex flex-wrap gap-2">
+                    {service.includes.map((item) => (
+                        <li key={item} className="service-chip">{item}</li>
+                    ))}
+                </ul>
+            )}
+
+            <div className="flex-1"/>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3">
                 <button type="button" onClick={onQuote} className="service-cta cursor-pointer">

@@ -2,7 +2,7 @@ import SectionTitle from "../ui/SectionTitle.tsx";
 import {SiWhatsapp} from "@icons-pack/react-simple-icons";
 import {CircleAlert} from "lucide-react";
 import {type ChangeEvent, type FormEvent, useEffect, useState} from "react";
-import {kroma, type PackageId, servicePackages, services} from "../../data/index.ts";
+import {kroma, type PackageId, serviceCategories, servicePackages, services} from "../../data/index.ts";
 import {buildLeadMessage, buildWhatsAppUrl} from "../../lib/whatsapp.ts";
 import {QUOTE_EVENT, type QuoteRequest} from "../../lib/quote.ts";
 
@@ -199,8 +199,14 @@ export default function Contact() {
                                     className={`${controlClass("serviceType")} appearance-none pr-12`}
                                 >
                                     <option value="">Selecciona un servicio</option>
-                                    {services.map((service) => (
-                                        <option key={service.id} value={service.title}>{service.title}</option>
+                                    {serviceCategories.map((category) => (
+                                        <optgroup key={category.id} label={category.title}>
+                                            {services
+                                                .filter((service) => service.category === category.id)
+                                                .map((service) => (
+                                                    <option key={service.id} value={service.title}>{service.title}</option>
+                                                ))}
+                                        </optgroup>
                                     ))}
                                 </select>
                             </div>

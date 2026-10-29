@@ -327,7 +327,7 @@ body {
     font-size: 0.68rem;
     letter-spacing: 0.12em;
     border-radius: 20px;
-    border: 1px solid var(--highlight);
+    border: 1px solid var(--highlight-text);
     text-align: center;
     transition: background 220ms ease, transform 220ms ease;
 }

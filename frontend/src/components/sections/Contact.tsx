@@ -130,11 +130,11 @@ export default function Contact() {
 
     return (
         <section className="container-max mx-auto px-gutter py-section-gap" id="contacto">
-            <div data-reveal className="relative overflow-hidden glass-card p-12 md:p-24">
-                <div className="relative z-10 grid gap-20 md:grid-cols-2">
+            <div data-reveal className="relative overflow-hidden glass-card p-6 sm:p-12 md:p-24">
+                <div className="relative z-10 grid gap-12 md:grid-cols-2 md:gap-20">
                     <div>
                         <SectionTitle>Impulsa tu Marca</SectionTitle>
-                        <p className="mb-16 text-lg text-on-surface-variant">
+                        <p className="mb-10 text-base text-on-surface-variant md:mb-16 md:text-lg">
                             Estamos listos para llevar tu contenido al siguiente nivel. Cuéntanos sobre tu proyecto.
                         </p>
 
@@ -145,7 +145,7 @@ export default function Contact() {
 </span>
                                 <div>
                                     <p className="mb-1 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">WhatsApp</p>
-                                    <p className="font-headline text-xl font-bold">{kroma.whatsapp.display}</p>
+                                    <p className="whitespace-nowrap font-headline text-base font-bold sm:text-xl">{kroma.whatsapp.display}</p>
                                 </div>
                             </a>
                         </div>

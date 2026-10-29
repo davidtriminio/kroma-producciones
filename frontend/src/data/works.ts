@@ -60,6 +60,32 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     alt: "Día del padre Pebbles imagen 5",
                 },
             ]
+        },
+        {
+            id: "cobertura-eventos-general",
+            title: "Cobertura de eventos",
+            desc: "Registro fotográfico profesional de eventos y actividades.",
+            thumbnail: "/services/cobertura-eventos/evento-1-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-1.webp",
+                    alt: "Cobertura de evento",
+                }
+            ]
+        },
+        {
+            id: "eventos-deportivos",
+            title: "Eventos deportivos",
+            desc: "Cobertura fotográfica de eventos deportivos.",
+            thumbnail: "/services/cobertura-eventos/evento-deportivo-1-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-deportivo-1.webp",
+                    alt: "Cobertura de evento deportivo",
+                }
+            ]
         }
     ],
     "fotos-producto": [
@@ -69,6 +95,11 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
             desc: "Producción en alta calidad para distintas empresas y productos.",
             thumbnail: "/services/audiovisual/fotos-productos/img1.webp",
             media: [
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/producto-1.webp",
+                    alt: "Fotografía de producto",
+                },
                 {
                     type: "image",
                     src: "/services/audiovisual/fotos-productos/img1.webp",
@@ -169,6 +200,53 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     type: "image",
                     src: "/services/artes/img3.webp",
                     alt: "Arte Campaña Día de la madre Smartec",
+                }
+            ]
+        }
+    ],
+    "sesiones-personales": [
+        {
+            id: "sesiones-personales-1",
+            title: "Sesiones personales",
+            desc: "Retratos y sesiones personales para emprendedores y marcas personales.",
+            thumbnail: "/services/sesiones-personales/sesion-1-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/sesiones-personales/sesion-1.webp",
+                    alt: "Sesión personal",
+                }
+            ]
+        }
+    ],
+    "video-organico": [
+        {
+            id: "reel-yoyitas-reloj",
+            title: "Reel Yoyita's",
+            desc: "Reel vertical para redes sociales de Yoyita's Joyería.",
+            thumbnail: "/services/video-organico/reel-yoyitas-reloj-poster.webp",
+            media: [
+                {
+                    type: "video",
+                    src: "/services/video-organico/reel-yoyitas-reloj.mp4",
+                    poster: "/services/video-organico/reel-yoyitas-reloj-poster.webp",
+                    title: "Reel Yoyita's - Reloj"
+                }
+            ]
+        }
+    ],
+    "video-profesional": [
+        {
+            id: "video-campanas-tv",
+            title: "Video para campañas y TV",
+            desc: "Producción horizontal para campañas publicitarias, televisión, presentaciones corporativas y eventos especiales.",
+            thumbnail: "/services/video-profesional/campanas-tv-poster.webp",
+            media: [
+                {
+                    type: "video",
+                    src: "/services/video-profesional/campanas-tv.mp4",
+                    poster: "/services/video-profesional/campanas-tv-poster.webp",
+                    title: "Video para campañas publicitarias y TV"
                 }
             ]
         }

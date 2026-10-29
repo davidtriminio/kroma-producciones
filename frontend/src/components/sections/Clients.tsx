@@ -6,7 +6,7 @@ function ClientTile({client, hidden = false}: { client: ClientLogo; hidden?: boo
     return (
         <li className={`client-tile${client.tone === "white" ? " on-dark" : ""}`} aria-hidden={hidden || undefined}>
             <img
-                className={`client-logo${client.tone ? ` tone-${client.tone}` : ""}`}
+                className="client-logo"
                 src={client.logo}
                 alt={hidden ? "" : client.name}
                 title={client.name}

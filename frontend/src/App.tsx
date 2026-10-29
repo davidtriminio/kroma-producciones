@@ -5,6 +5,7 @@ import Hero from "./components/sections/Hero.tsx";
 import WhoWeAre from "./components/sections/WhoWeAre.tsx";
 import Services from "./components/sections/Services.tsx";
 import Packages from "./components/sections/Packages.tsx";
+import Clients from "./components/sections/Clients.tsx";
 import Portfolio from "./components/sections/Portfolio.tsx";
 import Process from "./components/sections/Process.tsx";
 import Contact from "./components/sections/Contact.tsx";
@@ -91,6 +92,7 @@ export default function App() {
           <Services />
           <Packages />
           <Portfolio />
+          <Clients />
           <Process />
           <Contact />
         </main>

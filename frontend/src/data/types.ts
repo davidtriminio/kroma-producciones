@@ -94,3 +94,11 @@ export type AboutFeature = {
     title: string
     text: string
 }
+
+export type ClientLogo = {
+    id: string
+    name: string
+    logo: string
+    // Logos drawn in white need a dark tile to stay visible in both themes.
+    tile?: "light" | "dark"
+}

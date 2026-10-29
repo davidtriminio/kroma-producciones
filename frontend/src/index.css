@@ -26,14 +26,6 @@
     font-display: swap;
 }
 
-@font-face {
-    font-family: "NCS Radhiumz";
-    src: url("/fonts/NCSRadhiumz.woff2") format("woff2");
-    font-weight: 400 900;
-    font-style: normal;
-    font-display: swap;
-}
-
 
 /* Theme tokens: light by default, dark follows the system unless overridden with data-theme */
 :root {
@@ -189,10 +181,11 @@ body {
 
 /*Spectrum*/
 .section-title {
+    font-family: "Krona One", "Sackers Gothic", sans-serif;
+    font-synthesis-weight: none;
     --kroma-spectrum: linear-gradient(90deg, var(--purple), var(--brand), var(--highlight));
 
-    font-family: "Sackers Gothic", sans-serif;
-    font-weight: 900;
+    font-weight: 400;
     letter-spacing: 0;
     line-height: 0.85;
     text-transform: uppercase;
@@ -256,6 +249,10 @@ body {
 .section-title-center:hover::after {
     opacity: 1;
     transform: translateX(-50%) scaleX(1);
+}
+
+.font-headline {
+    font-synthesis-weight: none;
 }
 
 .hero-spectrum-word {

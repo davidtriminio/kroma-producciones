@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/krona-one':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@icons-pack/react-simple-icons':
         specifier: ^13.13.0
         version: 13.13.0(react@19.2.7)
@@ -180,6 +183,9 @@ packages:
   '@eslint/plugin-kit@0.7.2':
     resolution: {integrity: sha512-+CNAzxglkrpNf/kKywqQfk74QjtceuOE7Qm+AF8miRvPF/wmmK5+OJOgVh3AVTT3RP2mH3+FOaxlE5v72owk0A==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+
+  '@fontsource/krona-one@5.3.0':
+    resolution: {integrity: sha512-rkJqRZHCLHKO3hl23Y0RVet1OZJfzGrXW/RRUNR3wxKQHTf/Pxh/F00z8s1Bzia+mAKflQJxFl1KApDo7xPRLg==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -1214,6 +1220,8 @@ snapshots:
     dependencies:
       '@eslint/core': 1.2.1
       levn: 0.4.1
+
+  '@fontsource/krona-one@5.3.0': {}
 
   '@humanfs/core@0.19.2':
     dependencies:

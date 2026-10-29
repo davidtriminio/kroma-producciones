@@ -27,7 +27,7 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
             ]
         }
     ],
-    "fotografia": [
+    "cobertura-eventos": [
         {
             id: "foto-video",
             title: "Fotografía y video",
@@ -60,7 +60,9 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     alt: "Día del padre Pebbles imagen 5",
                 },
             ]
-        },
+        }
+    ],
+    "fotos-producto": [
         {
             id: "fotografias-productos",
             title: "Fotografías de Productos",

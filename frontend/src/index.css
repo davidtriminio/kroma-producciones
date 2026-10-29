@@ -1125,7 +1125,7 @@ body {
     gap: 1.25rem;
     padding: 0.5rem 0.625rem;
     list-style: none;
-    animation: clientsScroll 60s linear infinite;
+    animation: clientsScroll var(--marquee-duration, 60s) linear infinite;
 }
 
 .clients-marquee:hover .clients-track,
@@ -1135,7 +1135,7 @@ body {
 
 @keyframes clientsScroll {
     to {
-        transform: translateX(-50%);
+        transform: translateX(calc(-100% / var(--marquee-copies, 2)));
     }
 }
 
@@ -1189,4 +1189,15 @@ body {
     .clients-track li[aria-hidden="true"] {
         display: none;
     }
+}
+
+.service-chip {
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--brand) 40%, transparent);
+    background: color-mix(in srgb, var(--purple) 14%, transparent);
+    padding: 0.3rem 0.7rem;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--fg);
 }

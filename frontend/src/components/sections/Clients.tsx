@@ -1,5 +1,6 @@
+import type {CSSProperties} from "react";
 import SectionTitle from "../ui/SectionTitle.tsx";
-import {type ClientLogo, clients} from "../../data/index.ts";
+import {activeClients, type ClientLogo} from "../../data/index.ts";
 
 function ClientTile({client, hidden = false}: { client: ClientLogo; hidden?: boolean }) {
     return (
@@ -17,6 +18,15 @@ function ClientTile({client, hidden = false}: { client: ClientLogo; hidden?: boo
 }
 
 export default function Clients() {
+    if (activeClients.length === 0) return null;
+
+    // The track shifts by exactly one copy, so it needs enough copies to always fill the screen.
+    const copies = activeClients.length >= 12 ? 2 : 4;
+    const style = {
+        "--marquee-copies": copies,
+        "--marquee-duration": `${activeClients.length * 4}s`,
+    } as CSSProperties;
+
     return (
         <section id="clientes" className="py-section-gap">
             <div className="container-max mx-auto px-gutter">
@@ -30,13 +40,12 @@ export default function Clients() {
             </div>
 
             <div className="clients-marquee" data-reveal>
-                <ul className="clients-track">
-                    {clients.map((client) => (
-                        <ClientTile key={client.id} client={client}/>
-                    ))}
-                    {clients.map((client) => (
-                        <ClientTile key={`${client.id}-copy`} client={client} hidden/>
-                    ))}
+                <ul className="clients-track" style={style}>
+                    {Array.from({length: copies}, (_, copy) =>
+                        activeClients.map((client) => (
+                            <ClientTile key={`${client.id}-${copy}`} client={client} hidden={copy > 0}/>
+                        ))
+                    )}
                 </ul>
             </div>
         </section>

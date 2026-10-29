@@ -1,15 +1,17 @@
-export type CategoryId = "marketing" | "audiovisual" | "diseno" | "empresarial"
+export type CategoryId = "marketing" | "fotografia" | "video" | "diseno" | "empresarial"
 
 export type ServiceId =
     | "redes-sociales"
     | "asesoria-marketing"
-    | "fotografia"
-    | "video-comercial"
-    | "produccion-audiovisual"
+    | "sesiones-fotograficas"
+    | "cobertura-eventos"
+    | "fotos-producto"
+    | "sesiones-personales"
+    | "video-organico"
+    | "video-profesional"
     | "dron"
     | "branding"
     | "diseno-grafico"
-    | "rotulacion"
     | "paginas-web"
     | "catalogos-digitales"
     | "capacitaciones"
@@ -18,12 +20,14 @@ export type ServiceIconKey =
     | "share"
     | "target"
     | "camera"
-    | "video"
+    | "calendar"
+    | "package"
+    | "user"
+    | "smartphone"
     | "clapperboard"
     | "drone"
     | "pen-tool"
     | "palette"
-    | "signpost"
     | "globe"
     | "book-open"
     | "graduation-cap"
@@ -72,6 +76,8 @@ export type Service = {
     title: string
     description: string
     icon: ServiceIconKey
+    // Short list of what the service covers, shown on the card to make it easier to scan.
+    includes?: string[]
 }
 
 export type PortfolioItem = {
@@ -99,6 +105,8 @@ export type ClientLogo = {
     id: string
     name: string
     logo: string
+    // false hides the brand from the website without losing its data (seasonal clients).
+    active: boolean
     // How the logo is drawn, so the monochrome filter can keep it visible in both themes:
     // "white" is drawn in white, "dark-ink" is mostly black or very dark.
     tone?: "white" | "dark-ink"

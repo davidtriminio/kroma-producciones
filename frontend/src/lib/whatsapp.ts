@@ -7,17 +7,18 @@ export type WhatsAppLead = {
 
 const divider = "━━━━━━━━━━━━━━━━";
 
+// No emojis on purpose: some WhatsApp clients mangle them (and the text after them) when they come from a wa.me link.
 // WhatsApp renders *bold*, _italic_ and "> quote", so the message reads like a card.
 export function buildLeadMessage({name, company, service, message}: WhatsAppLead) {
     const lines = [
         "*NUEVA SOLICITUD · KROMA*",
         "_Agencia Publicitaria_",
         divider,
-        `👤 *Nombre:* ${name}`,
-        company ? `🏢 *Empresa:* ${company}` : null,
-        `🎯 *Servicio:* ${service}`,
+        `*Nombre:* ${name}`,
+        company ? `*Empresa:* ${company}` : null,
+        `*Servicio:* ${service}`,
         "",
-        "💬 *Proyecto:*",
+        "*Proyecto:*",
         ...message.split("\n").map((line) => `> ${line}`),
         divider,
         "_Enviado desde el sitio web_",

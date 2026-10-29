@@ -1,6 +1,7 @@
 export * from "./types.ts"
 export * from "./kroma.ts"
 export * from "./services.ts"
+export * from "./packages.ts"
 export * from "./works.ts"
 export * from "./portfolio.ts"
 export * from "./process.ts"

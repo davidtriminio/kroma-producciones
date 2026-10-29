@@ -89,7 +89,14 @@ export const services: Service[] = [
         title: "Video profesional",
         description: "Producciones en formato horizontal para televisión, proyecciones y presentaciones, desde la planificación hasta la edición final.",
         icon: "clapperboard",
-        includes: ["Eventos especiales", "Campañas", "Presentaciones corporativas", "Eventos"],
+        includes: ["Campañas", "Presentaciones corporativas", "Eventos"],
+    },
+    {
+        id: "eventos-especiales",
+        category: "video",
+        title: "Eventos especiales",
+        description: "Cobertura en video de tus eventos especiales, con edición lista para compartir en redes y pantallas.",
+        icon: "party",
     },
     {
         id: "dron",

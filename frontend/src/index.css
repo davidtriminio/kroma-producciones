@@ -997,3 +997,45 @@ body {
 .form-package-chip button:hover {
     color: var(--fg);
 }
+
+/*Mobile menu*/
+.mobile-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+    background: color-mix(in srgb, var(--bg) 96%, transparent);
+    backdrop-filter: blur(20px);
+    animation: modalDetailIn 220ms ease both;
+}
+
+.mobile-menu-link {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg);
+}
+
+.mobile-menu-link:last-child {
+    border-bottom: 0;
+}
+
+.mobile-menu-link:hover {
+    color: var(--brand);
+}
+
+/* The badge sits half outside the card, so the card can't clip it. */
+.package-card {
+    overflow: visible;
+}
+
+.package-card::before {
+    border-radius: inherit;
+}

@@ -4,7 +4,7 @@ import {activeClients, type ClientLogo} from "../../data/index.ts";
 
 function ClientTile({client, hidden = false}: { client: ClientLogo; hidden?: boolean }) {
     return (
-        <li className="client-tile" aria-hidden={hidden || undefined}>
+        <li className={`client-tile${client.tone === "white" ? " on-dark" : ""}`} aria-hidden={hidden || undefined}>
             <img
                 className={`client-logo${client.tone ? ` tone-${client.tone}` : ""}`}
                 src={client.logo}

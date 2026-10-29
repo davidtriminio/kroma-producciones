@@ -1146,6 +1146,7 @@ body {
     width: 11rem;
     align-items: center;
     justify-content: center;
+    padding: 0.75rem 1rem;
 }
 
 .client-logo {
@@ -1168,7 +1169,25 @@ body {
     filter: var(--logo-filter-ink);
 }
 
-.client-tile:hover .client-logo {
+/* Hovering a client reveals its real colors on a neutral chip so any logo stays readable. */
+.client-tile {
+    border-radius: 1.25rem;
+    transition: background 260ms ease, box-shadow 260ms ease;
+}
+
+.client-tile:hover {
+    background: #f7f5f1;
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--fg) 16%, transparent);
+}
+
+.client-tile.on-dark:hover {
+    background: #0b0810;
+}
+
+.client-tile:hover .client-logo,
+.client-tile:hover .client-logo.tone-white,
+.client-tile:hover .client-logo.tone-dark-ink {
+    filter: none;
     opacity: 1;
     transform: scale(1.06);
 }

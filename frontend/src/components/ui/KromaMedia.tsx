@@ -1,5 +1,5 @@
-import Logo from "./Logo";
-import type { ProjectMedia } from "../data/kroma.ts";
+import Logo from "./Logo.tsx";
+import type { ProjectMedia } from "../../data/types.ts";
 import { useEffect, useRef, useState } from "react";
 import KromaImage from "./KromaImage.tsx";
 

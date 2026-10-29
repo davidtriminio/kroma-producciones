@@ -1,9 +1,9 @@
-import Logo from "./Logo";
-import {type ServiceId, type WorkItem, worksData} from "../data/kroma.ts";
+import Logo from "../ui/Logo.tsx";
+import {type ServiceId, type WorkItem, worksData} from "../../data/index.ts";
 import {useEffect, useState} from "react";
 import {ArrowLeft, X} from "lucide-react";
-import KromaImage from "./KromaImage.tsx";
-import KromaMedia from "./KromaMedia.tsx";
+import KromaImage from "../ui/KromaImage.tsx";
+import KromaMedia from "../ui/KromaMedia.tsx";
 
 type Props = {
     serviceId: ServiceId | null

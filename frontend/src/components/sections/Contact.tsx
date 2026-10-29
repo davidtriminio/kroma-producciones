@@ -1,9 +1,9 @@
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../ui/SectionTitle.tsx";
 import {SiWhatsapp} from "@icons-pack/react-simple-icons";
 import {CircleAlert} from "lucide-react";
 import {type ChangeEvent, type FormEvent, useState} from "react";
-import {WHATSAPP_DISPLAY, WHATSAPP_NUMBER} from "../data/kroma.ts";
-import {buildLeadMessage, buildWhatsAppUrl} from "../lib/whatsapp.ts";
+import {kroma} from "../../data/kroma.ts";
+import {buildLeadMessage, buildWhatsAppUrl} from "../../lib/whatsapp.ts";
 
 type FieldName = "fullName" | "company" | "serviceType" | "message";
 type Values = Record<FieldName, string>;
@@ -95,7 +95,7 @@ export default function Contact() {
         };
 
         // Opened synchronously inside the submit handler so mobile browsers don't block it.
-        window.open(buildWhatsAppUrl(WHATSAPP_NUMBER, buildLeadMessage(lead)), "_blank", "noopener,noreferrer");
+        window.open(buildWhatsAppUrl(kroma.whatsapp.number, buildLeadMessage(lead)), "_blank", "noopener,noreferrer");
 
         setValues(emptyValues);
         setTouched({});
@@ -114,13 +114,13 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-10">
-                            <a className="group flex items-center gap-6" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
+                            <a className="group flex items-center gap-6" href={`https://wa.me/${kroma.whatsapp.number}`} target="_blank" rel="noopener noreferrer">
                 <span className="icon-shell text-brand">
   <SiWhatsapp className="h-5 w-5" strokeWidth={2.4} color={"#25D366"}/>
 </span>
                                 <div>
                                     <p className="mb-1 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">WhatsApp</p>
-                                    <p className="font-headline text-xl font-bold">{WHATSAPP_DISPLAY}</p>
+                                    <p className="font-headline text-xl font-bold">{kroma.whatsapp.display}</p>
                                 </div>
                             </a>
                         </div>

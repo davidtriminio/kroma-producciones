@@ -1,4 +1,4 @@
-import Logo from "./Logo";
+import Logo from "./Logo.tsx";
 import { useEffect, useRef, useState } from "react";
 
 type Props = {

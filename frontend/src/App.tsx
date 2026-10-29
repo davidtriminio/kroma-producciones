@@ -1,13 +1,13 @@
-import Logo from "./components/Logo";
+import Logo from "./components/ui/Logo.tsx";
 import {useEffect, useState} from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import WhoWeAre from "./components/WhoWeAre";
-import Services from "./components/Services";
-import Portfolio from "./components/Portfolio";
-import Process from "./components/Process";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import Navbar from "./components/layout/Navbar.tsx";
+import Hero from "./components/sections/Hero.tsx";
+import WhoWeAre from "./components/sections/WhoWeAre.tsx";
+import Services from "./components/sections/Services.tsx";
+import Portfolio from "./components/sections/Portfolio.tsx";
+import Process from "./components/sections/Process.tsx";
+import Contact from "./components/sections/Contact.tsx";
+import Footer from "./components/layout/Footer.tsx";
 
 export default function App() {
     const [isLoading, setIsLoading] = useState(true)

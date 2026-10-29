@@ -1,6 +1,6 @@
 import Logo from "../ui/Logo.tsx";
 import {type ServiceId, type WorkItem, services, worksData} from "../../data/index.ts";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {ArrowLeft, X} from "lucide-react";
 import KromaImage from "../ui/KromaImage.tsx";
 import KromaMedia from "../ui/KromaMedia.tsx";
@@ -17,9 +17,10 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
     const [loadedProjectMedia, setLoadedProjectMedia] = useState(0);
     const [fullscreenImage, setFullscreenImage] = useState<{ src: string; alt: string } | null>(null);
 
-    useEffect(() => {
-        setLoadedProjectMedia(0);
-    }, [selectedProject]);
+    const selectProject = (project: WorkItem | null) => {
+        setLoadedProjectMedia(0)
+        setSelectedProject(project)
+    }
 
     if (!open || !serviceId) return null
 
@@ -33,7 +34,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
 
     const closeModal = () => {
         setFullscreenImage(null)
-        setSelectedProject(null)
+        selectProject(null)
         onClose()
     };
 
@@ -53,7 +54,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                             className="modal-icon-button cursor-pointer"
                             onClick={() => {
                                 setFullscreenImage(null);
-                                setSelectedProject(null);
+                                selectProject(null);
                             }}
                         >
                             <ArrowLeft className="h-4 w-4"/>
@@ -78,7 +79,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                     key={work.id}
                                     className="project-card group text-left"
                                     style={{"--reveal-delay": `${index * 80}ms`} as React.CSSProperties}
-                                    onClick={() => setSelectedProject(work)}
+                                    onClick={() => selectProject(work)}
                                 >
                                     <div className="h-52 rounded-xl">
                                         <KromaImage

@@ -19,7 +19,7 @@ export default function Footer() {
                     </p>
                 </div>
 
-                <div className="flex gap-12">
+                <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-12">
                     <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-fg" href={kroma.social.instagram} target="_blank" rel="noopener noreferrer">
                         <SiInstagram className="h-5 w-5" strokeWidth={2.4} color={"#c1558b"}/>Instagram
                     </a>

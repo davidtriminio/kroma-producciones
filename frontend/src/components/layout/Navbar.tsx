@@ -1,7 +1,32 @@
+import {useEffect, useState} from "react";
+import {Menu, X} from "lucide-react";
 import Logo from "../ui/Logo.tsx";
 import ThemeToggle from "../ui/ThemeToggle.tsx";
+import {kroma} from "../../data/kroma.ts";
+
+const linkClass = "text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-fg";
 
 export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        if (!menuOpen) return;
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setMenuOpen(false);
+        };
+        const onResize = () => {
+            if (window.innerWidth >= 768) setMenuOpen(false);
+        };
+
+        window.addEventListener("keydown", onKeyDown);
+        window.addEventListener("resize", onResize);
+        return () => {
+            window.removeEventListener("keydown", onKeyDown);
+            window.removeEventListener("resize", onResize);
+        };
+    }, [menuOpen]);
+
     return (
         <nav
             id="navbar"
@@ -16,15 +41,11 @@ export default function Navbar() {
             </a>
 
             <div className="hidden items-center gap-8 md:flex">
-                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-fg" href="#quienes-somos">
-                    ¿Quiénes Somos?
-                </a>
-                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-fg" href="#servicios">
-                    Servicios
-                </a>
-                <a className="text-xs font-bold uppercase tracking-widest text-on-surface-variant transition-colors hover:text-fg" href="#contacto">
-                    Contacto
-                </a>
+                {kroma.nav.map((item) => (
+                    <a key={item.href} className={linkClass} href={item.href}>
+                        {item.label}
+                    </a>
+                ))}
             </div>
 
             <div className="flex items-center gap-2 sm:gap-3">
@@ -35,7 +56,32 @@ export default function Navbar() {
                     <span className="sm:hidden">Cotizar</span>
                     <span className="hidden sm:inline">Cotizar ahora</span>
                 </a>
+                <button
+                    type="button"
+                    className="icon-shell cursor-pointer text-fg md:hidden"
+                    aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+                    aria-expanded={menuOpen}
+                    aria-controls="mobile-menu"
+                    onClick={() => setMenuOpen((open) => !open)}
+                >
+                    {menuOpen ? <X className="h-4 w-4"/> : <Menu className="h-4 w-4"/>}
+                </button>
             </div>
+
+            {menuOpen && (
+                <div id="mobile-menu" className="mobile-menu md:hidden">
+                    {kroma.nav.map((item) => (
+                        <a
+                            key={item.href}
+                            className="mobile-menu-link"
+                            href={item.href}
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {item.label}
+                        </a>
+                    ))}
+                </div>
+            )}
         </nav>
     );
 }

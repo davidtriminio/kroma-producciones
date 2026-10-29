@@ -29,7 +29,7 @@ export default function WhoWeAre() {
                 <div className="md:col-span-5">
                     <SectionTitle>¿Quiénes Somos?</SectionTitle>
                     <p className="mb-5 max-w-md text-sm leading-relaxed text-on-surface-variant">
-                        KROMA PRODUCCIONES transforma marcas a través de contenido visual preciso, moderno y memorable.
+                        KROMA transforma marcas a través de contenido visual preciso, moderno y memorable.
                     </p>
                     <p className="max-w-md text-sm leading-relaxed text-on-surface-variant">
                         Unimos estrategia, diseño y producción para crear piezas con impacto real en plataformas digitales.

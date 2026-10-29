@@ -1,4 +1,4 @@
-﻿import {type ServiceId, type WorkItem, worksData} from "../data/kroma.ts";
+import {type ServiceId, type WorkItem, worksData} from "../data/kroma.ts";
 import {useEffect, useState} from "react";
 import {ArrowLeft, X} from "lucide-react";
 import KromaImage from "./KromaImage.tsx";
@@ -101,7 +101,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                         <div className="animate-modal-in relative pb-2">
                             {!projectMediaLoaded && (
                                 <div className="project-detail-loader">
-                                    <img src="/chroma.svg" alt="" aria-hidden="true"/>
+                                    <img src="/brand/kroma-white-512.webp" alt="" aria-hidden="true"/>
                                     <span>Cargando proyecto</span>
                                 </div>
                             )}

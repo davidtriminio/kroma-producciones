@@ -1,4 +1,4 @@
-﻿import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 export default {
     darkMode: "class",
@@ -26,8 +26,8 @@ export default {
                 "container-max": "1160px",
             },
             fontFamily: {
-                headline: ["Montserrat", "sans-serif"],
-                body: ["Montserrat", "sans-serif"],
+                headline: ["NCS Radhiumz", "Sackers Gothic", "sans-serif"],
+                body: ["Sackers Gothic", "sans-serif"],
             },
         },
     },

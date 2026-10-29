@@ -79,7 +79,7 @@ export default function App() {
       <div className="dark min-h-screen overflow-x-hidden bg-background text-white">
           {isLoading && (
               <div className="app-loader">
-                  <img src="/chroma.svg" alt="Kroma cargando" className="app-loader-logo" />
+                  <img src="/brand/kroma-white-512.webp" alt="Kroma cargando" className="app-loader-logo" />
               </div>
           )}
         <div className="grain-overlay" />

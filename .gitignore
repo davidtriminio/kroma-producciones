@@ -162,3 +162,5 @@ DESIGN.md
 
 # Vite
 .vite
+# Licensed font (NCS Radhiumz): personal-use only, do not commit until a commercial license is acquired
+frontend/public/fonts/NCSRadhiumz.woff2

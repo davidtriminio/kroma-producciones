@@ -1,44 +1,102 @@
 import SectionTitle from "./SectionTitle";
 import {SiWhatsapp} from "@icons-pack/react-simple-icons";
-import {type FormEvent, useState} from "react";
+import {CircleAlert} from "lucide-react";
+import {type ChangeEvent, type FormEvent, useState} from "react";
 import {WHATSAPP_DISPLAY, WHATSAPP_NUMBER} from "../data/kroma.ts";
 import {buildLeadMessage, buildWhatsAppUrl} from "../lib/whatsapp.ts";
 
+type FieldName = "fullName" | "company" | "serviceType" | "message";
+type Values = Record<FieldName, string>;
+type Errors = Partial<Record<FieldName, string>>;
+
+const FIELD_ORDER: FieldName[] = ["fullName", "company", "serviceType", "message"];
+const LIMITS = {name: 80, company: 60, message: 600};
+const emptyValues: Values = {fullName: "", company: "", serviceType: "", message: ""};
+
+function validate(values: Values): Errors {
+    const errors: Errors = {};
+    const name = values.fullName.trim();
+    const company = values.company.trim();
+    const message = values.message.trim();
+
+    if (!name) errors.fullName = "Escribe tu nombre completo.";
+    else if (!/\p{L}/u.test(name)) errors.fullName = "Usa letras en tu nombre.";
+    else if (name.length < 3) errors.fullName = "El nombre es muy corto (mínimo 3 caracteres).";
+
+    if (company.length > LIMITS.company) errors.company = `Máximo ${LIMITS.company} caracteres.`;
+
+    if (!values.serviceType) errors.serviceType = "Selecciona un tipo de servicio.";
+
+    if (!message) errors.message = "Cuéntanos sobre tu proyecto.";
+    else if (message.length < 10) errors.message = "Cuéntanos un poco más (mínimo 10 caracteres).";
+    else if (message.length > LIMITS.message) errors.message = `Máximo ${LIMITS.message} caracteres.`;
+
+    return errors;
+}
+
+function FieldError({id, message}: { id: string; message?: string }) {
+    if (!message) return null;
+
+    return (
+        <p id={id} className="form-error-message" role="alert">
+            <CircleAlert className="h-3.5 w-3.5 shrink-0" aria-hidden="true"/>
+            {message}
+        </p>
+    );
+}
+
 export default function Contact() {
+    const [values, setValues] = useState<Values>(emptyValues);
+    const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
+    const [submitted, setSubmitted] = useState(false);
     const [status, setStatus] = useState<"idle" | "opened">("idle");
-    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    const errors = validate(values);
+    const isValid = Object.keys(errors).length === 0;
+
+    const visibleError = (field: FieldName) => (touched[field] || submitted ? errors[field] : undefined);
+
+    const controlClass = (field: FieldName) => {
+        const showValid = touched[field] && !errors[field] && values[field].trim() !== "";
+        return `form-control${showValid ? " is-valid" : ""}`;
+    };
+
+    const fieldProps = (field: FieldName) => ({
+        value: values[field],
+        "aria-invalid": visibleError(field) ? (true as const) : undefined,
+        "aria-describedby": visibleError(field) ? `${field}-error` : undefined,
+        onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+            setValues((current) => ({...current, [field]: event.target.value}));
+            setStatus("idle");
+        },
+        onBlur: () => setTouched((current) => ({...current, [field]: true})),
+    });
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setSubmitted(true);
 
-        const form = event.currentTarget;
-        const formData = new FormData(form);
+        const firstInvalid = FIELD_ORDER.find((field) => errors[field]);
 
-        const lead = {
-            name: String(formData.get("fullName") || "").trim(),
-            company: String(formData.get("company") || "").trim(),
-            service: String(formData.get("serviceType") || "").trim(),
-            message: String(formData.get("message") || "").trim(),
-        };
-
-        const nextErrors: Record<string, string> = {};
-
-        if (!lead.name) nextErrors.fullName = "Escribe tu nombre completo.";
-        if (!lead.service) nextErrors.serviceType = "Selecciona un tipo de servicio.";
-        if (!lead.message) nextErrors.message = "Cuéntanos sobre tu proyecto.";
-
-        if (Object.keys(nextErrors).length > 0) {
-            setErrors(nextErrors);
+        if (firstInvalid) {
             setStatus("idle");
+            document.getElementById(firstInvalid)?.focus();
             return;
         }
 
-        setErrors({});
+        const lead = {
+            name: values.fullName.trim(),
+            company: values.company.trim(),
+            service: values.serviceType,
+            message: values.message.trim(),
+        };
 
         // Opened synchronously inside the submit handler so mobile browsers don't block it.
         window.open(buildWhatsAppUrl(WHATSAPP_NUMBER, buildLeadMessage(lead)), "_blank", "noopener,noreferrer");
 
-        form.reset();
+        setValues(emptyValues);
+        setTouched({});
+        setSubmitted(false);
         setStatus("opened");
     };
 
@@ -65,35 +123,39 @@ export default function Contact() {
                         </div>
                     </div>
 
-                    <form className="space-y-5" onSubmit={handleSubmit}>
+                    <form className="space-y-5" onSubmit={handleSubmit} noValidate>
                         <div className="form-field">
                             <label className="form-label" htmlFor="fullName">
                                 Nombre completo
                             </label>
                             <input
+                                {...fieldProps("fullName")}
                                 id="fullName"
                                 name="fullName"
-                                className="form-control"
-                                placeholder="Ej. John Doe"
+                                className={controlClass("fullName")}
+                                placeholder="Ej. Juan Pérez"
                                 type="text"
-                                required
+                                autoComplete="name"
+                                maxLength={LIMITS.name}
                             />
+                            <FieldError id="fullName-error" message={visibleError("fullName")}/>
                         </div>
-                        {errors.fullName && (
-                            <p className="form-error-message">{errors.fullName}</p>
-                        )}
 
                         <div className="form-field">
                             <label className="form-label" htmlFor="company">
                                 Empresa o marca (opcional)
                             </label>
                             <input
+                                {...fieldProps("company")}
                                 id="company"
                                 name="company"
-                                className="form-control"
+                                className={controlClass("company")}
                                 placeholder="Ej. Mi Marca"
                                 type="text"
+                                autoComplete="organization"
+                                maxLength={LIMITS.company + 20}
                             />
+                            <FieldError id="company-error" message={visibleError("company")}/>
                         </div>
 
                         <div className="form-field">
@@ -103,17 +165,19 @@ export default function Contact() {
 
                             <div className="form-select-wrap">
                                 <select
+                                    {...fieldProps("serviceType")}
                                     id="serviceType"
                                     name="serviceType"
-                                    className="form-control appearance-none pr-12"
-                                    required
+                                    className={`${controlClass("serviceType")} appearance-none pr-12`}
                                 >
-                                    <option value="PRODUCCIÓN AUDIOVISUAL">Producción Audiovisual</option>
-                                    <option value="MANEJO DE REDES">Manejo de Redes</option>
-                                    <option value="DISEÑO WEB">Diseño Web</option>
-                                    <option value="BRANDING">Branding</option>
+                                    <option value="">Selecciona un servicio</option>
+                                    <option value="Producción Audiovisual">Producción Audiovisual</option>
+                                    <option value="Manejo de Redes">Manejo de Redes</option>
+                                    <option value="Diseño Web">Diseño Web</option>
+                                    <option value="Branding">Branding</option>
                                 </select>
                             </div>
+                            <FieldError id="serviceType-error" message={visibleError("serviceType")}/>
                         </div>
 
                         <div className="form-field">
@@ -121,17 +185,19 @@ export default function Contact() {
                                 Mensaje
                             </label>
                             <textarea
+                                {...fieldProps("message")}
                                 id="message"
                                 name="message"
-                                className="form-control form-textarea"
+                                className={`${controlClass("message")} form-textarea`}
                                 placeholder="Cuéntanos sobre tu proyecto"
                                 rows={5}
-                                required
                             />
-
-                            {errors.message && (
-                                <p className="form-error-message">{errors.message}</p>
-                            )}
+                            <div className="mt-2 flex items-start justify-between gap-4">
+                                <FieldError id="message-error" message={visibleError("message")}/>
+                                <span className={`form-counter ${values.message.length > LIMITS.message ? "is-over" : ""}`}>
+                                    {values.message.length}/{LIMITS.message}
+                                </span>
+                            </div>
                         </div>
 
                         <button
@@ -142,15 +208,21 @@ export default function Contact() {
                             Enviar por WhatsApp
                         </button>
 
-                        <p className="text-center text-[11px] leading-relaxed text-on-surface-variant">
-                            Se abrirá WhatsApp con tu solicitud lista para enviar.
-                        </p>
+                        {submitted && !isValid && (
+                            <p className="form-status form-status-error" role="alert">
+                                Revisa los campos marcados en rojo antes de continuar.
+                            </p>
+                        )}
 
                         {status === "opened" && (
                             <p className="form-status form-status-success" role="status">
                                 Abrimos WhatsApp. Pulsa enviar para que te respondamos pronto.
                             </p>
                         )}
+
+                        <p className="text-center text-[11px] leading-relaxed text-on-surface-variant">
+                            Se abrirá WhatsApp con tu solicitud lista para enviar.
+                        </p>
                     </form>
                 </div>
 

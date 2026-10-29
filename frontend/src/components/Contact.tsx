@@ -11,6 +11,8 @@ type Errors = Partial<Record<FieldName, string>>;
 
 const FIELD_ORDER: FieldName[] = ["fullName", "company", "serviceType", "message"];
 const LIMITS = {name: 80, company: 60, message: 600};
+// Inputs accept a couple of extra characters so the limit error can show, but never unlimited text.
+const OVERFLOW = 2;
 const emptyValues: Values = {fullName: "", company: "", serviceType: "", message: ""};
 
 function validate(values: Values): Errors {
@@ -22,6 +24,7 @@ function validate(values: Values): Errors {
     if (!name) errors.fullName = "Escribe tu nombre completo.";
     else if (!/\p{L}/u.test(name)) errors.fullName = "Usa letras en tu nombre.";
     else if (name.length < 3) errors.fullName = "El nombre es muy corto (mínimo 3 caracteres).";
+    else if (name.length > LIMITS.name) errors.fullName = `Máximo ${LIMITS.name} caracteres.`;
 
     if (company.length > LIMITS.company) errors.company = `Máximo ${LIMITS.company} caracteres.`;
 
@@ -136,7 +139,7 @@ export default function Contact() {
                                 placeholder="Ej. Juan Pérez"
                                 type="text"
                                 autoComplete="name"
-                                maxLength={LIMITS.name}
+                                maxLength={LIMITS.name + OVERFLOW}
                             />
                             <FieldError id="fullName-error" message={visibleError("fullName")}/>
                         </div>
@@ -153,7 +156,7 @@ export default function Contact() {
                                 placeholder="Ej. Mi Marca"
                                 type="text"
                                 autoComplete="organization"
-                                maxLength={LIMITS.company + 20}
+                                maxLength={LIMITS.company + OVERFLOW}
                             />
                             <FieldError id="company-error" message={visibleError("company")}/>
                         </div>
@@ -191,6 +194,7 @@ export default function Contact() {
                                 className={`${controlClass("message")} form-textarea`}
                                 placeholder="Cuéntanos sobre tu proyecto"
                                 rows={5}
+                                maxLength={LIMITS.message + OVERFLOW}
                             />
                             <div className="mt-2 flex items-start justify-between gap-4">
                                 <FieldError id="message-error" message={visibleError("message")}/>

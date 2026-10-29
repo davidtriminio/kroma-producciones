@@ -99,6 +99,7 @@ export type ClientLogo = {
     id: string
     name: string
     logo: string
-    // Logos drawn in white need a dark tile to stay visible in both themes.
-    tile?: "light" | "dark"
+    // How the logo is drawn, so the monochrome filter can keep it visible in both themes:
+    // "white" is drawn in white, "dark-ink" is mostly black or very dark.
+    tone?: "white" | "dark-ink"
 }

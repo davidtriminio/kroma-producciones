@@ -39,6 +39,8 @@
     --highlight: #dfc52d;
     --highlight-text: #8a7410;
     --on-highlight: #020201;
+    --danger: #c81e1e;
+    --success: #15803d;
     --hero-art-opacity: 0.1;
     --hero-art-filter: grayscale(1) invert(1);
     --on-purple: #ffffff;
@@ -730,20 +732,45 @@ body {
 }
 
 .form-status-success {
-    color: #22c55e;
+    color: var(--success);
 }
 
 .form-status-error {
-    color: #ef4444;
+    color: var(--danger);
 }
 
 /*Form error styles*/
 .form-error-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
     margin-top: 0.55rem;
     font-size: 0.7rem;
     font-weight: 800;
     line-height: 1.45;
-    color: #ef4444;
+    color: var(--danger);
+}
+
+.form-control[aria-invalid="true"] {
+    border-color: var(--danger);
+    background: color-mix(in srgb, var(--danger) 7%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--danger) 12%, transparent);
+}
+
+.form-control.is-valid {
+    border-color: color-mix(in srgb, var(--success) 55%, transparent);
+}
+
+.form-counter {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--muted);
+}
+
+.form-counter.is-over {
+    color: var(--danger);
 }
 
 .form-textarea {

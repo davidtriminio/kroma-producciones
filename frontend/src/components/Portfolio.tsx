@@ -6,31 +6,27 @@ import KromaImage from "./KromaImage.tsx";
 const portfolioItems = [
     {
         span: "md:col-span-2 md:row-span-1",
-        image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuCmHUKN0l7vvpB1MMH0NSESeUqxQCKdS3NT1qCMJrfY6_5tPcuvOcS4vi1ZQncrkdjvB0wdc-nI2e4NfPngb6YMdu1fKou_WbXQWvAHRy72djN7YMX-E4FiIiItmr-rtIhzz6uHUEgKoXiPiRjBCdpGaLeBgyVz2RE4zjVYl7933vTHyzZNeWXfIjjAG7OCnZnotpobuHFCVkzEDSgcdclh5rhyoyHsGawhb-dkpn8TdfMip689y6Q0A3UK5SY2ImjvB2LAOgtIHvHl",
+        image: "/services/dia-padre-pebbles/img1.webp",
         tag: "Audiovisual",
-        title: "Campaña Global 'Vision'",
+        title: "Día del Padre · Pebbles and Stones",
     },
     {
         span: "md:col-span-2 md:row-span-1",
-        image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuD72I69Hh5_Gbpzovtxj5pYnZNfYPpdmceZLV0j5TyTYF3kMfr2i229IKpMokpjpu3aFUggZPFNedVCXy5tDiO9inuiXLOQ-M3dlyzNS2wJ6YVP7RA1YrxhS5SAMZbQ8611IpQtbkY9PqAwNfyjOGY2Jme6h_-hVTf4sT6CNpMxDTT0hsnU67cJ_5UzYuJlYFw-hSJ6O03V122XSBYPXhUOKg2hZgPB8LAyYUYDNerKp6FXfX_CulT2VoPdTJPt6MtR-CVroMVCfHV3",
+        image: "/services/branding/mama-linda/img1.webp",
         tag: "Branding",
-        title: "Identidad Tech Solutions",
+        title: "Branding Mama Linda",
     },
     {
         span: "md:col-span-2 md:row-span-1",
-        image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuDp6H4yW-rfiW8wgmQxWAXLJbZWDzW1KfLE0kOFNNEigPlOjaHmTmITTjse00r1Td2sWs9cE1GV6BhXhfpJfUlArT5KqHdIzrmeM_Ta3VSYAAZ7e-vYMZlQxYfYJGnAVkaTiz2Tpeg4jhmfSMth3D32ZL0CHglzkWbbW-CilmmwhIQBvwTEyeeMq0HDTH1BC8cFjbPzRA4E-q7mz3vq3TIRG3JkOzK7hfm1fHpFvZlMC1dX4UQBzviXZcwYq6blzjKaAHs-Yj2qO23B",
-        tag: "Web",
-        title: "E-commerce Ultra",
+        image: "/services/tomas-drones/poster-drones.webp",
+        tag: "Audiovisual",
+        title: "Tomas de Drones",
     },
     {
         span: "md:col-span-2 md:row-span-1",
-        image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuCvr6_MLcKud5W4dL5dwumfWpqbLH--sQfu_eDtMQiEB6RJdnXu1Ctu1jxF4pbY39khxSnIG2W_KdU_rOEC2l_ea0_G9Ew5UfY8OIQ_JavYJ5jv61tNqJmo0IrpOh1dLN2dOMP_fZerK4gqjNOMeM9j-49B1_vnNX9qHRCycPb0L1zbUqMgzk9YJGTzTubumnceSz1mspGGSSjj12dMTx9WdLlAn9_xXFcER3g4J9qgJlojnDkTa-iOtxnMDHpLg2jV6DlRJzGW9MAi",
-        tag: "Social Media",
-        title: "Contenido Viral",
+        image: "/services/social-media/dia-madres/img1.webp",
+        tag: "Redes Sociales",
+        title: "Campaña Día de la Madre",
     },
 ];
 
@@ -106,10 +102,10 @@ export default function Portfolio() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"/>
 
                         <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
-              <span className="mb-2 block text-[10px] font-black uppercase tracking-[0.2em] text-brand">
+              <span className="mb-2 block text-[10px] font-black uppercase tracking-[0.2em] text-[#d9c8ec]">
                 {item.tag}
               </span>
-                            <h3 className="font-headline text-xl font-black uppercase leading-none md:text-3xl">
+                            <h3 className="font-headline text-xl font-black uppercase leading-none text-white md:text-3xl">
                                 {item.title}
                             </h3>
                         </div>

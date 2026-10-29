@@ -22,6 +22,7 @@ export default function KromaImage({
     const [failed, setFailed] = useState(false);
     const settledRef = useRef(false);
     const timeoutRef = useRef<number | null>(null);
+    const wrapRef = useRef<HTMLDivElement | null>(null);
 
     const clearMediaTimeout = () => {
         if (timeoutRef.current) {
@@ -56,15 +57,41 @@ export default function KromaImage({
         setFailed(false);
         clearMediaTimeout();
 
-        timeoutRef.current = window.setTimeout(() => {
-            failLoad();
-        }, 7000);
+        const startTimeout = () => {
+            timeoutRef.current = window.setTimeout(() => {
+                failLoad();
+            }, 12000);
+        };
 
-        return clearMediaTimeout;
+        const wrap = wrapRef.current;
+
+        // A lazy image below the fold never starts loading, so only start the
+        // fallback timer once it is close to the viewport.
+        if (loading === "eager" || !wrap || !("IntersectionObserver" in window)) {
+            startTimeout();
+            return clearMediaTimeout;
+        }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) return;
+
+                observer.disconnect();
+                startTimeout();
+            },
+            {rootMargin: "300px"}
+        );
+
+        observer.observe(wrap);
+
+        return () => {
+            observer.disconnect();
+            clearMediaTimeout();
+        };
     }, [src]);
 
     return (
-        <div className="kroma-image-wrap">
+        <div className="kroma-image-wrap" ref={wrapRef}>
             {!loaded && !failed && (
                 <div className="kroma-image-loader">
                     <Logo size="sm" alt="" />

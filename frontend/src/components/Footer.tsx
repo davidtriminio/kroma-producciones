@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import {WHATSAPP_NUMBER} from "../data/kroma.ts";
 import {SiFacebook, SiInstagram, SiWhatsapp} from "@icons-pack/react-simple-icons";
 
 export default function Footer() {
@@ -25,7 +26,7 @@ export default function Footer() {
                     <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-fg" href="https://www.facebook.com/profile.php?id=61578765474884" target="_blank" rel="noopener noreferrer">
                         <SiFacebook className="h-5 w-5" strokeWidth={2.4} color={"#3b5998"}/> Facebook
                     </a>
-                    <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-fg" href="https://wa.me/50488434254" target="_blank" rel="noopener noreferrer">
+                    <a className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant transition-all hover:text-fg" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
                         <SiWhatsapp className="h-5 w-5" strokeWidth={2.4} color={"#25D366"}/> WhatsApp
                     </a>
                 </div>

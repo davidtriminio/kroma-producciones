@@ -1,68 +1,31 @@
 import SectionTitle from "./SectionTitle";
 import {SiWhatsapp} from "@icons-pack/react-simple-icons";
-import emailjs from "@emailjs/browser"
 import {type FormEvent, useState} from "react";
+import {WHATSAPP_DISPLAY, WHATSAPP_NUMBER} from "../data/kroma.ts";
+import {buildLeadMessage, buildWhatsAppUrl} from "../lib/whatsapp.ts";
 
 export default function Contact() {
-    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-    const browserLanguage = navigator.language.toLowerCase();
-    const isSpanish = browserLanguage.startsWith("es");
-
-    const copy = {
-        requiredName: isSpanish ? "Escribe tu nombre completo." : "Enter your full name.",
-        requiredEmail: isSpanish ? "Escribe tu correo electrónico." : "Enter your email address.",
-        invalidEmail: isSpanish ? "Escribe un correo válido." : "Enter a valid email address.",
-        requiredService: isSpanish ? "Selecciona un tipo de servicio." : "Choose a service type.",
-        requiredMessage: isSpanish ? "Escribe un mensaje." : "Enter a message.",
-        success: isSpanish
-            ? "Mensaje enviado correctamente. Te contactaremos pronto."
-            : "Message sent successfully. We will contact you soon.",
-        error: isSpanish
-            ? "No pudimos enviar el mensaje. Intenta nuevamente."
-            : "We could not send the message. Please try again.",
-        loading: isSpanish ? "Enviando..." : "Sending...",
-        submit: isSpanish ? "Enviar propuesta" : "Send proposal",
-    };
-
+    const [status, setStatus] = useState<"idle" | "opened">("idle");
     const [errors, setErrors] = useState<Record<string, string>>({});
 
-    const isValidEmail = (email: string) => {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    };
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        const rawServiceType = String(formData.get("serviceType") || "");
-
-        const payload = {
-            from_name: String(formData.get("fullName") || "").trim(),
-            from_email: String(formData.get("email") || "").trim(),
-            service_type: rawServiceType.trim().toLocaleUpperCase(isSpanish ? "es" : "en"),
+        const lead = {
+            name: String(formData.get("fullName") || "").trim(),
+            company: String(formData.get("company") || "").trim(),
+            service: String(formData.get("serviceType") || "").trim(),
             message: String(formData.get("message") || "").trim(),
         };
 
         const nextErrors: Record<string, string> = {};
 
-        if (!payload.from_name) {
-            nextErrors.fullName = copy.requiredName;
-        }
-
-        if (!payload.from_email) {
-            nextErrors.email = copy.requiredEmail;
-        } else if (!isValidEmail(payload.from_email)) {
-            nextErrors.email = copy.invalidEmail;
-        }
-
-        if (!payload.service_type) {
-            nextErrors.serviceType = copy.requiredService;
-        }
-
-        if (!payload.message) {
-            nextErrors.message = copy.requiredMessage;
-        }
+        if (!lead.name) nextErrors.fullName = "Escribe tu nombre completo.";
+        if (!lead.service) nextErrors.serviceType = "Selecciona un tipo de servicio.";
+        if (!lead.message) nextErrors.message = "Cuéntanos sobre tu proyecto.";
 
         if (Object.keys(nextErrors).length > 0) {
             setErrors(nextErrors);
@@ -72,41 +35,13 @@ export default function Contact() {
 
         setErrors({});
 
-        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+        // Opened synchronously inside the submit handler so mobile browsers don't block it.
+        window.open(buildWhatsAppUrl(WHATSAPP_NUMBER, buildLeadMessage(lead)), "_blank", "noopener,noreferrer");
 
-        if (!serviceId || !templateId || !publicKey) {
-            console.error("Missing EmailJS environment variables", {
-                hasServiceId: Boolean(serviceId),
-                hasTemplateId: Boolean(templateId),
-                hasPublicKey: Boolean(publicKey),
-            });
-
-            setStatus("error");
-            return;
-        }
-
-        try {
-            setStatus("loading");
-
-            await emailjs.send(
-                serviceId,
-                templateId,
-                payload,
-                {
-                    publicKey: publicKey,
-                }
-            );
-
-            form.reset();
-            setStatus("success");
-            setErrors({});
-        } catch (error) {
-            console.error("EmailJS send failed:", error);
-            setStatus("error");
-        }
+        form.reset();
+        setStatus("opened");
     };
+
     return (
         <section className="container-max mx-auto px-gutter py-section-gap" id="contacto">
             <div data-reveal className="relative overflow-hidden glass-card p-12 md:p-24">
@@ -118,13 +53,13 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-10">
-                            <a className="group flex items-center gap-6" href="https://wa.me/50488434254" target="_blank" rel="noopener noreferrer">
+                            <a className="group flex items-center gap-6" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
                 <span className="icon-shell text-brand">
   <SiWhatsapp className="h-5 w-5" strokeWidth={2.4} color={"#25D366"}/>
 </span>
                                 <div>
                                     <p className="mb-1 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">WhatsApp</p>
-                                    <p className="font-headline text-xl font-bold">+504 8843 4254</p>
+                                    <p className="font-headline text-xl font-bold">{WHATSAPP_DISPLAY}</p>
                                 </div>
                             </a>
                         </div>
@@ -149,21 +84,17 @@ export default function Contact() {
                         )}
 
                         <div className="form-field">
-                            <label className="form-label" htmlFor="email">
-                                Email corporativo
+                            <label className="form-label" htmlFor="company">
+                                Empresa o marca (opcional)
                             </label>
                             <input
-                                id="email"
-                                name="email"
+                                id="company"
+                                name="company"
                                 className="form-control"
-                                placeholder="correo@empresa.com"
-                                type="email"
-                                required
+                                placeholder="Ej. Mi Marca"
+                                type="text"
                             />
                         </div>
-                        {errors.email && (
-                            <p className="form-error-message">{errors.email}</p>
-                        )}
 
                         <div className="form-field">
                             <label className="form-label" htmlFor="serviceType">
@@ -193,8 +124,9 @@ export default function Contact() {
                                 id="message"
                                 name="message"
                                 className="form-control form-textarea"
-                                placeholder={isSpanish ? "Cuéntanos sobre tu proyecto" : "Tell us about your project"}
+                                placeholder="Cuéntanos sobre tu proyecto"
                                 rows={5}
+                                required
                             />
 
                             {errors.message && (
@@ -203,22 +135,20 @@ export default function Contact() {
                         </div>
 
                         <button
-                            className="pill-button-primary mt-3 w-full cursor-pointer font-black uppercase tracking-[0.24em] disabled:cursor-not-allowed disabled:opacity-60"
+                            className="pill-button-primary mt-3 flex w-full cursor-pointer items-center justify-center gap-3 font-black uppercase tracking-[0.2em]"
                             type="submit"
-                            disabled={status === "loading"}
                         >
-                            {status === "loading" ? copy.loading : copy.submit}
+                            <SiWhatsapp className="h-4 w-4"/>
+                            Enviar por WhatsApp
                         </button>
 
-                        {status === "success" && (
-                            <p className="form-status form-status-success">
-                                {copy.success}
-                            </p>
-                        )}
+                        <p className="text-center text-[11px] leading-relaxed text-on-surface-variant">
+                            Se abrirá WhatsApp con tu solicitud lista para enviar.
+                        </p>
 
-                        {status === "error" && (
-                            <p className="form-status form-status-error">
-                                {copy.error}
+                        {status === "opened" && (
+                            <p className="form-status form-status-success" role="status">
+                                Abrimos WhatsApp. Pulsa enviar para que te respondamos pronto.
                             </p>
                         )}
                     </form>

@@ -1,5 +1,5 @@
+import {useCallback, useEffect, useRef, useState} from "react";
 import Logo from "./Logo.tsx";
-import { useEffect, useRef, useState } from "react";
 
 type Props = {
     src: string;
@@ -10,57 +10,38 @@ type Props = {
     onLoad?: () => void;
 };
 
-export default function KromaImage({
-                                       src,
-                                       alt,
-                                       className = "",
-                                       loading = "lazy",
-                                       fetchPriority = "auto",
-                                       onLoad,
-                                   }: Props) {
-    const [loaded, setLoaded] = useState(false);
-    const [failed, setFailed] = useState(false);
-    const settledRef = useRef(false);
-    const timeoutRef = useRef<number | null>(null);
+const LOAD_TIMEOUT_MS = 12000;
+
+function KromaImageContent({
+                               src,
+                               alt,
+                               className = "",
+                               loading = "lazy",
+                               fetchPriority = "auto",
+                               onLoad,
+                           }: Props) {
+    const [status, setStatus] = useState<"loading" | "loaded" | "failed">("loading");
     const wrapRef = useRef<HTMLDivElement | null>(null);
-
-    const clearMediaTimeout = () => {
-        if (timeoutRef.current) {
-            window.clearTimeout(timeoutRef.current);
-            timeoutRef.current = null;
-        }
-    };
-
-    const finishLoad = () => {
-        if (settledRef.current) return;
-
-        settledRef.current = true;
-        clearMediaTimeout();
-        setLoaded(true);
-        setFailed(false);
-        onLoad?.();
-    };
-
-    const failLoad = () => {
-        if (settledRef.current) return;
-
-        settledRef.current = true;
-        clearMediaTimeout();
-        setLoaded(false);
-        setFailed(true);
-        onLoad?.();
-    };
+    const settledRef = useRef(false);
+    const onLoadRef = useRef(onLoad);
 
     useEffect(() => {
-        settledRef.current = false;
-        setLoaded(false);
-        setFailed(false);
-        clearMediaTimeout();
+        onLoadRef.current = onLoad;
+    });
+
+    const settle = useCallback((next: "loaded" | "failed") => {
+        if (settledRef.current) return;
+
+        settledRef.current = true;
+        setStatus(next);
+        onLoadRef.current?.();
+    }, []);
+
+    useEffect(() => {
+        let timer: number | undefined;
 
         const startTimeout = () => {
-            timeoutRef.current = window.setTimeout(() => {
-                failLoad();
-            }, 12000);
+            timer = window.setTimeout(() => settle("failed"), LOAD_TIMEOUT_MS);
         };
 
         const wrap = wrapRef.current;
@@ -69,7 +50,7 @@ export default function KromaImage({
         // fallback timer once it is close to the viewport.
         if (loading === "eager" || !wrap || !("IntersectionObserver" in window)) {
             startTimeout();
-            return clearMediaTimeout;
+            return () => window.clearTimeout(timer);
         }
 
         const observer = new IntersectionObserver(
@@ -86,19 +67,19 @@ export default function KromaImage({
 
         return () => {
             observer.disconnect();
-            clearMediaTimeout();
+            window.clearTimeout(timer);
         };
-    }, [src]);
+    }, [loading, settle]);
 
     return (
         <div className="kroma-image-wrap" ref={wrapRef}>
-            {!loaded && !failed && (
+            {status === "loading" && (
                 <div className="kroma-image-loader">
-                    <Logo size="sm" alt="" />
+                    <Logo size="sm" alt=""/>
                 </div>
             )}
 
-            {failed ? (
+            {status === "failed" ? (
                 <div className="media-fallback">
                     <span>{alt}</span>
                 </div>
@@ -109,11 +90,16 @@ export default function KromaImage({
                     loading={loading}
                     decoding="async"
                     fetchPriority={fetchPriority}
-                    onLoad={finishLoad}
-                    onError={failLoad}
-                    className={`${className} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+                    onLoad={() => settle("loaded")}
+                    onError={() => settle("failed")}
+                    className={`${className} transition-opacity duration-500 ${status === "loaded" ? "opacity-100" : "opacity-0"}`}
                 />
             )}
         </div>
     );
+}
+
+// Keyed by src so a new image starts from a clean loading state.
+export default function KromaImage(props: Props) {
+    return <KromaImageContent key={props.src} {...props}/>;
 }

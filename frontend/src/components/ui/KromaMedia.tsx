@@ -1,7 +1,7 @@
-import Logo from "./Logo.tsx";
-import type { ProjectMedia } from "../../data/types.ts";
-import { useEffect, useRef, useState } from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
+import type {ProjectMedia} from "../../data/types.ts";
 import KromaImage from "./KromaImage.tsx";
+import Logo from "./Logo.tsx";
 
 type Props = {
     media: ProjectMedia;
@@ -9,54 +9,62 @@ type Props = {
     onLoad?: () => void;
 };
 
-export default function KromaMedia({ media, className = "", onLoad }: Props) {
-    const [videoReady, setVideoReady] = useState(false);
-    const [videoFailed, setVideoFailed] = useState(false);
+type VideoMedia = Extract<ProjectMedia, { type: "video" }>;
+
+const VIDEO_TIMEOUT_MS = 9000;
+
+function KromaVideo({media, className = "", onLoad}: Props & { media: VideoMedia }) {
+    const [status, setStatus] = useState<"loading" | "ready" | "failed">("loading");
     const settledRef = useRef(false);
-    const timeoutRef = useRef<number | null>(null);
-
-    const clearMediaTimeout = () => {
-        if (timeoutRef.current) {
-            window.clearTimeout(timeoutRef.current);
-            timeoutRef.current = null;
-        }
-    };
-
-    const finishVideo = () => {
-        if (settledRef.current) return;
-
-        settledRef.current = true;
-        clearMediaTimeout();
-        setVideoReady(true);
-        setVideoFailed(false);
-        onLoad?.();
-    };
-
-    const failVideo = () => {
-        if (settledRef.current) return;
-
-        settledRef.current = true;
-        clearMediaTimeout();
-        setVideoReady(false);
-        setVideoFailed(true);
-        onLoad?.();
-    };
+    const onLoadRef = useRef(onLoad);
 
     useEffect(() => {
-        settledRef.current = false;
-        setVideoReady(false);
-        setVideoFailed(false);
-        clearMediaTimeout();
+        onLoadRef.current = onLoad;
+    });
 
-        if (media.type !== "video") return;
+    const settle = useCallback((next: "ready" | "failed") => {
+        if (settledRef.current) return;
 
-        timeoutRef.current = window.setTimeout(() => {
-            failVideo();
-        }, 9000);
+        settledRef.current = true;
+        setStatus(next);
+        onLoadRef.current?.();
+    }, []);
 
-        return clearMediaTimeout;
-    }, [media.type, media.type === "video" ? media.src : ""]);
+    useEffect(() => {
+        const timer = window.setTimeout(() => settle("failed"), VIDEO_TIMEOUT_MS);
+        return () => window.clearTimeout(timer);
+    }, [settle]);
 
+    return (
+        <div className="kroma-video-wrap">
+            {status === "loading" && (
+                <div className="kroma-image-loader">
+                    <Logo size="sm" alt=""/>
+                </div>
+            )}
+
+            {status === "failed" ? (
+                <div className="media-fallback">
+                    <span>{media.title}</span>
+                </div>
+            ) : (
+                <video
+                    className={`${className} transition-opacity duration-500 ${status === "ready" ? "opacity-100" : "opacity-0"}`}
+                    src={media.src}
+                    poster={media.poster}
+                    controls
+                    preload="metadata"
+                    playsInline
+                    onLoadedMetadata={() => settle("ready")}
+                    onCanPlay={() => settle("ready")}
+                    onError={() => settle("failed")}
+                />
+            )}
+        </div>
+    );
+}
+
+export default function KromaMedia({media, className = "", onLoad}: Props) {
     if (media.type === "image") {
         return (
             <KromaImage
@@ -68,31 +76,6 @@ export default function KromaMedia({ media, className = "", onLoad }: Props) {
         );
     }
 
-    return (
-        <div className="kroma-video-wrap">
-            {!videoReady && !videoFailed && (
-                <div className="kroma-image-loader">
-                    <Logo size="sm" alt="" />
-                </div>
-            )}
-
-            {videoFailed ? (
-                <div className="media-fallback">
-                    <span>{media.title}</span>
-                </div>
-            ) : (
-                <video
-                    className={`${className} transition-opacity duration-500 ${videoReady ? "opacity-100" : "opacity-0"}`}
-                    src={media.src}
-                    poster={media.poster}
-                    controls
-                    preload="metadata"
-                    playsInline
-                    onLoadedMetadata={finishVideo}
-                    onCanPlay={finishVideo}
-                    onError={failVideo}
-                />
-            )}
-        </div>
-    );
+    // Keyed by src so a new video starts from a clean loading state.
+    return <KromaVideo key={media.src} media={media} className={className} onLoad={onLoad}/>;
 }

@@ -15,6 +15,7 @@ export const kroma = {
     nav: [
         {label: "¿Quiénes Somos?", href: "#quienes-somos"},
         {label: "Servicios", href: "#servicios"},
+        {label: "Paquetes", href: "#paquetes"},
         {label: "Contacto", href: "#contacto"},
     ],
 } as const

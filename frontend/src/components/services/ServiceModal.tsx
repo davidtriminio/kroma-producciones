@@ -1,5 +1,5 @@
 import Logo from "../ui/Logo.tsx";
-import {type ServiceId, type WorkItem, worksData} from "../../data/index.ts";
+import {type ServiceId, type WorkItem, services, worksData} from "../../data/index.ts";
 import {useEffect, useState} from "react";
 import {ArrowLeft, X} from "lucide-react";
 import KromaImage from "../ui/KromaImage.tsx";
@@ -23,7 +23,8 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
 
     if (!open || !serviceId) return null
 
-    const works = worksData[serviceId]
+    const works = worksData[serviceId] ?? []
+    const service = services.find((item) => item.id === serviceId)
 
     const totalProjectMedia = selectedProject?.media.length ?? 0;
     const projectMediaLoaded = selectedProject
@@ -59,8 +60,8 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                             Volver
                         </button>
                     ) : (
-                        <h3 className="font-headline text-xl font-black uppercase md:text-2xl">
-                            Proyectos
+                        <h3 className="font-headline text-lg font-black uppercase md:text-2xl">
+                            {service?.title ?? "Proyectos"}
                         </h3>
                     )}
 

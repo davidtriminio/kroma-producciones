@@ -1,7 +1,33 @@
 import type {ServiceId, WorkItem} from "./types.ts"
 
-export const worksData: Record<ServiceId, WorkItem[]> = {
-    audiovisual: [
+// Only services that already have portfolio work appear here.
+export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
+    "redes-sociales": [
+        {
+            id: "dia-madres",
+            title: "Campaña Día de la madre",
+            desc: "Campaña en redes sociales para Día de la madre.",
+            thumbnail: "/services/social-media/dia-madres/img1.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/social-media/dia-madres/img1.webp",
+                    alt: "Foto para Día de la madre",
+                }, {
+                    type: "image",
+                    src: "/services/social-media/dia-madres/img2.webp",
+                    alt: "Arte cajas para Día de la madre",
+                },
+                {
+                    type: "video",
+                    src: "/services/tomas-drones/Come.mp4",
+                    poster: "https://res.cloudinary.com/kzo9w9gr/video/upload/Box_Madres_1_qryfm4.mp4",
+                    title: "Video promocional Box Día de las madres Smartec"
+                },
+            ]
+        }
+    ],
+    "fotografia": [
         {
             id: "foto-video",
             title: "Fotografía y video",
@@ -33,41 +59,6 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
                     src: "/services/dia-padre-pebbles/img5.webp",
                     alt: "Día del padre Pebbles imagen 5",
                 },
-            ]
-        },
-        {
-            id: "tomas-drones",
-            title: "Tomas de Drones",
-            desc: "Producción en 4K con tomas de drones.",
-            thumbnail: "/services/tomas-drones/poster-drones.webp",
-            media: [
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Come.mp4",
-                    poster: "/services/tomas-drones/poster-drones.webp",
-                    title: "Tomas Drones Para Pebbles and Stones"
-                },
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Galeria-Miraflor.mp4",
-                    poster: "/services/tomas-drones/poster-drones.webp",
-                    title: "Tomas Drones para Galeria Miraflor"
-                },
-                {
-                    type: "image",
-                    src: "/services/tomas-drones/img1.webp",
-                    alt: "Toma de Dron - 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/tomas-drones/img2.webp",
-                    alt: "Toma de Dron - 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/tomas-drones/img3.webp",
-                    alt: "Toma de Dron - 3",
-                }
             ]
         },
         {
@@ -104,7 +95,59 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
             ]
         }
     ],
-    social: [
+    "dron": [
+        {
+            id: "tomas-drones",
+            title: "Tomas de Drones",
+            desc: "Producción en 4K con tomas de drones.",
+            thumbnail: "/services/tomas-drones/poster-drones.webp",
+            media: [
+                {
+                    type: "video",
+                    src: "/services/tomas-drones/Come.mp4",
+                    poster: "/services/tomas-drones/poster-drones.webp",
+                    title: "Tomas Drones Para Pebbles and Stones"
+                },
+                {
+                    type: "video",
+                    src: "/services/tomas-drones/Galeria-Miraflor.mp4",
+                    poster: "/services/tomas-drones/poster-drones.webp",
+                    title: "Tomas Drones para Galeria Miraflor"
+                },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img1.webp",
+                    alt: "Toma de Dron - 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img2.webp",
+                    alt: "Toma de Dron - 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/tomas-drones/img3.webp",
+                    alt: "Toma de Dron - 3",
+                }
+            ]
+        }
+    ],
+    "branding": [
+        {
+            id: "rebranding-mama-linda",
+            title: "Branding Mama Linda",
+            desc: "Identidad moderna para restaurante local.",
+            thumbnail: "/services/branding/mama-linda/img1.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/branding/mama-linda/img1.webp",
+                    alt: "Branding para restaurante Mama Linda",
+                },
+            ]
+        }
+    ],
+    "diseno-grafico": [
         {
             id: "campanias",
             title: "Artes Gráficos",
@@ -125,63 +168,6 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
                     src: "/services/artes/img3.webp",
                     alt: "Arte Campaña Día de la madre Smartec",
                 }
-            ]
-        },
-        {
-            id: "dia-madres",
-            title: "Campaña Día de la madre",
-            desc: "Campaña en redes sociales para Día de la madre.",
-            thumbnail: "/services/social-media/dia-madres/img1.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/social-media/dia-madres/img1.webp",
-                    alt: "Foto para Día de la madre",
-                }, {
-                    type: "image",
-                    src: "/services/social-media/dia-madres/img2.webp",
-                    alt: "Arte cajas para Día de la madre",
-                },
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Come.mp4",
-                    poster: "https://res.cloudinary.com/kzo9w9gr/video/upload/Box_Madres_1_qryfm4.mp4",
-                    title: "Video promocional Box Día de las madres Smartec"
-                },
-            ]
-        }
-    ],
-    // web: [
-    //     {
-    //         id: "ecommerce-premium",
-    //         title: "E-commerce Premium",
-    //         desc: "UI/UX optimizada para conversión.",
-    //         thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-    //         media: [
-    //             {
-    //                 type: "image",
-    //                 src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-    //                 alt: "Día del padre Pebbles imagen 1",
-    //             }, {
-    //                 type: "image",
-    //                 src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-    //                 alt: "Día del padre Pebbles imagen 1",
-    //             },
-    //         ]
-    //     }
-    // ],
-    branding: [
-        {
-            id: "rebranding-mama-linda",
-            title: "Branding Mama Linda",
-            desc: "Identidad moderna para restaurante local.",
-            thumbnail: "/services/branding/mama-linda/img1.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/branding/mama-linda/img1.webp",
-                    alt: "Branding para restaurante Mama Linda",
-                },
             ]
         }
     ]

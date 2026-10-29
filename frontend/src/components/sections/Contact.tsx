@@ -1,9 +1,10 @@
 import SectionTitle from "../ui/SectionTitle.tsx";
 import {SiWhatsapp} from "@icons-pack/react-simple-icons";
 import {CircleAlert} from "lucide-react";
-import {type ChangeEvent, type FormEvent, useState} from "react";
-import {kroma} from "../../data/kroma.ts";
+import {type ChangeEvent, type FormEvent, useEffect, useState} from "react";
+import {kroma, type PackageId, servicePackages, services} from "../../data/index.ts";
 import {buildLeadMessage, buildWhatsAppUrl} from "../../lib/whatsapp.ts";
+import {QUOTE_EVENT, type QuoteRequest} from "../../lib/quote.ts";
 
 type FieldName = "fullName" | "company" | "serviceType" | "message";
 type Values = Record<FieldName, string>;
@@ -53,6 +54,28 @@ export default function Contact() {
     const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
     const [submitted, setSubmitted] = useState(false);
     const [status, setStatus] = useState<"idle" | "opened">("idle");
+    const [packageId, setPackageId] = useState<PackageId | null>(null);
+
+    // Service cards and package cards ask for a quote through this event.
+    useEffect(() => {
+        const onQuote = (event: Event) => {
+            const {serviceId, packageId: requestedPackage} = (event as CustomEvent<QuoteRequest>).detail;
+            const service = services.find((item) => item.id === serviceId);
+            if (!service) return;
+
+            setValues((current) => ({...current, serviceType: service.title}));
+            setTouched((current) => ({...current, serviceType: true}));
+            setPackageId(requestedPackage ?? null);
+            setStatus("idle");
+
+            window.setTimeout(() => document.getElementById("fullName")?.focus({preventScroll: true}), 700);
+        };
+
+        window.addEventListener(QUOTE_EVENT, onQuote);
+        return () => window.removeEventListener(QUOTE_EVENT, onQuote);
+    }, []);
+
+    const selectedPackage = servicePackages.find((item) => item.id === packageId);
 
     const errors = validate(values);
     const isValid = Object.keys(errors).length === 0;
@@ -91,6 +114,7 @@ export default function Contact() {
             name: values.fullName.trim(),
             company: values.company.trim(),
             service: values.serviceType,
+            packageName: selectedPackage?.title,
             message: values.message.trim(),
         };
 
@@ -98,6 +122,7 @@ export default function Contact() {
         window.open(buildWhatsAppUrl(kroma.whatsapp.number, buildLeadMessage(lead)), "_blank", "noopener,noreferrer");
 
         setValues(emptyValues);
+        setPackageId(null);
         setTouched({});
         setSubmitted(false);
         setStatus("opened");
@@ -174,10 +199,9 @@ export default function Contact() {
                                     className={`${controlClass("serviceType")} appearance-none pr-12`}
                                 >
                                     <option value="">Selecciona un servicio</option>
-                                    <option value="Producción Audiovisual">Producción Audiovisual</option>
-                                    <option value="Manejo de Redes">Manejo de Redes</option>
-                                    <option value="Diseño Web">Diseño Web</option>
-                                    <option value="Branding">Branding</option>
+                                    {services.map((service) => (
+                                        <option key={service.id} value={service.title}>{service.title}</option>
+                                    ))}
                                 </select>
                             </div>
                             <FieldError id="serviceType-error" message={visibleError("serviceType")}/>
@@ -203,6 +227,15 @@ export default function Contact() {
                                 </span>
                             </div>
                         </div>
+
+                        {selectedPackage && (
+                            <p className="form-package-chip">
+                                <span>{selectedPackage.title} · {selectedPackage.posts}</span>
+                                <button type="button" onClick={() => setPackageId(null)} aria-label="Quitar paquete seleccionado">
+                                    Quitar
+                                </button>
+                            </p>
+                        )}
 
                         <button
                             className="pill-button-primary mt-3 flex w-full cursor-pointer items-center justify-center gap-3 font-black uppercase tracking-[0.2em]"

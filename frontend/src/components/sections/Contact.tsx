@@ -1,4 +1,5 @@
 import SectionTitle from "../ui/SectionTitle.tsx";
+import Select, {type SelectGroup} from "../ui/Select.tsx";
 import {SiWhatsapp} from "@icons-pack/react-simple-icons";
 import {CircleAlert} from "lucide-react";
 import {type ChangeEvent, type FormEvent, useEffect, useState} from "react";
@@ -37,6 +38,13 @@ function validate(values: Values): Errors {
 
     return errors;
 }
+
+const serviceGroups: SelectGroup[] = serviceCategories.map((category) => ({
+    label: category.title,
+    options: services
+        .filter((service) => service.category === category.id)
+        .map((service) => ({value: service.title, label: service.title})),
+}));
 
 function FieldError({id, message}: { id: string; message?: string }) {
     if (!message) return null;
@@ -191,25 +199,20 @@ export default function Contact() {
                                 Tipo de servicio
                             </label>
 
-                            <div className="form-select-wrap">
-                                <select
-                                    {...fieldProps("serviceType")}
-                                    id="serviceType"
-                                    name="serviceType"
-                                    className={`${controlClass("serviceType")} appearance-none pr-12`}
-                                >
-                                    <option value="">Selecciona un servicio</option>
-                                    {serviceCategories.map((category) => (
-                                        <optgroup key={category.id} label={category.title}>
-                                            {services
-                                                .filter((service) => service.category === category.id)
-                                                .map((service) => (
-                                                    <option key={service.id} value={service.title}>{service.title}</option>
-                                                ))}
-                                        </optgroup>
-                                    ))}
-                                </select>
-                            </div>
+                            <Select
+                                id="serviceType"
+                                value={values.serviceType}
+                                groups={serviceGroups}
+                                placeholder="Selecciona un servicio"
+                                invalid={Boolean(visibleError("serviceType"))}
+                                valid={Boolean(touched.serviceType && !errors.serviceType && values.serviceType)}
+                                describedBy={visibleError("serviceType") ? "serviceType-error" : undefined}
+                                onChange={(next) => {
+                                    setValues((current) => ({...current, serviceType: next}));
+                                    setStatus("idle");
+                                }}
+                                onBlur={() => setTouched((current) => ({...current, serviceType: true}))}
+                            />
                             <FieldError id="serviceType-error" message={visibleError("serviceType")}/>
                         </div>
 

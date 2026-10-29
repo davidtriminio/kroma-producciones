@@ -29,7 +29,7 @@ export default {
             },
             fontFamily: {
                 headline: ["Sackers Gothic", "sans-serif"],
-                body: ["Krona One", "Sackers Gothic", "sans-serif"],
+                body: ["Inter", "system-ui", "sans-serif"],
             },
         },
     },

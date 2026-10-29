@@ -102,8 +102,7 @@ body {
     background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--purple) 28%, transparent), transparent 30rem),
     var(--bg);
     color: var(--fg);
-    font-family: "Krona One", "Sackers Gothic", sans-serif;
-    font-synthesis-weight: none;
+    font-family: "Inter", system-ui, sans-serif;
     overflow-x: hidden;
     transition: background-color 240ms ease, color 240ms ease;
 }
@@ -252,7 +251,7 @@ body {
     transform: translateX(-50%) scaleX(1);
 }
 
-/* Sackers Gothic for titles and interface labels; Krona One (body default) for reading text. */
+/* Sackers Gothic for titles and interface labels; Inter (body default) for reading text. */
 h1,
 h2,
 h3,
@@ -266,7 +265,12 @@ label,
 }
 
 p {
-    line-height: 1.75;
+    line-height: 1.7;
+}
+
+/* Inter reads smaller than the previous body font at the same size. */
+p.text-xs {
+    font-size: 0.8125rem;
 }
 
 .hero-spectrum-word {

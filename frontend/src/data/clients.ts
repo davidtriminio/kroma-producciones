@@ -31,8 +31,8 @@ export const clients: ClientLogo[] = [
     logo("tactical-world", "Tactical World", {active: false, tone: "dark-ink"}),
     logo("el-palomar", "El Palomar", {active: false, tone: "dark-ink"}),
     logo("idol-fashion", "Idol Fashion", {active: false, tone: "dark-ink"}),
-    logo("mencas-corredores", "Mencas Corredores", {active: false}),
-    logo("papi-papito", "Papi-papito", {active: false, tone: "white"}),
+    logo("mencas-corredores", "Mencas Corredores"),
+    logo("papi-papito", "Papi-papito", {tone: "white"}),
 ]
 
 export const activeClients = clients.filter((client) => client.active)

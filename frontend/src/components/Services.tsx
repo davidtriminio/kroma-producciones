@@ -1,4 +1,4 @@
-﻿import {useState} from "react";
+import {useState} from "react";
 import {Clapperboard, Share2, Globe2, PenTool} from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import {serviceCards, type ServiceId} from "../data/kroma.ts";
@@ -46,12 +46,12 @@ const Services = () => {
                                 <h3 className="font-headline text-sm font-black uppercase">{s.title}</h3>
                             </div>
 
-                            <p className="text-xs leading-relaxed text-white/55">
+                            <p className="text-xs leading-relaxed text-fg/55">
                                 {s.description}
                             </p>
 
                             <span
-                                className="mt-5 inline-flex items-center text-[10px] font-black uppercase tracking-[0.18em] text-white/45 transition group-hover:text-white">Ver trabajos</span>
+                                className="mt-5 inline-flex items-center text-[10px] font-black uppercase tracking-[0.18em] text-fg/45 transition group-hover:text-fg">Ver trabajos</span>
                         </button>
                     );
                 })}

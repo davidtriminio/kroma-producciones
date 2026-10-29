@@ -1,22 +1,22 @@
-﻿import { BadgeCheck, Lightbulb, Clapperboard } from "lucide-react";
+import { BadgeCheck, Lightbulb, Clapperboard } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 
 const features = [
     {
         Icon: BadgeCheck,
-        iconClass: "text-kp-cyan",
+        iconClass: "text-brand",
         title: "Calidad visual",
         text: "Estándares de cine aplicados a la comunicación comercial diaria.",
     },
     {
         Icon: Lightbulb,
-        iconClass: "text-kp-red",
+        iconClass: "text-highlight-text",
         title: "Creatividad con propósito",
         text: "Cada decisión visual responde a un objetivo estratégico claro.",
     },
     {
         Icon: Clapperboard,
-        iconClass: "text-kp-green",
+        iconClass: "text-fg",
         title: "Producción integral",
         text: "Desde el primer concepto hasta la entrega final del contenido.",
     },

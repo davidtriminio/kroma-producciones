@@ -1,3 +1,4 @@
+import Logo from "./components/Logo";
 import {useEffect, useState} from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -76,13 +77,12 @@ export default function App() {
     }, []);
 
   return (
-      <div className="dark min-h-screen overflow-x-hidden bg-background text-white">
+      <div className="min-h-screen overflow-x-hidden bg-background text-fg">
           {isLoading && (
               <div className="app-loader">
-                  <img src="/brand/kroma-white-512.webp" alt="Kroma cargando" className="app-loader-logo" />
+                  <Logo size="sm" alt="Kroma cargando" className="app-loader-logo" />
               </div>
           )}
-        <div className="grain-overlay" />
         <Navbar />
         <main>
           <Hero />

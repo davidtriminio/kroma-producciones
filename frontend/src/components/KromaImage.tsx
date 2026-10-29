@@ -1,3 +1,4 @@
+import Logo from "./Logo";
 import { useEffect, useRef, useState } from "react";
 
 type Props = {
@@ -66,7 +67,7 @@ export default function KromaImage({
         <div className="kroma-image-wrap">
             {!loaded && !failed && (
                 <div className="kroma-image-loader">
-                    <img src="/brand/kroma-white-512.webp" alt="" aria-hidden="true" />
+                    <Logo size="sm" alt="" />
                 </div>
             )}
 

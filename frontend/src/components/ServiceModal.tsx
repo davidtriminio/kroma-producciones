@@ -1,3 +1,4 @@
+import Logo from "./Logo";
 import {type ServiceId, type WorkItem, worksData} from "../data/kroma.ts";
 import {useEffect, useState} from "react";
 import {ArrowLeft, X} from "lucide-react";
@@ -45,7 +46,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                 onClick={(e) => e.stopPropagation()}
             >
                 <div
-                    className="sticky top-0 z-20 flex items-center justify-between border-b border-white/10 bg-[#111216]/95 p-5 backdrop-blur-xl md:p-8">
+                    className="sticky top-0 z-20 flex items-center justify-between border-b border-fg/10 bg-[#111216]/95 p-5 backdrop-blur-xl md:p-8">
                     {selectedProject ? (
                         <button
                             className="modal-icon-button cursor-pointer"
@@ -90,7 +91,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                         <h4 className="font-headline text-sm font-black uppercase">
                                             {work.title}
                                         </h4>
-                                        <p className="mt-2 text-xs leading-relaxed text-white/55">
+                                        <p className="mt-2 text-xs leading-relaxed text-fg/55">
                                             {work.desc}
                                         </p>
                                     </div>
@@ -101,7 +102,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                         <div className="animate-modal-in relative pb-2">
                             {!projectMediaLoaded && (
                                 <div className="project-detail-loader">
-                                    <img src="/brand/kroma-white-512.webp" alt="" aria-hidden="true"/>
+                                    <Logo size="sm" alt="" />
                                     <span>Cargando proyecto</span>
                                 </div>
                             )}
@@ -109,7 +110,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                 <h3 className="font-headline text-2xl font-black uppercase md:text-4xl spectrum-heading">
                                     {selectedProject.title}
                                 </h3>
-                                <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/60">
+                                <p className="mt-5 max-w-2xl text-sm leading-relaxed text-fg/60">
                                     {selectedProject.desc}
                                 </p>
                             </div>

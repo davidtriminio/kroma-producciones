@@ -28,8 +28,8 @@ export default {
                 "container-max": "1160px",
             },
             fontFamily: {
-                headline: ["Krona One", "Sackers Gothic", "sans-serif"],
-                body: ["Sackers Gothic", "sans-serif"],
+                headline: ["Sackers Gothic", "sans-serif"],
+                body: ["Krona One", "Sackers Gothic", "sans-serif"],
             },
         },
     },

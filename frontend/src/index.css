@@ -102,7 +102,8 @@ body {
     background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--purple) 28%, transparent), transparent 30rem),
     var(--bg);
     color: var(--fg);
-    font-family: "Sackers Gothic", sans-serif;
+    font-family: "Krona One", "Sackers Gothic", sans-serif;
+    font-synthesis-weight: none;
     overflow-x: hidden;
     transition: background-color 240ms ease, color 240ms ease;
 }
@@ -183,11 +184,9 @@ body {
 
 /*Spectrum*/
 .section-title {
-    font-family: "Krona One", "Sackers Gothic", sans-serif;
-    font-synthesis-weight: none;
     --kroma-spectrum: linear-gradient(90deg, var(--purple), var(--brand), var(--highlight));
 
-    font-weight: 400;
+    font-weight: 900;
     letter-spacing: 0;
     line-height: 0.85;
     text-transform: uppercase;
@@ -253,8 +252,21 @@ body {
     transform: translateX(-50%) scaleX(1);
 }
 
-.font-headline {
-    font-synthesis-weight: none;
+/* Sackers Gothic for titles and interface labels; Krona One (body default) for reading text. */
+h1,
+h2,
+h3,
+h4,
+button,
+label,
+.uppercase,
+.font-headline,
+.section-title {
+    font-family: "Sackers Gothic", sans-serif;
+}
+
+p {
+    line-height: 1.75;
 }
 
 .hero-spectrum-word {

@@ -562,7 +562,7 @@ body {
     border-color: color-mix(in srgb, var(--brand) 72%, transparent);
     box-shadow:
             0 0 0 4px color-mix(in srgb, var(--brand) 9%, transparent),
-            0 16px 38px rgba(0, 0, 0, 0.28);
+            0 16px 38px color-mix(in srgb, var(--fg) 14%, transparent);
     transform: translateY(-1px);
 }
 
@@ -872,43 +872,58 @@ body {
 }
 /*Services catalog*/
 .service-tabs {
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding: 0.35rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+    padding: 0.4rem;
     margin: 0 auto;
-    width: fit-content;
     max-width: 100%;
-    border-radius: 999px;
+    border-radius: 22px;
     border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
     background: color-mix(in srgb, var(--fg) 4%, transparent);
-    scrollbar-width: none;
-}
-
-.service-tabs::-webkit-scrollbar {
-    display: none;
 }
 
 .service-tab {
-    flex-shrink: 0;
-    border-radius: 999px;
-    padding: 0.7rem 1.2rem;
-    font-size: 0.65rem;
+    border-radius: 16px;
+    padding: 0.8rem 0.6rem;
+    font-size: 0.6rem;
     font-weight: 900;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+    text-align: center;
     text-transform: uppercase;
-    white-space: nowrap;
     color: var(--muted);
-    transition: background 220ms ease, color 220ms ease;
+    border: 1px solid transparent;
+    transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
 }
 
 .service-tab:hover {
     color: var(--fg);
+    border-color: color-mix(in srgb, var(--brand) 45%, transparent);
 }
 
 .service-tab[aria-selected="true"] {
     background: var(--purple);
     color: var(--on-purple);
+    border-color: var(--purple);
+}
+
+@media (min-width: 768px) {
+    .service-tabs {
+        display: flex;
+        width: fit-content;
+        gap: 0.5rem;
+        border-radius: 999px;
+    }
+
+    .service-tab {
+        flex-shrink: 0;
+        border-radius: 999px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        white-space: nowrap;
+    }
 }
 
 .service-grid {

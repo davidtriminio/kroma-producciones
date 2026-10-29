@@ -47,7 +47,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                 onClick={(e) => e.stopPropagation()}
             >
                 <div
-                    className="sticky top-0 z-20 flex items-center justify-between border-b border-fg/10 bg-[#111216]/95 p-5 backdrop-blur-xl md:p-8">
+                    className="sticky top-0 z-20 flex items-center justify-between border-b border-fg/10 bg-surface/95 p-5 backdrop-blur-xl md:p-8">
                     {selectedProject ? (
                         <button
                             className="modal-icon-button cursor-pointer"

@@ -261,3 +261,5 @@ export const worksData: Record<ServiceId, WorkItem[]> = {
         }
     ]
 }
+export const WHATSAPP_NUMBER = "50488434254"
+export const WHATSAPP_DISPLAY = "+504 8843 4254"

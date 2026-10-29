@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
     src: string;
@@ -66,7 +66,7 @@ export default function KromaImage({
         <div className="kroma-image-wrap">
             {!loaded && !failed && (
                 <div className="kroma-image-loader">
-                    <img src="/chroma.svg" alt="" aria-hidden="true" />
+                    <img src="/brand/kroma-white-512.webp" alt="" aria-hidden="true" />
                 </div>
             )}
 

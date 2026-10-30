@@ -868,22 +868,53 @@ p.text-\[11px\] {
 }
 
 .fullscreen-image-stage {
+    display: flex;
     max-height: 92vh;
     max-width: 94vw;
-    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+}
+
+.lightbox-zoom {
+    position: relative;
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
     cursor: zoom-in;
 }
 
-.fullscreen-image {
-    max-height: 86vh;
-    max-width: 100%;
-    transform-origin: center;
-    transition: transform 220ms ease;
+.lightbox-zoom.is-zoomed {
+    cursor: zoom-out;
 }
 
-.fullscreen-image-stage:hover .fullscreen-image {
-    transform: scale(1.25);
+.fullscreen-image {
+    display: block;
+    max-height: 80vh;
+    max-width: 100%;
+    margin: 0 auto;
+    object-fit: contain;
+    user-select: none;
+    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-zoom-hint {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    display: inline-flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    pointer-events: none;
 }
 
 .fullscreen-image-stage p {
@@ -1218,4 +1249,160 @@ p.text-\[11px\] {
 .custom-select-option.is-selected {
     font-weight: 700;
     color: var(--brand);
+}
+
+/*Breadcrumbs*/
+.breadcrumbs {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+    list-style: none;
+}
+
+.breadcrumb {
+    min-width: 0;
+    font-family: "Sackers Gothic", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.breadcrumb button {
+    cursor: pointer;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    transition: color 200ms ease;
+}
+
+.breadcrumb button:hover {
+    color: var(--brand);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.breadcrumb.is-current {
+    color: var(--fg);
+}
+
+.breadcrumb-separator {
+    display: inline-flex;
+    color: color-mix(in srgb, var(--muted) 70%, transparent);
+}
+
+@media (max-width: 639px) {
+    /* Keep the header to one tidy line: the middle levels collapse on phones. */
+    .breadcrumbs > li:nth-child(n + 3):not(:nth-last-child(-n + 3)) {
+        display: none;
+    }
+}
+
+/*Photo viewer navigation*/
+.lightbox-nav {
+    position: fixed;
+    top: 50%;
+    z-index: 2;
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    transform: translateY(-50%);
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, #fff 22%, transparent);
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+.lightbox-nav:hover {
+    background: var(--purple);
+    border-color: color-mix(in srgb, var(--brand) 70%, transparent);
+}
+
+.lightbox-nav.is-prev {
+    left: 1rem;
+}
+
+.lightbox-nav.is-next {
+    right: 1rem;
+}
+
+.lightbox-counter {
+    display: block;
+    margin-top: 0.35rem;
+    letter-spacing: 0.2em;
+    color: color-mix(in srgb, #fff 70%, transparent);
+}
+
+.fullscreen-image-stage p {
+    color: color-mix(in srgb, #fff 72%, transparent);
+}
+
+@media (max-width: 639px) {
+    .lightbox-nav {
+        top: auto;
+        bottom: 1.25rem;
+        transform: none;
+    }
+
+    .lightbox-nav.is-prev {
+        left: 1.25rem;
+    }
+
+    .lightbox-nav.is-next {
+        right: 1.25rem;
+    }
+}
+
+/*Project pager*/
+.project-pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+.project-pager-button {
+    display: inline-flex;
+    max-width: 48%;
+    cursor: pointer;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 14px;
+    border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-family: "Sackers Gothic", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg);
+    transition: border-color 200ms ease, background 200ms ease;
+}
+
+.project-pager-button.is-next {
+    margin-left: auto;
+    text-align: right;
+}
+
+.project-pager-button:hover {
+    border-color: var(--brand);
+    background: color-mix(in srgb, var(--purple) 16%, transparent);
+}
+
+.project-pager-button small {
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    color: var(--muted);
 }

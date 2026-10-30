@@ -54,6 +54,8 @@ export type ProjectMedia =
     type: "image"
     src: string
     alt: string
+    // "phone" marks tall phone screenshots so they are shown uncropped in a narrow tile.
+    layout?: "phone"
 }
     | {
     type: "video"

@@ -4,93 +4,34 @@ import type {ServiceId, WorkItem} from "./types.ts"
 export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
     "redes-sociales": [
         {
-            id: "dia-madres",
-            title: "Campaña Día de la madre",
-            desc: "Campaña en redes sociales para Día de la madre.",
-            thumbnail: "/services/social-media/dia-madres/img1.webp",
+            id: "perfiles-instagram",
+            title: "Perfiles y feed de Instagram",
+            desc: "Perfiles y feeds de las cuentas que gestionamos para nuestros clientes.",
+            thumbnail: "/services/redes-sociales/perfiles-thumb.webp",
             media: [
                 {
                     type: "image",
-                    src: "/services/social-media/dia-madres/img1.webp",
-                    alt: "Foto para Día de la madre",
-                }, {
-                    type: "image",
-                    src: "/services/social-media/dia-madres/img2.webp",
-                    alt: "Arte cajas para Día de la madre",
-                },
-            ]
-        },
-        {
-            id: "redes-atelier",
-            title: "Atelier Floral: wedding planner",
-            desc: "Contenido para redes sociales de Atelier Floral.",
-            thumbnail: "/services/redes-sociales/redes-atelier-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-atelier-01.webp",
-                    alt: "Publicación de Atelier Floral 1",
+                    src: "/services/redes-sociales/perfil-pebbles.webp",
+                    alt: "Perfil de Instagram de Pebbles and Stones",
+                    layout: "phone",
                 },
                 {
                     type: "image",
-                    src: "/services/redes-sociales/redes-atelier-02.webp",
-                    alt: "Publicación de Atelier Floral 2",
+                    src: "/services/redes-sociales/perfil-smartec.webp",
+                    alt: "Perfil de Instagram de Smartec",
+                    layout: "phone",
                 },
                 {
                     type: "image",
-                    src: "/services/redes-sociales/redes-atelier-03.webp",
-                    alt: "Publicación de Atelier Floral 3",
+                    src: "/services/redes-sociales/perfil-yoyitas-joyeria.webp",
+                    alt: "Perfil de Instagram de Yoyita's Joyería y Perfumería",
+                    layout: "phone",
                 },
                 {
                     type: "image",
-                    src: "/services/redes-sociales/redes-atelier-04.webp",
-                    alt: "Publicación de Atelier Floral 4",
-                },
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-atelier-05.webp",
-                    alt: "Publicación de Atelier Floral 5",
-                }
-            ]
-        },
-        {
-            id: "redes-pebbles-artes",
-            title: "Pebbles and Stones: evento de artes",
-            desc: "Contenido para el evento de artes de Pebbles and Stones.",
-            thumbnail: "/services/redes-sociales/redes-pebbles-artes-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-pebbles-artes-01.webp",
-                    alt: "Publicación de Pebbles and Stones 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-pebbles-artes-02.webp",
-                    alt: "Publicación de Pebbles and Stones 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-pebbles-artes-03.webp",
-                    alt: "Publicación de Pebbles and Stones 3",
-                },
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-pebbles-artes-04.webp",
-                    alt: "Publicación de Pebbles and Stones 4",
-                }
-            ]
-        },
-        {
-            id: "redes-academia-dia-nino",
-            title: "Academia Tools for Life: Día del Niño",
-            desc: "Publicación para el Día del Niño de Academia Tools for Life.",
-            thumbnail: "/services/redes-sociales/redes-academia-dia-nino-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-academia-dia-nino-01.webp",
-                    alt: "Publicación de Academia Tools for Life 1",
+                    src: "/services/redes-sociales/perfil-yoyitas-market.webp",
+                    alt: "Perfil de Instagram de Yoyita's Market",
+                    layout: "phone",
                 }
             ]
         }
@@ -221,7 +162,7 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
         {
             id: "productos-variados",
             title: "Más productos",
-            desc: "Fotografía de producto para vinos, lentes y stickers.",
+            desc: "Fotografía de producto para vinos, lentes, stickers y relojes.",
             thumbnail: "/services/fotos-producto/productos-variados-01-thumb.webp",
             media: [
                 {
@@ -238,6 +179,11 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     type: "image",
                     src: "/services/fotos-producto/productos-variados-03.webp",
                     alt: "Fotografía de producto 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/relojes-yoyitas.webp",
+                    alt: "Fotografía de relojes de Yoyita's",
                 }
             ]
         }

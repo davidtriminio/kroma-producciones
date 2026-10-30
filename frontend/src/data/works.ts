@@ -25,6 +25,80 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     title: "Video promocional Box Día de las madres Smartec"
                 },
             ]
+        },
+        {
+            id: "redes-atelier",
+            title: "Atelier Floral: wedding planner",
+            desc: "Contenido para redes sociales de Atelier Floral.",
+            thumbnail: "/services/redes-sociales/redes-atelier-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-atelier-01.webp",
+                    alt: "Publicación de Atelier Floral 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-atelier-02.webp",
+                    alt: "Publicación de Atelier Floral 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-atelier-03.webp",
+                    alt: "Publicación de Atelier Floral 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-atelier-04.webp",
+                    alt: "Publicación de Atelier Floral 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-atelier-05.webp",
+                    alt: "Publicación de Atelier Floral 5",
+                }
+            ]
+        },
+        {
+            id: "redes-pebbles-artes",
+            title: "Pebbles and Stones: evento de artes",
+            desc: "Contenido para el evento de artes de Pebbles and Stones.",
+            thumbnail: "/services/redes-sociales/redes-pebbles-artes-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-pebbles-artes-01.webp",
+                    alt: "Publicación de Pebbles and Stones 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-pebbles-artes-02.webp",
+                    alt: "Publicación de Pebbles and Stones 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-pebbles-artes-03.webp",
+                    alt: "Publicación de Pebbles and Stones 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-pebbles-artes-04.webp",
+                    alt: "Publicación de Pebbles and Stones 4",
+                }
+            ]
+        },
+        {
+            id: "redes-academia-dia-nino",
+            title: "Academia Tools for Life: Día del Niño",
+            desc: "Publicación para el Día del Niño de Academia Tools for Life.",
+            thumbnail: "/services/redes-sociales/redes-academia-dia-nino-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/redes-sociales/redes-academia-dia-nino-01.webp",
+                    alt: "Publicación de Academia Tools for Life 1",
+                }
+            ]
         }
     ],
     "cobertura-eventos": [
@@ -126,6 +200,93 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     alt: "Fotografía de producto 5",
                 },
             ]
+        },
+        {
+            id: "productos-bicicletas",
+            title: "Bicicletas",
+            desc: "Fotografía de producto para bicicletas.",
+            thumbnail: "/services/fotos-producto/productos-bicicletas-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-bicicletas-01.webp",
+                    alt: "Fotografía de bicicletas 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-bicicletas-02.webp",
+                    alt: "Fotografía de bicicletas 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-bicicletas-03.webp",
+                    alt: "Fotografía de bicicletas 3",
+                }
+            ]
+        },
+        {
+            id: "productos-joyeria",
+            title: "Cadenas y aritos",
+            desc: "Fotografía de joyería para catálogo y redes.",
+            thumbnail: "/services/fotos-producto/productos-joyeria-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-joyeria-01.webp",
+                    alt: "Fotografía de cadenas y aritos 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-joyeria-02.webp",
+                    alt: "Fotografía de cadenas y aritos 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-joyeria-03.webp",
+                    alt: "Fotografía de cadenas y aritos 3",
+                }
+            ]
+        },
+        {
+            id: "productos-cloroplast",
+            title: "Cloroplast",
+            desc: "Fotografía de producto para Cloroplast.",
+            thumbnail: "/services/fotos-producto/productos-cloroplast-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-cloroplast-01.webp",
+                    alt: "Fotografía de producto Cloroplast 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-cloroplast-02.webp",
+                    alt: "Fotografía de producto Cloroplast 2",
+                }
+            ]
+        },
+        {
+            id: "productos-variados",
+            title: "Más productos",
+            desc: "Fotografía de producto para vinos, lentes y stickers.",
+            thumbnail: "/services/fotos-producto/productos-variados-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-variados-01.webp",
+                    alt: "Fotografía de producto 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-variados-02.webp",
+                    alt: "Fotografía de producto 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/productos-variados-03.webp",
+                    alt: "Fotografía de producto 3",
+                }
+            ]
         }
     ],
     "dron": [
@@ -178,6 +339,19 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     alt: "Branding para restaurante Mama Linda",
                 },
             ]
+        },
+        {
+            id: "mama-linda-branding",
+            title: "Mama Linda: identidad completa",
+            desc: "Aplicaciones de la identidad visual de Mama Linda.",
+            thumbnail: "/services/branding/mama-linda-branding-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/branding/mama-linda-branding-01.webp",
+                    alt: "Branding de Mama Linda 1",
+                }
+            ]
         }
     ],
     "diseno-grafico": [
@@ -200,6 +374,100 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     type: "image",
                     src: "/services/artes/img3.webp",
                     alt: "Arte Campaña Día de la madre Smartec",
+                }
+            ]
+        },
+        {
+            id: "artes-clientes",
+            title: "Artes para campañas de clientes",
+            desc: "Piezas gráficas para redes sociales de Academia Tools for Life, Distribuidora Rocío, Yoyita's, Pebbles and Stones y Smartec.",
+            thumbnail: "/services/diseno-grafico/artes-clientes-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-clientes-01.webp",
+                    alt: "Arte para campaña de cliente 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-clientes-02.webp",
+                    alt: "Arte para campaña de cliente 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-clientes-03.webp",
+                    alt: "Arte para campaña de cliente 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-clientes-04.webp",
+                    alt: "Arte para campaña de cliente 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-clientes-05.webp",
+                    alt: "Arte para campaña de cliente 5",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-clientes-06.webp",
+                    alt: "Arte para campaña de cliente 6",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-clientes-07.webp",
+                    alt: "Arte para campaña de cliente 7",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-clientes-08.webp",
+                    alt: "Arte para campaña de cliente 8",
+                }
+            ]
+        },
+        {
+            id: "artes-yoyitas-market",
+            title: "Yoyita's Market: productos hondureños",
+            desc: "Artes para la línea de productos hondureños de Yoyita's Market.",
+            thumbnail: "/services/diseno-grafico/artes-yoyitas-market-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-yoyitas-market-01.webp",
+                    alt: "Arte de Yoyita's Market 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/artes-yoyitas-market-02.webp",
+                    alt: "Arte de Yoyita's Market 2",
+                }
+            ]
+        },
+        {
+            id: "publicaciones-kroma",
+            title: "Publicaciones Kroma",
+            desc: "Publicaciones propias de Kroma para redes sociales.",
+            thumbnail: "/services/diseno-grafico/publicaciones-kroma-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/publicaciones-kroma-01.webp",
+                    alt: "Publicación de Kroma 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/publicaciones-kroma-02.webp",
+                    alt: "Publicación de Kroma 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/publicaciones-kroma-03.webp",
+                    alt: "Publicación de Kroma 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/diseno-grafico/publicaciones-kroma-04.webp",
+                    alt: "Publicación de Kroma 4",
                 }
             ]
         }
@@ -247,6 +515,101 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     src: "/services/video-profesional/campanas-tv.mp4",
                     poster: "/services/video-profesional/campanas-tv-poster.webp",
                     title: "Video para campañas publicitarias y TV"
+                }
+            ]
+        }
+    ],
+    "asesoria-marketing": [
+        {
+            id: "plataforma-yoyitas-market",
+            title: "Plataforma web Yoyita's Market",
+            desc: "Estrategia y plataforma digital para Yoyita's Market.",
+            thumbnail: "/services/asesoria-marketing/plataforma-yoyitas-market-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/asesoria-marketing/plataforma-yoyitas-market-01.webp",
+                    alt: "Plataforma web de Yoyita's Market 1",
+                }
+            ]
+        }
+    ],
+    "catalogos-digitales": [
+        {
+            id: "catalogos-digitales-ejemplos",
+            title: "Catálogos digitales",
+            desc: "Catálogos y menús digitales fáciles de compartir.",
+            thumbnail: "/services/catalogos-digitales/catalogos-digitales-ejemplos-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/catalogos-digitales/catalogos-digitales-ejemplos-01.webp",
+                    alt: "Catálogo digital 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/catalogos-digitales/catalogos-digitales-ejemplos-02.webp",
+                    alt: "Catálogo digital 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/catalogos-digitales/catalogos-digitales-ejemplos-03.webp",
+                    alt: "Catálogo digital 3",
+                }
+            ]
+        }
+    ],
+    "paginas-web": [
+        {
+            id: "paginas-web-ejemplos",
+            title: "Ejemplos de landing pages",
+            desc: "Ejemplos de landing pages y páginas web.",
+            thumbnail: "/services/paginas-web/paginas-web-ejemplos-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/paginas-web/paginas-web-ejemplos-01.webp",
+                    alt: "Ejemplo de landing page 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/paginas-web/paginas-web-ejemplos-02.webp",
+                    alt: "Ejemplo de landing page 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/paginas-web/paginas-web-ejemplos-03.webp",
+                    alt: "Ejemplo de landing page 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/paginas-web/paginas-web-ejemplos-04.webp",
+                    alt: "Ejemplo de landing page 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/paginas-web/paginas-web-ejemplos-05.webp",
+                    alt: "Ejemplo de landing page 5",
+                }
+            ]
+        }
+    ],
+    "sesiones-fotograficas": [
+        {
+            id: "sesiones-fotograficas-1",
+            title: "Sesiones fotográficas",
+            desc: "Sesiones fotográficas comerciales.",
+            thumbnail: "/services/sesiones-fotograficas/sesiones-fotograficas-1-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/sesiones-fotograficas/sesiones-fotograficas-1-01.webp",
+                    alt: "Sesión fotográfica 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/sesiones-fotograficas/sesiones-fotograficas-1-02.webp",
+                    alt: "Sesión fotográfica 2",
                 }
             ]
         }

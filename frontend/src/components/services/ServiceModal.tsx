@@ -12,6 +12,8 @@ type Props = {
 }
 
 
+const REQUIRED_MEDIA_LOADS = 4
+
 const ServiceModal = ({serviceId, open, onClose}: Props) => {
     const [selectedProject, setSelectedProject] = useState<WorkItem | null>(null)
     const [loadedProjectMedia, setLoadedProjectMedia] = useState(0);
@@ -30,8 +32,9 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
     // A project with one piece of media gets a full-width, uncropped viewer.
     const single = selectedProject?.media.length === 1
     const totalProjectMedia = selectedProject?.media.length ?? 0;
+    // Only the first items gate the loader: the rest are lazy and may sit far below the fold.
     const projectMediaLoaded = selectedProject
-        ? loadedProjectMedia >= totalProjectMedia
+        ? loadedProjectMedia >= Math.min(totalProjectMedia, REQUIRED_MEDIA_LOADS)
         : true
 
     const closeModal = () => {

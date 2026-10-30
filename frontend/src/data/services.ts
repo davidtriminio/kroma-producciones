@@ -92,13 +92,6 @@ export const services: Service[] = [
         includes: ["Campañas", "Presentaciones corporativas", "Eventos"],
     },
     {
-        id: "eventos-especiales",
-        category: "video",
-        title: "Eventos especiales",
-        description: "Cobertura en video de tus eventos especiales, con edición lista para compartir en redes y pantallas.",
-        icon: "party",
-    },
-    {
         id: "dron",
         category: "video",
         title: "Tomas aéreas con dron",

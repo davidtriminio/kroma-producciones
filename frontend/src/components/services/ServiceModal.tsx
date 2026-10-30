@@ -31,6 +31,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
 
     // A project with one piece of media gets a full-width, uncropped viewer.
     const single = selectedProject?.media.length === 1
+    const allPhone = Boolean(selectedProject?.media.every((item) => item.type === "image" && item.layout === "phone"))
     const totalProjectMedia = selectedProject?.media.length ?? 0;
     // Only the first items gate the loader: the rest are lazy and may sit far below the fold.
     const projectMediaLoaded = selectedProject
@@ -122,11 +123,11 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                 </p>
                             </div>
 
-                            <div className={`grid grid-cols-1 gap-4 ${single ? "" : "md:grid-cols-2"}`}>
+                            <div className={`grid gap-4 ${allPhone ? "grid-cols-2 md:grid-cols-4" : single ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"}`}>
                                 {selectedProject.media.map((media) => (
                                     <div
                                         key={`${media.type}-${media.src}`}
-                                        className={`rounded-xl bg-black/40 ${single ? "h-80 md:h-[30rem]" : "h-56 md:h-72"}`}
+                                        className={`rounded-xl bg-black/40 ${media.type === "image" && media.layout === "phone" ? "aspect-[1/2]" : single ? "h-80 md:h-[30rem]" : "h-56 md:h-72"}`}
                                     >
                                         {media.type === "image" ? (
                                             <button
@@ -136,7 +137,7 @@ const ServiceModal = ({serviceId, open, onClose}: Props) => {
                                             >
                                                 <KromaMedia
                                                     media={media}
-                                                    className={`h-full w-full rounded-xl ${single ? "object-contain" : "object-cover"}`}
+                                                    className={`h-full w-full rounded-xl ${media.layout === "phone" ? "object-cover object-top" : single ? "object-contain" : "object-cover"}`}
                                                     onLoad={() => setLoadedProjectMedia((count) => count + 1)}
                                                 />
                                             </button>

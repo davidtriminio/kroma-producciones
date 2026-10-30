@@ -3,7 +3,7 @@ import type {PortfolioItem} from "./types.ts"
 export const portfolioItems: PortfolioItem[] = [
     {
         span: "md:col-span-2 md:row-span-1",
-        image: "/services/dia-padre-pebbles/img1.webp",
+        image: "/services/cobertura-eventos/evento-educativo-01.webp",
         tag: "Audiovisual",
         title: "Día del Padre · Pebbles and Stones",
     },

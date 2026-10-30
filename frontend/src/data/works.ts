@@ -4,147 +4,49 @@ import type {ServiceId, WorkItem} from "./types.ts"
 export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
     "redes-sociales": [
         {
-            id: "dia-madres",
-            title: "Campaña Día de la madre",
-            desc: "Campaña en redes sociales para Día de la madre.",
-            thumbnail: "/services/social-media/dia-madres/img1.webp",
+            id: "perfiles-instagram",
+            title: "Perfiles y feed de Instagram",
+            desc: "Perfiles y feeds de las cuentas que gestionamos para nuestros clientes.",
+            thumbnail: "/services/redes-sociales/perfiles-thumb.webp",
             media: [
                 {
                     type: "image",
-                    src: "/services/social-media/dia-madres/img1.webp",
-                    alt: "Foto para Día de la madre",
-                }, {
-                    type: "image",
-                    src: "/services/social-media/dia-madres/img2.webp",
-                    alt: "Arte cajas para Día de la madre",
-                },
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Come.mp4",
-                    poster: "https://res.cloudinary.com/kzo9w9gr/video/upload/Box_Madres_1_qryfm4.mp4",
-                    title: "Video promocional Box Día de las madres Smartec"
-                },
-            ]
-        },
-        {
-            id: "redes-atelier",
-            title: "Atelier Floral: wedding planner",
-            desc: "Contenido para redes sociales de Atelier Floral.",
-            thumbnail: "/services/redes-sociales/redes-atelier-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-atelier-01.webp",
-                    alt: "Publicación de Atelier Floral 1",
+                    src: "/services/redes-sociales/perfil-pebbles.webp",
+                    alt: "Perfil de Instagram de Pebbles and Stones",
+                    layout: "phone",
                 },
                 {
                     type: "image",
-                    src: "/services/redes-sociales/redes-atelier-02.webp",
-                    alt: "Publicación de Atelier Floral 2",
+                    src: "/services/redes-sociales/perfil-smartec.webp",
+                    alt: "Perfil de Instagram de Smartec",
+                    layout: "phone",
                 },
                 {
                     type: "image",
-                    src: "/services/redes-sociales/redes-atelier-03.webp",
-                    alt: "Publicación de Atelier Floral 3",
+                    src: "/services/redes-sociales/perfil-yoyitas-joyeria.webp",
+                    alt: "Perfil de Instagram de Yoyita's Joyería y Perfumería",
+                    layout: "phone",
                 },
                 {
                     type: "image",
-                    src: "/services/redes-sociales/redes-atelier-04.webp",
-                    alt: "Publicación de Atelier Floral 4",
-                },
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-atelier-05.webp",
-                    alt: "Publicación de Atelier Floral 5",
-                }
-            ]
-        },
-        {
-            id: "redes-pebbles-artes",
-            title: "Pebbles and Stones: evento de artes",
-            desc: "Contenido para el evento de artes de Pebbles and Stones.",
-            thumbnail: "/services/redes-sociales/redes-pebbles-artes-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-pebbles-artes-01.webp",
-                    alt: "Publicación de Pebbles and Stones 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-pebbles-artes-02.webp",
-                    alt: "Publicación de Pebbles and Stones 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-pebbles-artes-03.webp",
-                    alt: "Publicación de Pebbles and Stones 3",
-                },
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-pebbles-artes-04.webp",
-                    alt: "Publicación de Pebbles and Stones 4",
-                }
-            ]
-        },
-        {
-            id: "redes-academia-dia-nino",
-            title: "Academia Tools for Life: Día del Niño",
-            desc: "Publicación para el Día del Niño de Academia Tools for Life.",
-            thumbnail: "/services/redes-sociales/redes-academia-dia-nino-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/redes-sociales/redes-academia-dia-nino-01.webp",
-                    alt: "Publicación de Academia Tools for Life 1",
+                    src: "/services/redes-sociales/perfil-yoyitas-market.webp",
+                    alt: "Perfil de Instagram de Yoyita's Market",
+                    layout: "phone",
                 }
             ]
         }
     ],
     "cobertura-eventos": [
         {
-            id: "foto-video",
-            title: "Fotografía y video",
-            desc: "Producción en 4K y foto de alta calidad, para nuestros clientes.",
-            thumbnail: "/services/audiovisual.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img1.webp",
-                    alt: "Día del padre Pebbles imagen 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img2.webp",
-                    alt: "Día del padre Pebbles imagen 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img3.webp",
-                    alt: "Día del padre Pebbles imagen 3",
-                },
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img4.webp",
-                    alt: "Día del padre Pebbles imagen 4",
-                },
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img5.webp",
-                    alt: "Día del padre Pebbles imagen 5",
-                },
-            ]
-        },
-        {
-            id: "cobertura-eventos-general",
-            title: "Cobertura de eventos",
-            desc: "Registro fotográfico profesional de eventos y actividades.",
+            id: "evento-corporativo",
+            title: "Evento corporativo",
+            desc: "Cobertura fotográfica de eventos corporativos.",
             thumbnail: "/services/cobertura-eventos/evento-1-thumb.webp",
             media: [
                 {
                     type: "image",
                     src: "/services/cobertura-eventos/evento-1.webp",
-                    alt: "Cobertura de evento",
+                    alt: "Evento corporativo",
                 }
             ]
         },
@@ -160,6 +62,39 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     alt: "Cobertura de evento deportivo",
                 }
             ]
+        },
+        {
+            id: "evento-educativo",
+            title: "Evento educativo",
+            desc: "Cobertura fotográfica de eventos educativos.",
+            thumbnail: "/services/cobertura-eventos/evento-educativo-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-01.webp",
+                    alt: "Evento educativo 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-02.webp",
+                    alt: "Evento educativo 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-03.webp",
+                    alt: "Evento educativo 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-04.webp",
+                    alt: "Evento educativo 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-05.webp",
+                    alt: "Evento educativo 5",
+                }
+            ]
         }
     ],
     "fotos-producto": [
@@ -167,7 +102,7 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
             id: "fotografias-productos",
             title: "Fotografías de Productos",
             desc: "Producción en alta calidad para distintas empresas y productos.",
-            thumbnail: "/services/audiovisual/fotos-productos/img1.webp",
+            thumbnail: "/services/fotos-producto/destacados-01-thumb.webp",
             media: [
                 {
                     type: "image",
@@ -176,52 +111,14 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                 },
                 {
                     type: "image",
-                    src: "/services/audiovisual/fotos-productos/img1.webp",
-                    alt: "Fotografía de producto 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/audiovisual/fotos-productos/img2.webp",
+                    src: "/services/fotos-producto/destacados-01.webp",
                     alt: "Fotografía de producto 2",
                 },
                 {
                     type: "image",
-                    src: "/services/audiovisual/fotos-productos/img3.webp",
+                    src: "/services/fotos-producto/destacados-03.webp",
                     alt: "Fotografía de producto 3",
                 },
-                {
-                    type: "image",
-                    src: "/services/audiovisual/fotos-productos/img4.webp",
-                    alt: "Fotografía de producto 4",
-                },
-                {
-                    type: "image",
-                    src: "/services/audiovisual/fotos-productos/img5.webp",
-                    alt: "Fotografía de producto 5",
-                },
-            ]
-        },
-        {
-            id: "productos-bicicletas",
-            title: "Bicicletas",
-            desc: "Fotografía de producto para bicicletas.",
-            thumbnail: "/services/fotos-producto/productos-bicicletas-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-bicicletas-01.webp",
-                    alt: "Fotografía de bicicletas 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-bicicletas-02.webp",
-                    alt: "Fotografía de bicicletas 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-bicicletas-03.webp",
-                    alt: "Fotografía de bicicletas 3",
-                }
             ]
         },
         {
@@ -248,33 +145,15 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
             ]
         },
         {
-            id: "productos-cloroplast",
-            title: "Cloroplast",
-            desc: "Fotografía de producto para Cloroplast.",
-            thumbnail: "/services/fotos-producto/productos-cloroplast-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-cloroplast-01.webp",
-                    alt: "Fotografía de producto Cloroplast 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-cloroplast-02.webp",
-                    alt: "Fotografía de producto Cloroplast 2",
-                }
-            ]
-        },
-        {
             id: "productos-variados",
             title: "Más productos",
-            desc: "Fotografía de producto para vinos, lentes y stickers.",
+            desc: "Fotografía de producto para vinos, lentes, stickers y relojes.",
             thumbnail: "/services/fotos-producto/productos-variados-01-thumb.webp",
             media: [
                 {
                     type: "image",
                     src: "/services/fotos-producto/productos-variados-01.webp",
-                    alt: "Fotografía de producto 1",
+                    alt: "Fotografía de producto 2",
                 },
                 {
                     type: "image",
@@ -285,6 +164,11 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     type: "image",
                     src: "/services/fotos-producto/productos-variados-03.webp",
                     alt: "Fotografía de producto 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/fotos-producto/relojes-yoyitas.webp",
+                    alt: "Fotografía de relojes de Yoyita's",
                 }
             ]
         }
@@ -296,18 +180,6 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
             desc: "Producción en 4K con tomas de drones.",
             thumbnail: "/services/tomas-drones/poster-drones.webp",
             media: [
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Come.mp4",
-                    poster: "/services/tomas-drones/poster-drones.webp",
-                    title: "Tomas Drones Para Pebbles and Stones"
-                },
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Galeria-Miraflor.mp4",
-                    poster: "/services/tomas-drones/poster-drones.webp",
-                    title: "Tomas Drones para Galeria Miraflor"
-                },
                 {
                     type: "image",
                     src: "/services/tomas-drones/img1.webp",
@@ -327,19 +199,6 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
         }
     ],
     "branding": [
-        {
-            id: "rebranding-mama-linda",
-            title: "Branding Mama Linda",
-            desc: "Identidad moderna para restaurante local.",
-            thumbnail: "/services/branding/mama-linda/img1.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/branding/mama-linda/img1.webp",
-                    alt: "Branding para restaurante Mama Linda",
-                },
-            ]
-        },
         {
             id: "mama-linda-branding",
             title: "Mama Linda: identidad completa",
@@ -515,21 +374,6 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     src: "/services/video-profesional/campanas-tv.mp4",
                     poster: "/services/video-profesional/campanas-tv-poster.webp",
                     title: "Video para campañas publicitarias y TV"
-                }
-            ]
-        }
-    ],
-    "asesoria-marketing": [
-        {
-            id: "plataforma-yoyitas-market",
-            title: "Plataforma web Yoyita's Market",
-            desc: "Estrategia y plataforma digital para Yoyita's Market.",
-            thumbnail: "/services/asesoria-marketing/plataforma-yoyitas-market-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/asesoria-marketing/plataforma-yoyitas-market-01.webp",
-                    alt: "Plataforma web de Yoyita's Market 1",
                 }
             ]
         }

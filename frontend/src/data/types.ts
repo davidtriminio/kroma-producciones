@@ -9,7 +9,6 @@ export type ServiceId =
     | "sesiones-personales"
     | "video-organico"
     | "video-profesional"
-    | "eventos-especiales"
     | "dron"
     | "branding"
     | "diseno-grafico"
@@ -25,7 +24,6 @@ export type ServiceIconKey =
     | "package"
     | "user"
     | "smartphone"
-    | "party"
     | "clapperboard"
     | "drone"
     | "pen-tool"
@@ -56,6 +54,8 @@ export type ProjectMedia =
     type: "image"
     src: string
     alt: string
+    // "phone" marks tall phone screenshots so they are shown uncropped in a narrow tile.
+    layout?: "phone"
 }
     | {
     type: "video"

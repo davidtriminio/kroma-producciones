@@ -1,0 +1,34 @@
+import {
+    BookOpen,
+    CalendarDays,
+    Camera,
+    Clapperboard,
+    Drone,
+    Globe2,
+    GraduationCap,
+    Palette,
+    Package,
+    PenTool,
+    Share2,
+    Smartphone,
+    Target,
+    UserRound,
+} from "lucide-react";
+import type {ServiceIconKey} from "../../data/types.ts";
+
+export const serviceIcons = {
+    share: Share2,
+    target: Target,
+    camera: Camera,
+    calendar: CalendarDays,
+    package: Package,
+    user: UserRound,
+    smartphone: Smartphone,
+    clapperboard: Clapperboard,
+    drone: Drone,
+    "pen-tool": PenTool,
+    palette: Palette,
+    globe: Globe2,
+    "book-open": BookOpen,
+    "graduation-cap": GraduationCap,
+} satisfies Record<ServiceIconKey, unknown>;

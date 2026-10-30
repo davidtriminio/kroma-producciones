@@ -868,22 +868,53 @@ p.text-\[11px\] {
 }
 
 .fullscreen-image-stage {
+    display: flex;
     max-height: 92vh;
     max-width: 94vw;
-    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+}
+
+.lightbox-zoom {
+    position: relative;
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
     cursor: zoom-in;
 }
 
-.fullscreen-image {
-    max-height: 86vh;
-    max-width: 100%;
-    transform-origin: center;
-    transition: transform 220ms ease;
+.lightbox-zoom.is-zoomed {
+    cursor: zoom-out;
 }
 
-.fullscreen-image-stage:hover .fullscreen-image {
-    transform: scale(1.25);
+.fullscreen-image {
+    display: block;
+    max-height: 80vh;
+    max-width: 100%;
+    margin: 0 auto;
+    object-fit: contain;
+    user-select: none;
+    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-zoom-hint {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    display: inline-flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    pointer-events: none;
 }
 
 .fullscreen-image-stage p {

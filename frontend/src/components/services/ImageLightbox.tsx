@@ -1,5 +1,5 @@
-import {type TouchEvent, useRef} from "react";
-import {ChevronLeft, ChevronRight, X} from "lucide-react";
+import {type MouseEvent, type TouchEvent, useRef, useState} from "react";
+import {ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut} from "lucide-react";
 import type {ProjectMedia} from "../../data/types.ts";
 
 type ImageMedia = Extract<ProjectMedia, { type: "image" }>;
@@ -12,8 +12,46 @@ type Props = {
 }
 
 const SWIPE_DISTANCE = 50;
+const ZOOM_SCALE = 1.8;
 
-// Fullscreen photo viewer with previous/next buttons, a counter and swipe support.
+// Click or tap toggles a small zoom; while zoomed the pointer pans the photo.
+// Keyed by src from the parent, so every photo starts unzoomed.
+function ZoomableImage({image}: { image: ImageMedia }) {
+    const [zoomed, setZoomed] = useState(false);
+    const [origin, setOrigin] = useState({x: 50, y: 50});
+
+    const updateOrigin = (event: MouseEvent<HTMLElement>) => {
+        const box = event.currentTarget.getBoundingClientRect();
+        setOrigin({
+            x: Math.min(100, Math.max(0, ((event.clientX - box.left) / box.width) * 100)),
+            y: Math.min(100, Math.max(0, ((event.clientY - box.top) / box.height) * 100)),
+        });
+    };
+
+    return (
+        <div
+            className={`lightbox-zoom ${zoomed ? "is-zoomed" : ""}`}
+            onMouseMove={zoomed ? updateOrigin : undefined}
+            onClick={(event) => {
+                if (!zoomed) updateOrigin(event);
+                setZoomed((current) => !current);
+            }}
+        >
+            <img
+                src={image.src}
+                alt={image.alt}
+                className="fullscreen-image"
+                draggable={false}
+                style={{transformOrigin: `${origin.x}% ${origin.y}%`, transform: zoomed ? `scale(${ZOOM_SCALE})` : "scale(1)"}}
+            />
+            <span className="lightbox-zoom-hint" aria-hidden="true">
+                {zoomed ? <ZoomOut className="h-4 w-4"/> : <ZoomIn className="h-4 w-4"/>}
+            </span>
+        </div>
+    );
+}
+
+// Fullscreen photo viewer with previous/next buttons, a counter, zoom and swipe support.
 // Keyboard handling (arrows and Escape) lives in ServiceModal so there is a single listener.
 export default function ImageLightbox({images, index, onIndexChange, onClose}: Props) {
     const touchStartX = useRef<number | null>(null);
@@ -70,7 +108,7 @@ export default function ImageLightbox({images, index, onIndexChange, onClose}: P
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
             >
-                <img key={image.src} src={image.src} alt={image.alt} className="fullscreen-image"/>
+                <ZoomableImage key={image.src} image={image}/>
                 <p>
                     {image.alt}
                     {total > 1 && <span className="lightbox-counter">{index + 1} / {total}</span>}

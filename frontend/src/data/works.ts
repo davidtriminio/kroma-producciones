@@ -112,27 +112,12 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                 {
                     type: "image",
                     src: "/services/fotos-producto/destacados-01.webp",
-                    alt: "Fotografía de producto 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/destacados-02.webp",
                     alt: "Fotografía de producto 2",
                 },
                 {
                     type: "image",
                     src: "/services/fotos-producto/destacados-03.webp",
                     alt: "Fotografía de producto 3",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/destacados-04.webp",
-                    alt: "Fotografía de producto 4",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/destacados-05.webp",
-                    alt: "Fotografía de producto 5",
                 },
             ]
         },
@@ -168,7 +153,7 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                 {
                     type: "image",
                     src: "/services/fotos-producto/productos-variados-01.webp",
-                    alt: "Fotografía de producto 1",
+                    alt: "Fotografía de producto 2",
                 },
                 {
                     type: "image",

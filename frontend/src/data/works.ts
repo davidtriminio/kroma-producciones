@@ -18,12 +18,6 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     src: "/services/social-media/dia-madres/img2.webp",
                     alt: "Arte cajas para Día de la madre",
                 },
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Come.mp4",
-                    poster: "https://res.cloudinary.com/kzo9w9gr/video/upload/Box_Madres_1_qryfm4.mp4",
-                    title: "Video promocional Box Día de las madres Smartec"
-                },
             ]
         },
         {
@@ -103,48 +97,15 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
     ],
     "cobertura-eventos": [
         {
-            id: "foto-video",
-            title: "Fotografía y video",
-            desc: "Producción en 4K y foto de alta calidad, para nuestros clientes.",
-            thumbnail: "/services/audiovisual.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img1.webp",
-                    alt: "Día del padre Pebbles imagen 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img2.webp",
-                    alt: "Día del padre Pebbles imagen 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img3.webp",
-                    alt: "Día del padre Pebbles imagen 3",
-                },
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img4.webp",
-                    alt: "Día del padre Pebbles imagen 4",
-                },
-                {
-                    type: "image",
-                    src: "/services/dia-padre-pebbles/img5.webp",
-                    alt: "Día del padre Pebbles imagen 5",
-                },
-            ]
-        },
-        {
-            id: "cobertura-eventos-general",
-            title: "Cobertura de eventos",
-            desc: "Registro fotográfico profesional de eventos y actividades.",
+            id: "evento-corporativo",
+            title: "Evento corporativo",
+            desc: "Cobertura fotográfica de eventos corporativos.",
             thumbnail: "/services/cobertura-eventos/evento-1-thumb.webp",
             media: [
                 {
                     type: "image",
                     src: "/services/cobertura-eventos/evento-1.webp",
-                    alt: "Cobertura de evento",
+                    alt: "Evento corporativo",
                 }
             ]
         },
@@ -160,6 +121,39 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     alt: "Cobertura de evento deportivo",
                 }
             ]
+        },
+        {
+            id: "evento-educativo",
+            title: "Evento educativo",
+            desc: "Cobertura fotográfica de eventos educativos.",
+            thumbnail: "/services/cobertura-eventos/evento-educativo-01-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-01.webp",
+                    alt: "Evento educativo 1",
+                },
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-02.webp",
+                    alt: "Evento educativo 2",
+                },
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-03.webp",
+                    alt: "Evento educativo 3",
+                },
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-04.webp",
+                    alt: "Evento educativo 4",
+                },
+                {
+                    type: "image",
+                    src: "/services/cobertura-eventos/evento-educativo-05.webp",
+                    alt: "Evento educativo 5",
+                }
+            ]
         }
     ],
     "fotos-producto": [
@@ -167,7 +161,7 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
             id: "fotografias-productos",
             title: "Fotografías de Productos",
             desc: "Producción en alta calidad para distintas empresas y productos.",
-            thumbnail: "/services/audiovisual/fotos-productos/img1.webp",
+            thumbnail: "/services/fotos-producto/destacados-01-thumb.webp",
             media: [
                 {
                     type: "image",
@@ -176,52 +170,29 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                 },
                 {
                     type: "image",
-                    src: "/services/audiovisual/fotos-productos/img1.webp",
+                    src: "/services/fotos-producto/destacados-01.webp",
                     alt: "Fotografía de producto 1",
                 },
                 {
                     type: "image",
-                    src: "/services/audiovisual/fotos-productos/img2.webp",
+                    src: "/services/fotos-producto/destacados-02.webp",
                     alt: "Fotografía de producto 2",
                 },
                 {
                     type: "image",
-                    src: "/services/audiovisual/fotos-productos/img3.webp",
+                    src: "/services/fotos-producto/destacados-03.webp",
                     alt: "Fotografía de producto 3",
                 },
                 {
                     type: "image",
-                    src: "/services/audiovisual/fotos-productos/img4.webp",
+                    src: "/services/fotos-producto/destacados-04.webp",
                     alt: "Fotografía de producto 4",
                 },
                 {
                     type: "image",
-                    src: "/services/audiovisual/fotos-productos/img5.webp",
+                    src: "/services/fotos-producto/destacados-05.webp",
                     alt: "Fotografía de producto 5",
                 },
-            ]
-        },
-        {
-            id: "productos-bicicletas",
-            title: "Bicicletas",
-            desc: "Fotografía de producto para bicicletas.",
-            thumbnail: "/services/fotos-producto/productos-bicicletas-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-bicicletas-01.webp",
-                    alt: "Fotografía de bicicletas 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-bicicletas-02.webp",
-                    alt: "Fotografía de bicicletas 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-bicicletas-03.webp",
-                    alt: "Fotografía de bicicletas 3",
-                }
             ]
         },
         {
@@ -244,24 +215,6 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     type: "image",
                     src: "/services/fotos-producto/productos-joyeria-03.webp",
                     alt: "Fotografía de cadenas y aritos 3",
-                }
-            ]
-        },
-        {
-            id: "productos-cloroplast",
-            title: "Cloroplast",
-            desc: "Fotografía de producto para Cloroplast.",
-            thumbnail: "/services/fotos-producto/productos-cloroplast-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-cloroplast-01.webp",
-                    alt: "Fotografía de producto Cloroplast 1",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-cloroplast-02.webp",
-                    alt: "Fotografía de producto Cloroplast 2",
                 }
             ]
         },
@@ -296,18 +249,6 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
             desc: "Producción en 4K con tomas de drones.",
             thumbnail: "/services/tomas-drones/poster-drones.webp",
             media: [
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Come.mp4",
-                    poster: "/services/tomas-drones/poster-drones.webp",
-                    title: "Tomas Drones Para Pebbles and Stones"
-                },
-                {
-                    type: "video",
-                    src: "/services/tomas-drones/Galeria-Miraflor.mp4",
-                    poster: "/services/tomas-drones/poster-drones.webp",
-                    title: "Tomas Drones para Galeria Miraflor"
-                },
                 {
                     type: "image",
                     src: "/services/tomas-drones/img1.webp",
@@ -515,21 +456,6 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     src: "/services/video-profesional/campanas-tv.mp4",
                     poster: "/services/video-profesional/campanas-tv-poster.webp",
                     title: "Video para campañas publicitarias y TV"
-                }
-            ]
-        }
-    ],
-    "asesoria-marketing": [
-        {
-            id: "plataforma-yoyitas-market",
-            title: "Plataforma web Yoyita's Market",
-            desc: "Estrategia y plataforma digital para Yoyita's Market.",
-            thumbnail: "/services/asesoria-marketing/plataforma-yoyitas-market-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/asesoria-marketing/plataforma-yoyitas-market-01.webp",
-                    alt: "Plataforma web de Yoyita's Market 1",
                 }
             ]
         }

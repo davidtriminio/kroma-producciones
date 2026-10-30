@@ -266,6 +266,8 @@ label,
 
 p,
 li {
+    /* Explicit because paragraphs inside buttons would otherwise inherit the button font. */
+    font-family: "Inter", system-ui, sans-serif;
     font-weight: 500;
     line-height: 1.7;
 }
@@ -739,8 +741,8 @@ p.text-\[11px\] {
 .kroma-video-wrap video {
     height: 100%;
     width: 100%;
-    object-fit: cover;
-    background: var(--bg);
+    object-fit: contain;
+    background: #000;
 }
 
 /*Form status styles*/

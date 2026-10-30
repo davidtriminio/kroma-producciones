@@ -200,19 +200,6 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
     ],
     "branding": [
         {
-            id: "rebranding-mama-linda",
-            title: "Branding Mama Linda",
-            desc: "Identidad moderna para restaurante local.",
-            thumbnail: "/services/branding/mama-linda/img1.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/branding/mama-linda/img1.webp",
-                    alt: "Branding para restaurante Mama Linda",
-                },
-            ]
-        },
-        {
             id: "mama-linda-branding",
             title: "Mama Linda: identidad completa",
             desc: "Aplicaciones de la identidad visual de Mama Linda.",

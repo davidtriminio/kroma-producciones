@@ -107,7 +107,7 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                 {
                     type: "image",
                     src: "/services/fotos-producto/producto-1.webp",
-                    alt: "Fotografía de producto",
+                    alt: "Fotografía de producto 1",
                 },
                 {
                     type: "image",
@@ -119,51 +119,10 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
                     src: "/services/fotos-producto/destacados-03.webp",
                     alt: "Fotografía de producto 3",
                 },
-            ]
-        },
-        {
-            id: "productos-joyeria",
-            title: "Cadenas y aritos",
-            desc: "Fotografía de joyería para catálogo y redes.",
-            thumbnail: "/services/fotos-producto/productos-joyeria-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-joyeria-01.webp",
-                    alt: "Fotografía de cadenas y aritos 1",
-                },
                 {
                     type: "image",
                     src: "/services/fotos-producto/productos-joyeria-02.webp",
-                    alt: "Fotografía de cadenas y aritos 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-joyeria-03.webp",
-                    alt: "Fotografía de cadenas y aritos 3",
-                }
-            ]
-        },
-        {
-            id: "productos-variados",
-            title: "Más productos",
-            desc: "Fotografía de producto para vinos, lentes, stickers y relojes.",
-            thumbnail: "/services/fotos-producto/productos-variados-01-thumb.webp",
-            media: [
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-variados-01.webp",
-                    alt: "Fotografía de producto 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-variados-02.webp",
-                    alt: "Fotografía de producto 2",
-                },
-                {
-                    type: "image",
-                    src: "/services/fotos-producto/productos-variados-03.webp",
-                    alt: "Fotografía de producto 3",
+                    alt: "Fotografía de cadenas y aritos",
                 },
                 {
                     type: "image",
@@ -440,20 +399,41 @@ export const worksData: Partial<Record<ServiceId, WorkItem[]>> = {
     ],
     "sesiones-fotograficas": [
         {
-            id: "sesiones-fotograficas-1",
-            title: "Sesiones fotográficas",
-            desc: "Sesiones fotográficas comerciales.",
-            thumbnail: "/services/sesiones-fotograficas/sesiones-fotograficas-1-01-thumb.webp",
+            id: "sesion-moda",
+            title: "Moda y catálogo",
+            desc: "Sesión comercial de moda para tiendas y marcas de ropa.",
+            thumbnail: "/services/sesiones-fotograficas/moda-comercial-thumb.webp",
             media: [
                 {
                     type: "image",
-                    src: "/services/sesiones-fotograficas/sesiones-fotograficas-1-01.webp",
-                    alt: "Sesión fotográfica 1",
-                },
+                    src: "/services/sesiones-fotograficas/moda-comercial.webp",
+                    alt: "Sesión fotográfica de moda",
+                }
+            ]
+        },
+        {
+            id: "sesion-restaurante",
+            title: "Restaurantes y negocios",
+            desc: "Fotografía de espacios comerciales y restaurantes.",
+            thumbnail: "/services/sesiones-fotograficas/restaurante-thumb.webp",
+            media: [
                 {
                     type: "image",
-                    src: "/services/sesiones-fotograficas/sesiones-fotograficas-1-02.webp",
-                    alt: "Sesión fotográfica 2",
+                    src: "/services/sesiones-fotograficas/restaurante.webp",
+                    alt: "Sesión fotográfica de restaurante",
+                }
+            ]
+        },
+        {
+            id: "sesion-servicios",
+            title: "Servicios y oficios",
+            desc: "Sesión que muestra a tu equipo y tus servicios en acción.",
+            thumbnail: "/services/sesiones-fotograficas/servicios-flores-thumb.webp",
+            media: [
+                {
+                    type: "image",
+                    src: "/services/sesiones-fotograficas/servicios-flores.webp",
+                    alt: "Sesión fotográfica de servicio de flores",
                 }
             ]
         }
